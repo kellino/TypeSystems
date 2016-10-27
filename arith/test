@@ -1,0 +1,5 @@
+if T then Z else S Z
+if F then Z else S Z
+S S S Z
+Z? S Z
+T
