@@ -1,0 +1,10 @@
+succ 0
+if true then 0 else S Z
+S S S Z
+P (S S S Z)
+if (0? P S 0) then true else false
+S true -- should fail
+0? false -- should fail
+0? Z
+true
+false
