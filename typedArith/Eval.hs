@@ -59,24 +59,24 @@ typeof (TmIf b t1 t2) = do
            t2' <- typeof t2
            if t1' == t2' 
               then return t2'
-              else throwError "branches of condition are different types"
-       else throwError "guard in conditional is not a boolean"
+              else throwError "\ESC[1mbranches of condition are different types\ESC[0m"
+       else throwError "\ESC[1mguard in conditional is not a boolean\ESC[0m"
 typeof TmZero = return TyNat
 typeof (TmSucc t1) = do
     t1' <- typeof t1
     if t1' `hasType` TyNat
        then return TyNat
-       else throwError "argument of succ is not a number"
+       else throwError "\ESC[1margument of succ is not a number\ESC[0m"
 typeof (TmPred t1) = do
     t1' <- typeof t1
     if t1'`hasType` TyNat
        then return TyNat
-       else throwError "argument of pred is not a number"
+       else throwError "\ESC[1margument of pred is not a number\ESC[0m"
 typeof (TmIsZero t1) = do
     t1' <- typeof t1
     if t1' `hasType` TyNat
        then return TyBool
-       else throwError "argument of iszero is not a number"
+       else throwError "\ESC[1margument of iszero is not a number\ESC[0m"
 
 typeAndEval :: Term -> Either Error (Term, Type)
 typeAndEval t = do
