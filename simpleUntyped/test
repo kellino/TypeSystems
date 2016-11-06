@@ -1,0 +1,6 @@
+(\x. x) x
+(\x. \y. x) a b
+(\x. \y. \z. x z (y z)) a b c
+(\m. \n. \s. \z. m s (n s z)) (\s. \z.  s (s z)) (\s.  \z.  s (s (s z))) s z
+(\x. (\x. x)) (\x. x) y
+(\s. \z. s (s z)) a b
