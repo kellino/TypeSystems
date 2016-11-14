@@ -1,0 +1,84 @@
+module Parser where
+
+import Syntax
+
+import Control.Monad (void)
+import Text.Megaparsec
+import Text.Megaparsec.String
+import qualified Text.Megaparsec.Lexer as L
+
+sc :: Parser ()
+sc = L.space (void spaceChar) lineCmnt blockCmnt
+    where lineCmnt = L.skipLineComment "//"
+          blockCmnt = L.skipBlockComment "(*" "*)"
+
+lexeme :: Parser a -> Parser a
+lexeme = L.lexeme sc
+
+symbol :: String -> Parser String
+symbol = L.symbol sc
+
+parens :: Parser a -> Parser a
+parens = between (symbol "(") (symbol ")")
+
+rword :: String -> Parser ()
+rword w = string w *> notFollowedBy alphaNumChar *> sc
+
+rws :: [String]
+rws = ["if", "then", "else", "true", "false", "\\", "λ", ".", "Bool"]
+
+term :: Parser Term
+term =  parens expr
+    <|> ifTerm
+    <|> var
+    <|> boolTrue
+    <|> boolFalse
+    <|> abstraction
+
+expr :: Parser Term
+expr = do
+    es <- term `sepEndBy1` newline
+    return $ foldl1 App es
+
+boolTrue :: Parser Term
+boolTrue = do
+    rword "true" 
+    return TmTrue
+
+boolFalse :: Parser Term
+boolFalse = do
+    rword "false"
+    return TmFalse
+
+ifTerm :: Parser Term
+ifTerm = do
+    rword "if"
+    cond <- expr
+    rword "then"
+    e1 <- expr
+    rword "else"
+    e2 <- expr
+    return $ If cond e1 e2
+
+var :: Parser Term
+var = do
+    e1 <- some alphaNumChar <* sc 
+    return $ Var e1
+
+varType :: Parser Ty
+varType = do
+    rword "Bool" 
+    return TyBool
+
+abstraction :: Parser Term
+abstraction = do
+    void $ symbol "\\" 
+    name <- some alphaNumChar
+    void $ symbol ":"
+    ty <- varType 
+    void $ symbol "."
+    body <- expr
+    return $ Abs (name, ty) body
+
+toplevel :: Parser [Term]
+toplevel = sc *> some expr <* eof
