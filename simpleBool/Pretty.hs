@@ -1,4 +1,4 @@
-module Pretty where
+module Pretty (ppr) where
 
 import Syntax
 import Text.PrettyPrint.ANSI.Leijen hiding (Pretty)
