@@ -1,6 +1,6 @@
 module Main where
 
-import Parser (toplevel)
+import Parser 
 import Pretty 
 import System.Environment (getArgs)
 import System.Directory (doesFileExist)
@@ -22,7 +22,7 @@ main = do
             if found 
                then do
                    prog <- readFile file
-                   let res = runParser toplevel file prog
+                   let res = mapM (runParser expr file) (lines prog)
                    case res of
                         Left err -> print err
                         Right r -> mapM_ (\x -> putDoc $ ppr 0 x <> hardline) r
