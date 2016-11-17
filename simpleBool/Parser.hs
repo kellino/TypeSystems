@@ -1,4 +1,4 @@
-module Parser where
+module Parser (expr) where
 
 import Syntax
 
@@ -37,7 +37,7 @@ term =  parens expr
 
 expr :: Parser Term
 expr = do
-    es <- term `sepEndBy1` newline
+    es <- some term 
     return $ foldl1 App es
 
 boolTrue :: Parser Term
@@ -62,7 +62,7 @@ ifTerm = do
 
 var :: Parser Term
 var = do
-    e1 <- some alphaNumChar <* sc 
+    e1 <- some alphaNumChar <* sc
     return $ Var e1
 
 varType :: Parser Ty
@@ -79,6 +79,3 @@ abstraction = do
     void $ symbol "."
     body <- expr
     return $ Abs (name, ty) body
-
-toplevel :: Parser [Term]
-toplevel = sc *> some expr <* eof
