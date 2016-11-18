@@ -1,7 +1,8 @@
-module Parser (expr) where
+module Parser (parseProgram) where
 
 import Syntax
 
+import Unbound.Generics.LocallyNameless (bind, string2Name)
 import Control.Monad (void)
 import Text.Megaparsec
 import Text.Megaparsec.String
@@ -12,9 +13,6 @@ sc = L.space (void spaceChar) lineCmnt blockCmnt
     where lineCmnt = L.skipLineComment "//"
           blockCmnt = L.skipBlockComment "(*" "*)"
 
-lexeme :: Parser a -> Parser a
-lexeme = L.lexeme sc
-
 symbol :: String -> Parser String
 symbol = L.symbol sc
 
@@ -24,15 +22,12 @@ parens = between (symbol "(") (symbol ")")
 rword :: String -> Parser ()
 rword w = string w *> notFollowedBy alphaNumChar *> sc
 
-rws :: [String]
-rws = ["if", "then", "else", "true", "false", "\\", "λ", ".", "Bool"]
-
 term :: Parser Term
 term =  parens expr
     <|> ifTerm
-    <|> var
     <|> boolTrue
     <|> boolFalse
+    <|> var
     <|> abstraction
 
 expr :: Parser Term
@@ -53,17 +48,22 @@ boolFalse = do
 ifTerm :: Parser Term
 ifTerm = do
     rword "if"
-    cond <- expr
+    cond <- term
     rword "then"
-    e1 <- expr
+    e1 <- term
     rword "else"
-    e2 <- expr
+    e2 <- term
     return $ If cond e1 e2
 
 var :: Parser Term
 var = do
-    e1 <- some alphaNumChar <* sc
-    return $ Var e1
+    v <- some alphaNumChar <* sc
+    return $ Var (string2Name v)
+
+typeArrow :: Parser Ty
+typeArrow = do
+    arrs <- varType `sepBy` symbol "->"
+    return $ foldl1 TyArr arrs
 
 varType :: Parser Ty
 varType = do
@@ -75,7 +75,10 @@ abstraction = do
     void $ symbol "\\" 
     name <- some alphaNumChar
     void $ symbol ":"
-    ty <- varType 
+    ty <- try typeArrow <|> varType 
     void $ symbol "."
     body <- expr
-    return $ Abs (name, ty) body
+    return $ Abs (bind (string2Name name) body)
+
+parseProgram :: String -> [String] -> Either (ParseError Char Dec) [Term]
+parseProgram f = mapM $ runParser expr f

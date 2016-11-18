@@ -1,2 +1,2 @@
-\x:Bool. \y:Bool. y x
-\x:Bool. \y:Bool. y x
+(\x:Bool. if x then true else false) false
+(\x:Bool. if x then true else false) ((\y:Bool. if y then true else false) true)
