@@ -19,10 +19,12 @@ instance Pretty Ty where
     ppr _ (TyArr a b) = ppr 0 a <> text "→" <> ppr 0 b
     ppr _ TyNat = dullcyan $ text "Nat"
     ppr _ TyUnit = blue $ text "()"
+    ppr _ TyString = dullmagenta $ text "String"
 
 instance Pretty Term where
     ppr _ TmUnit = text "()"
     ppr _ TmZero = text "0"
+    ppr _ (TmString s) = text "\"" <> text s <> text "\""
     ppr p (TmIsZero t) = parensIf (p > 0) $ text "isZero? " <> ppr (p+1) t
     ppr _ s@TmSucc{} = text $ show (count s)
     ppr p (TmPred t) = parensIf (p > 0) $ text "P" <> ppr (p+1) t

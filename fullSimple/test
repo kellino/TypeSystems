@@ -1,4 +1,5 @@
+"hello"
 \x:Nat.0
+\y:Unit.()
 if true then false else true
 S (S (S 0))
-S (S (S true))

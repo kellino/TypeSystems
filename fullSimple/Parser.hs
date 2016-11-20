@@ -25,6 +25,7 @@ rword w = string w *> notFollowedBy alphaNumChar *> sc
 term :: Parser Term
 term =  unit
     <|> parens expr
+    <|> str
     <|> ifTerm
     <|> boolTrue
     <|> boolFalse
@@ -39,6 +40,12 @@ expr :: Parser Term
 expr = do
     es <- some term 
     return $ foldl1 App es
+
+str :: Parser Term
+str = do
+    void $ symbol "\""
+    st <- anyChar `someTill` symbol "\""
+    return $ TmString st
 
 unit :: Parser Term
 unit = rword "()" *> pure TmUnit
@@ -94,6 +101,7 @@ var = do
 types :: Parser String
 types = symbol "Bool"
     <|> symbol "Nat"
+    <|> symbol "Unit"
 
 type' :: Parser Ty
 type' = do

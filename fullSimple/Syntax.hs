@@ -13,6 +13,7 @@ data Ty =
       | TyArr Ty Ty
       | TyNat
       | TyUnit
+      | TyString
         deriving (Show, Eq, Generic)
 
 data Term = 
@@ -20,6 +21,7 @@ data Term =
     | TmFalse
     | TmZero
     | TmUnit
+    | TmString String
     | TmSucc Term
     | TmPred Term
     | TmIsZero Term

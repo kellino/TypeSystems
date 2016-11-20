@@ -8,7 +8,8 @@ type Type a = ExceptT String Identity a
 
 typeof :: Term -> Type Ty
 typeof TmUnit = return TyUnit
-typeof (TmIsZero _) = return TyBool
+typeof TmIsZero{} = return TyBool
+typeof TmString{} = return TyString
 typeof (Var _) = return TyBool -- placeholder
 typeof TmZero = return TyNat
 typeof (TmSucc t) = do
