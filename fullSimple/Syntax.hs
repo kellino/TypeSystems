@@ -12,12 +12,14 @@ data Ty =
         TyBool
       | TyArr Ty Ty
       | TyNat
+      | TyUnit
         deriving (Show, Eq, Generic)
 
 data Term = 
       TmTrue
     | TmFalse
     | TmZero
+    | TmUnit
     | TmSucc Term
     | TmPred Term
     | TmIsZero Term

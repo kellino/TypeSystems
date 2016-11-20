@@ -7,9 +7,15 @@ import Control.Monad.Identity
 type Type a = ExceptT String Identity a
 
 typeof :: Term -> Type Ty
+typeof TmUnit = return TyUnit
+typeof (TmIsZero _) = return TyBool
 typeof (Var _) = return TyBool -- placeholder
 typeof TmZero = return TyNat
-typeof (TmSucc t) = typeof t
+typeof (TmSucc t) = do
+    t' <- typeof t
+    case t' of
+         TyNat -> return TyNat
+         err    -> throwError $ show err ++ " is not a number"
 typeof (TmPred TmZero) = return TyNat
 typeof (TmPred t) = typeof t
 typeof TmTrue = return TyBool

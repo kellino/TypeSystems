@@ -23,7 +23,8 @@ rword :: String -> Parser ()
 rword w = string w *> notFollowedBy alphaNumChar *> sc
 
 term :: Parser Term
-term =  parens expr
+term =  unit
+    <|> parens expr
     <|> ifTerm
     <|> boolTrue
     <|> boolFalse
@@ -38,6 +39,9 @@ expr :: Parser Term
 expr = do
     es <- some term 
     return $ foldl1 App es
+
+unit :: Parser Term
+unit = rword "()" *> pure TmUnit
 
 successor :: Parser Term
 successor = do
@@ -87,35 +91,30 @@ var = do
     v <- some alphaNumChar <* sc
     return $ Var (string2Name v)
 
-typeArrow :: Parser Ty
-typeArrow = do
-    ar1 <- symbol "Bool" <|> symbol "Nat"
-    void $ symbol "->"
-    ar2 <- symbol "Bool" <|> symbol "Nat"
-    return $ TyArr (type1 ar1) (type2 ar2)
-    where type1 a = case a of
-                       "Bool" -> TyBool
-                       "Nat"  -> TyNat
-                       _  -> error ""
-          type2 a = case a of
-                       "Bool" -> TyBool
-                       "Nat"  -> TyNat
-                       _ -> error ""
+types :: Parser String
+types = symbol "Bool"
+    <|> symbol "Nat"
 
-varType :: Parser Ty
-varType = do
-    arr <- symbol "Bool" <|> symbol "Nat"
-    return $ case arr of
-           "Bool" -> TyBool
-           "Nat"  -> TyNat
+type' :: Parser Ty
+type' = do
+    tys <- types `sepBy` symbol "->"
+    let tys' = map setType tys
+    return $ foldl1 TyArr tys'
 
+setType :: String -> Ty
+setType x = 
+    case x of
+         "Bool" -> TyBool
+         "Nat"  -> TyNat
+         "Unit" -> TyUnit
+         err      -> error $ "unknown type: " ++ show err
 
 abstraction :: Parser Term
 abstraction = do
     void $ symbol "\\" 
     name <- some alphaNumChar
     void $ symbol ":"
-    ty <- varType 
+    ty <- type'
     void $ symbol "."
     body <- expr
     return $ Abs (bind (string2Name name) body) ty

@@ -33,5 +33,5 @@ process file = do
          Right r -> do
              let res' = mapM runEval r
              case res' of
-                  Left err -> print err
+                  Left err -> putDoc $ ppr 0 err
                   Right r' -> mapM_ (\(x, y) -> putDoc $ text (pp x) <> red (text " ⇒ ") <> ppr 0 y <> hardline) (zip (lines prog) r')

@@ -1,4 +1,4 @@
 \x:Nat.0
 if true then false else true
-(\x:Bool->Bool. if x then true else false) false
-(\x:Bool->Bool. if x then true else false) ((\y:Bool->Bool. if y then true else false) true)
+S (S (S 0))
+S (S (S true))

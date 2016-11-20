@@ -14,6 +14,7 @@ isNumerical (TmSucc t) = isNumerical t
 isNumerical _ = False
 
 eval :: Term -> Eval Term
+eval TmUnit = return TmUnit
 eval TmTrue = return TmTrue
 eval TmFalse = return TmFalse
 eval TmZero = return TmZero
