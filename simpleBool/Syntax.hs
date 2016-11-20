@@ -11,18 +11,22 @@ type Error = String
 data Ty = 
         TyBool
       | TyArr Ty Ty
-        deriving (Show, Generic)
+        deriving (Show, Eq, Generic)
 
 data Term = 
       TmTrue
     | TmFalse
     | Var (Name Term)
     | App Term Term
-    | Abs (Bind (Name Term) Term)
+    | Abs (Bind (Name Term) Term) Ty
     | If Term Term Term
           deriving (Show, Generic, Typeable)
 
 instance Alpha Term
+instance Alpha Ty
+
+instance Subst Term Ty where
+    isvar _       = Nothing
 
 instance Subst Term Term where
     isvar (Var v) = Just (SubstName v)

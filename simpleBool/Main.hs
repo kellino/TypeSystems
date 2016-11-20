@@ -35,6 +35,3 @@ process file = do
              case res' of
                   Left err -> print err
                   Right r' -> mapM_ (\(x, y) -> putDoc $ text (pp x) <> red (text " ⇒ ") <> ppr 0 y <> hardline) (zip (lines prog) r')
-
-pp :: String -> String
-pp = map (\x -> if x == '\\' then 'λ' else x)

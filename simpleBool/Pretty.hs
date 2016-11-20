@@ -1,7 +1,7 @@
 {-# LANGUAGE TypeSynonymInstances #-}
 {-# LANGUAGE FlexibleInstances #-}
 
-module Pretty (ppr) where
+module Pretty (ppr, pp) where
 
 import Syntax
 import Text.PrettyPrint.ANSI.Leijen hiding (Pretty)
@@ -22,8 +22,7 @@ instance Pretty Term where
     ppr _ TmTrue = dullyellow $ text "true"
     ppr _ TmFalse = dullyellow $ text "false"
     ppr _ (Var x) = text (name2String x) <> space
-    ppr _ (Abs x) = text $ show x
-    --ppr _ (Abs (n, t) b) = dullblue (text "λ") <> text n <> text ":" <> ppr 0 t <> text ". " <> ppr 0 b
+    ppr _ (Abs x _) = text $ show x
     ppr p (App t1 t2) = parensIf (p > 0) $ ppr p t1 <> ppr (p+1) t2
     ppr p (If b t1 t2) = 
             text "if " <> ppr p b
@@ -32,3 +31,7 @@ instance Pretty Term where
 
 instance Pretty Error where
     ppr _ = text . show
+
+-- | helper function to pretty print the original unparsed text
+pp :: String -> String
+pp = map (\x -> if x == '\\' then 'λ' else x)

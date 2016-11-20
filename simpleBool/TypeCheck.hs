@@ -10,7 +10,7 @@ typeof :: Term -> Type Ty
 typeof (Var _) = return TyBool -- placeholder
 typeof TmTrue = return TyBool
 typeof TmFalse = return TyBool
-typeof Abs{} = return TyBool -- placeholder
+typeof (Abs _ t) = return t
 typeof (App t1 t2) = do
     t1' <- typeof t1
     t2' <- typeof t2
@@ -19,7 +19,7 @@ typeof (App t1 t2) = do
              if t11 == t2' 
                 then return t12
                 else throwError "parameter type mismatch"
-         _ -> throwError "expected arrow type"
+         _ -> throwError "arrow type expected"
 typeof (If b t1 t2) = do
     b' <- typeof b
     case b' of
@@ -31,5 +31,5 @@ typeof (If b t1 t2) = do
                 else return t1'
          _  -> throwError "guard of conditional is not a boolean"
 
-
-runTypeOf = runIdentity . runExceptT
+runTypeOf :: Term -> Either String Ty
+runTypeOf = runIdentity . runExceptT . typeof

@@ -62,8 +62,10 @@ var = do
 
 typeArrow :: Parser Ty
 typeArrow = do
-    arrs <- varType `sepBy` symbol "->"
-    return $ foldl1 TyArr arrs
+    rword "Bool"
+    void $ symbol "->"
+    rword "Bool"
+    return $ TyArr TyBool TyBool
 
 varType :: Parser Ty
 varType = do
@@ -78,7 +80,7 @@ abstraction = do
     ty <- try typeArrow <|> varType 
     void $ symbol "."
     body <- expr
-    return $ Abs (bind (string2Name name) body)
+    return $ Abs (bind (string2Name name) body) ty
 
 parseProgram :: String -> [String] -> Either (ParseError Char Dec) [Term]
 parseProgram f = mapM $ runParser expr f
