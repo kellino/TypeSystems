@@ -3,3 +3,5 @@
 ()   # unit
 \x:Nat. succ x
 (\x:Nat->Nat. succ (succ x)) (succ 0)
+{x := 4.0, y := succ 0}.x
+{x := 4.0, y := succ 0}.a

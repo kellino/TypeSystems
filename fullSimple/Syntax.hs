@@ -15,6 +15,7 @@ data Ty =
       | TyUnit
       | TyString
       | TyFloat
+      | TyRecord [Ty]
         deriving (Show, Eq, Generic)
 
 data Term = 
@@ -27,10 +28,12 @@ data Term =
     | TmSucc Term
     | TmPred Term
     | TmIsZero Term
+    | TmRecord [(String, Term)] String
     | Var (Name Term)
     | App Term Term
     | Abs (Bind (Name Term) Term) Ty
     | If Term Term Term
+    | Let String Term Term
           deriving (Show, Generic, Typeable)
 
 instance Alpha Term

@@ -18,6 +18,12 @@ eval TmUnit = return TmUnit
 eval TmTrue = return TmTrue
 eval TmFalse = return TmFalse
 eval TmZero = return TmZero
+eval t@(TmRecord _ "") = return t
+eval (TmRecord r n) = do
+    let found = lookup n r
+    case found of
+         Nothing -> throwError "field not found in record"
+         Just t -> return t
 eval d@TmFloat{} = return d
 eval s@TmString{} = return s
 eval (TmSucc t) = do
@@ -34,6 +40,7 @@ eval (TmIsZero t) = do
     return $ TmIsZero t'
 eval v@Var{} = return v
 eval a@Abs{} = return a
+-- eval (Let n t1 t2) = undefined
 eval (If b t1 t2) = do
     b' <- eval b
     case b' of

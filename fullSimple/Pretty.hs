@@ -6,6 +6,7 @@ module Pretty (ppr, pp) where
 import Syntax
 import Text.PrettyPrint.ANSI.Leijen hiding (Pretty)
 import Unbound.Generics.LocallyNameless 
+import Data.List (intercalate)
 
 parensIf :: Bool -> Doc -> Doc
 parensIf True = parens
@@ -26,6 +27,7 @@ instance Pretty Term where
     ppr _ TmZero = text "0"
     ppr _ (TmFloat f) = text $ show f
     ppr _ (TmString s) = text "\"" <> text s <> text "\""
+    ppr _ (TmRecord r _) = commaBraces $ map (ppr 0 . snd) r
     ppr p (TmIsZero t) = parensIf (p > 0) $ text "isZero? " <> ppr (p+1) t
     ppr _ s@TmSucc{} = text $ show (count s)
     ppr p (TmPred t) = parensIf (p > 0) $ text "P" <> ppr (p+1) t
@@ -49,3 +51,6 @@ count (TmSucc t) = 1 + count t
 -- | helper function to pretty print the original unparsed text
 pp :: String -> String
 pp = map (\x -> if x == '\\' then 'λ' else x)
+
+commaBraces :: [Doc] -> Doc
+commaBraces = encloseSep lbrace rbrace comma 

@@ -13,6 +13,9 @@ typeof TmString{} = return TyString
 typeof TmFloat{} = return TyFloat
 typeof (Var _) = return TyBool -- placeholder
 typeof TmZero = return TyNat
+typeof (TmRecord r _) = do
+    tys <- mapM (typeof . snd) r
+    return $ TyRecord tys
 typeof (TmSucc t) = do
     t' <- typeof t
     case t' of
