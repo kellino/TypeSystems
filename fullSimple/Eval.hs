@@ -18,6 +18,7 @@ eval TmUnit = return TmUnit
 eval TmTrue = return TmTrue
 eval TmFalse = return TmFalse
 eval TmZero = return TmZero
+eval d@TmFloat{} = return d
 eval s@TmString{} = return s
 eval (TmSucc t) = do
     t' <- eval t

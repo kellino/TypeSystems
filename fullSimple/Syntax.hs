@@ -14,6 +14,7 @@ data Ty =
       | TyNat
       | TyUnit
       | TyString
+      | TyFloat
         deriving (Show, Eq, Generic)
 
 data Term = 
@@ -22,6 +23,7 @@ data Term =
     | TmZero
     | TmUnit
     | TmString String
+    | TmFloat Double
     | TmSucc Term
     | TmPred Term
     | TmIsZero Term

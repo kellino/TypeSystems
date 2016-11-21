@@ -10,8 +10,11 @@ import qualified Text.Megaparsec.Lexer as L
 
 sc :: Parser ()
 sc = L.space (void spaceChar) lineCmnt blockCmnt
-    where lineCmnt = L.skipLineComment "//"
+    where lineCmnt = L.skipLineComment "#"
           blockCmnt = L.skipBlockComment "(*" "*)"
+
+lexeme :: Parser a -> Parser a
+lexeme = L.lexeme sc
 
 symbol :: String -> Parser String
 symbol = L.symbol sc
@@ -34,12 +37,19 @@ term =  unit
     <|> predecessor
     <|> zero
     <|> iszero
+    <|> double
     <|> var
 
 expr :: Parser Term
 expr = do
     es <- some term 
     return $ foldl1 App es
+
+float :: Parser Double
+float = lexeme L.float
+
+double :: Parser Term
+double = float >>= \f -> return $ TmFloat f
 
 str :: Parser Term
 str = do
@@ -52,13 +62,13 @@ unit = rword "()" *> pure TmUnit
 
 successor :: Parser Term
 successor = do
-    rword "succ" <|> rword "S"
+    rword "succ" 
     t1 <- expr
     return $ TmSucc t1
 
 predecessor :: Parser Term
 predecessor = do
-    rword "pred" <|> rword "P"
+    rword "pred" 
     t1 <- expr
     return $ TmPred t1
 

@@ -1,5 +1,5 @@
+3.14
 "hello"
-\x:Nat.0
-\y:Unit.()
-if true then false else true
-S (S (S 0))
+()   # unit
+\x:Nat. succ x
+(\x:Nat->Nat. succ (succ x)) (succ 0)

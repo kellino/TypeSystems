@@ -24,6 +24,7 @@ instance Pretty Ty where
 instance Pretty Term where
     ppr _ TmUnit = text "()"
     ppr _ TmZero = text "0"
+    ppr _ (TmFloat f) = text $ show f
     ppr _ (TmString s) = text "\"" <> text s <> text "\""
     ppr p (TmIsZero t) = parensIf (p > 0) $ text "isZero? " <> ppr (p+1) t
     ppr _ s@TmSucc{} = text $ show (count s)
