@@ -29,6 +29,7 @@ data Term =
     | TmPred Term
     | TmIsZero Term
     | TmRecord [(String, Term)] String
+    | TmTimesFloat Term Term
     | Var (Name Term)
     | App Term Term
     | Abs (Bind (Name Term) Term) Ty
@@ -40,9 +41,7 @@ instance Alpha Term
 instance Alpha Ty
 
 instance Subst Term Ty where
-    isvar _       = Nothing
 
 instance Subst Term Term where
-    isvar (Var v) = Just (SubstName v)
-    isvar _       = Nothing
-
+    isvar (Var x) = Just (SubstName x)
+    isvar _     = Nothing

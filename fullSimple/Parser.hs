@@ -51,6 +51,7 @@ term =  unit
     <|> zero
     <|> iszero
     <|> double
+    <|> timesFloat
     <|> letTerm
     <|> var
 
@@ -64,6 +65,13 @@ float = lexeme L.float
 
 double :: Parser Term
 double = float >>= \f -> return $ TmFloat f
+
+timesFloat :: Parser Term
+timesFloat = do
+    void $ symbol "timesfloat"
+    f1 <- term
+    f2 <- term
+    return $ TmTimesFloat f1 f2
 
 record :: Parser Term
 record = do

@@ -25,6 +25,7 @@ eval (TmRecord r n) = do
          Nothing -> throwError "field not found in record"
          Just t -> return t
 eval d@TmFloat{} = return d
+eval (TmTimesFloat (TmFloat x) (TmFloat y)) = return $ TmFloat (x * y)
 eval s@TmString{} = return s
 eval (TmSucc t) = do
     t' <- eval t

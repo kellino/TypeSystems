@@ -13,6 +13,12 @@ typeof TmString{} = return TyString
 typeof TmFloat{} = return TyFloat
 typeof (Var _) = return TyBool -- placeholder
 typeof TmZero = return TyNat
+typeof (TmTimesFloat f1 f2) = do
+    f1' <- typeof f1
+    f2' <- typeof f2
+    if f1' == TyFloat && f2' == TyFloat
+       then return TyFloat
+       else throwError "parameter type mismatch"
 typeof (TmRecord r _) = do
     tys <- mapM (typeof . snd) r
     return $ TyRecord tys
