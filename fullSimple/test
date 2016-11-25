@@ -1,0 +1,13 @@
+"hello"
+timesfloat 2.3 4.3
+{x=succ (succ 0), y = 2.3}
+succ true   # type error
+{succ 0, "hello"}
+{succ 0, "hello"}.2
+{succ 0, "hello"}.1
+(\x:Bool. if x then 0 else succ 0) true
+(\x:Nat. succ (pred (pred x))) (succ (succ (succ 0)))
+{x=succ (succ 0), y = 2.3}.y 
+{x=succ (succ 0), y = 2.3}.z  # should fail with an error
+let x = 0 in succ x
+let x = true in if x then (succ 0) else (succ (succ 0))
