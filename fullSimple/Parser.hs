@@ -58,6 +58,7 @@ term =  parens term
     <|> pred
     <|> ifThenElse
     <|> letIn
+    <|> letRec
     <|> variant
     <|> zero
     <|> timesFloat
@@ -148,6 +149,12 @@ letIn = do
     rword "in"
     body <- expr
     return $ Let (bind (string2Name n, embed t) body)
+
+letRec :: Parser Term
+letRec = do
+    rword "rec"
+    t1 <- expr
+    return $ Fix t1
 
 tuple :: Parser Term
 tuple = do

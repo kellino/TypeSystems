@@ -41,6 +41,7 @@ typeof (TmProjection (TmRecord xs) v) = do
     case found of
          Nothing -> throwError "var not found in record"
          Just t -> typeof t
+typeof (Fix e) = typeof e
 typeof (TmProjection _ _) = throwError "first element in a projection must be a record"
 typeof (If b t1 t2) = do
     b' <- typeof b

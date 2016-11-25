@@ -39,7 +39,8 @@ eval f@TmFloat{}  = return f
 eval r@TmRecord{} = return r
 eval (TmTimesFloat (TmFloat x) (TmFloat y)) = return $ TmFloat (x * y)
 eval v@(Var _) = return v
-eval l@Lam{} = throwError $ "the problem is here: " ++ show l
+eval l@(Lam bnd) = throwError $ "the problem is here: " ++ show l
+eval (Fix e) = eval (App e (Fix e))
 eval (If b t1 t2) = do
     b' <- eval b
     case b' of
@@ -53,9 +54,8 @@ eval (Let bnd) = do
     eval body
 eval (TmProjection (TmRecord xs) v) = return $ fromJust $ lookup v xs -- this is ok because the typechecker has confirmed the existence of v
 eval (App e1 e2) = do
-    v1 <- eval e1
     v2 <- eval e2
-    case v1 of
+    case e1 of
         (Lam bnd) -> do
             ((x, _), body) <- unbind bnd
             let body' = subst x v2 body

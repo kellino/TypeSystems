@@ -1,5 +1,6 @@
 {-# LANGUAGE TypeSynonymInstances #-}
 {-# LANGUAGE FlexibleInstances #-}
+{-# OPTIONS_GHC -fno-warn-incomplete-patterns #-}
 
 module PrettyPrint where
 
@@ -14,7 +15,7 @@ class Display a where
     display :: a -> Doc
 
 instance Display String where
-    display = text . pp
+    display = text . ppLambda
 
 instance (Display b) => Display (Either String b) where
     display (Left a) = ppError a 
@@ -48,9 +49,10 @@ instance Display Ty where
 count :: Term -> Int
 count TmZero = 0
 count (TmSucc t) = 1 + count t
+count (TmPred t) = count t
 
-pp :: String -> String
-pp = map (\x -> if x == '\\' then 'λ' else x) . takeWhile (/= '#')
+ppLambda :: String -> String
+ppLambda = map (\x -> if x == '\\' then 'λ' else x) . takeWhile (/= '#')
 
 ppError :: String -> Doc
 ppError s = red (text "Error") <> text " : " <> edit (words s)

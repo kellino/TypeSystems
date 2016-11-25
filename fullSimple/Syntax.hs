@@ -44,6 +44,7 @@ data Term =
           | Let (Bind (TName, Embed Term) Term)
           | App Term Term
           | If Term Term Term 
+          | Fix Term
           deriving (Show, Generic, Typeable)
 
 instance Alpha Term
