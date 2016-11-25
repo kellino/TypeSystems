@@ -1,7 +1,0 @@
-3.14
-"hello"
-()   # unit type
-\x:Nat. succ x
-(\x:Nat->Nat. succ (succ x)) (succ 0)
-{x := 4.0, y := succ 0}.x
-timesfloat 2.0 3.14159
