@@ -56,6 +56,7 @@ term =  parens term
     <|> unit
     <|> succ
     <|> pred
+    <|> iszero
     <|> ifThenElse
     <|> letIn
     <|> letRec
@@ -74,16 +75,16 @@ expr = do
     es <- some term 
     return $ foldl1 App es
 
-typeDec :: Parser Type
+typeDec :: Parser Ty
 typeDec = do
     ty <- constructor
     case ty of
-         "Bool" -> return $ Type TyBool
-         "Nat"  -> return $ Type TyNat
-         "()" -> return $ Type TyUnit
-         "String" -> return $ Type TyString
-         "Float" -> return $ Type TyFloat
-         _ -> fail "unknown type"
+         "Bool"   -> return TyBool
+         "Nat"    -> return TyNat
+         "()"     -> return TyUnit
+         "String" -> return TyString
+         "Float"  -> return TyFloat
+         _        -> fail "unknown type"
 
 var :: Parser Term
 var = do
@@ -95,10 +96,11 @@ lam = do
     void $ symbol "\\"
     name <- some alphaNumChar <* spaceConsumer
     void $ symbol ":"
-    ty <- typeDec
+    ty <- typeDec `sepBy` symbol "->"
     void $ symbol "."
     body <- expr
-    return $ Lam (bind (string2Name name, embed $ Annot (Just ty)) body)
+    return $ Lam (bind (string2Name name, embed $ Annot (Just $ Type (ty' ty))) body)
+    where ty' = foldl1 TyArr 
 
 true :: Parser Term
 true = rword "true" *> pure TmTrue
@@ -181,6 +183,12 @@ projection = do
     void $ symbol "."
     v <- some alphaNumChar <* spaceConsumer
     return $ TmProjection t1 v
+
+iszero :: Parser Term
+iszero = do
+    rword "iszero?"
+    t1 <- expr
+    return $ TmIsZero t1
 
 timesFloat :: Parser Term
 timesFloat = do

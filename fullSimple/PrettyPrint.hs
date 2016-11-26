@@ -22,7 +22,7 @@ instance (Display b) => Display (Either String b) where
     display (Right b) = display b 
 
 instance Display (Term, Ty) where
-    display (a, b) = display a <> bold (text " : ") <> display b
+    display (a, b) = bold (display a) <> text " : " <> display b
 
 instance Display Term where
     display (TmString str) = text str

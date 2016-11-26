@@ -38,7 +38,7 @@ eval s@TmString{} = return s
 eval f@TmFloat{}  = return f
 eval r@TmRecord{} = return r
 eval (TmTimesFloat (TmFloat x) (TmFloat y)) = return $ TmFloat (x * y)
-eval v@(Var _) = return v
+eval v@Var{} = return v
 eval l@Lam{} = return l
 eval (Fix e) = eval (App e (Fix e))
 eval (If b t1 t2) = do
@@ -52,7 +52,7 @@ eval (Let bnd) = do
     t1' <- eval t1
     let body = subst n t1' t2
     eval body
-eval (TmProjection (TmRecord xs) v) = return $ fromJust $ lookup v xs -- this is ok because the typechecker has confirmed the existence of v
+eval (TmProjection (TmRecord xs) v) = return $ fromJust $ lookup v xs
 eval (App e1 e2) = do
     v2 <- eval e2
     case e1 of
