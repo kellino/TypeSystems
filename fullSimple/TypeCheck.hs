@@ -31,8 +31,9 @@ typeof (TmTimesFloat t1 t2) = do
        else throwError "timesfloat requires two floats as arguments"
 typeof (Var v) = lookUpVar v
 typeof (Let bnd) = do
-    ((_, unembed -> t1), _) <- unbind bnd
-    typeof t1
+    ((x, unembed -> t1), t2) <- unbind bnd
+    let new = subst x t1 t2
+    typeof new
 typeof (TmRecord r) = do
     r' <- mapM (typeof . snd) r
     return $ TyRecord r'

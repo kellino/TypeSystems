@@ -33,7 +33,7 @@ instance Display Term where
     display (TmFloat f) = text $ show f
     display (TmSucc t) = text $ show $ 1 + count t
     display (TmPred t) = text $ show $ count t
-    display (TmRecord xs) = braces $ cat $ punctuate comma (map (display . runTypeOf emptyEnv . snd) xs)
+    display (TmRecord xs) = braces $ hcat $ punctuate comma (map (display . runTypeOf emptyEnv . snd) xs)
     display x = text $ show x
 
 instance Display Ty where

@@ -39,7 +39,7 @@ eval f@TmFloat{}  = return f
 eval r@TmRecord{} = return r
 eval (TmTimesFloat (TmFloat x) (TmFloat y)) = return $ TmFloat (x * y)
 eval v@(Var _) = return v
-eval l@(Lam bnd) = throwError $ "the problem is here: " ++ show l
+eval l@Lam{} = return l
 eval (Fix e) = eval (App e (Fix e))
 eval (If b t1 t2) = do
     b' <- eval b

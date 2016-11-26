@@ -11,3 +11,4 @@ succ true   # type error
 {x=succ (succ 0), y = 2.3}.z  # should fail with an error
 let x = 0 in succ x
 let x = true in if x then (succ 0) else (succ (succ 0))
+let x = false in if x then (succ 0) else (succ (succ 0))
