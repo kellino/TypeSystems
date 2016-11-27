@@ -29,7 +29,7 @@ typeof (TmTimesFloat t1 t2) = do
     if (t1' == t2') && t1' == TyFloat
        then return TyFloat
        else throwError "timesfloat requires two floats as arguments"
-typeof (Var v) = lookUpVar v
+typeof Var{} = return TyBool
 typeof (Let bnd) = do
     ((x, unembed -> t1), t2) <- unbind bnd
     let new = subst x t1 t2
@@ -67,12 +67,24 @@ typeof (TmSucc t) =
        then return TyNat 
        else throwError $ "argument of succ " ++ show t ++ " is not a number"
 typeof (Lam bnd) = do
-    ((_, unembed -> Annot t), _) <- unbind bnd
+    ((_, unembed -> Annot t), t1) <- unbind bnd
     case t of
          Nothing -> throwError "missing type annotation"
-         Just (Type t') -> return t'
-         Just x -> throwError $ show x
-typeof (App e1 _) = typeof e1 -- placeholder
+         Just (Type t') -> 
+             case t' of
+                 (TyArr _ r) -> do
+                     t1' <- typeof t1
+                     if t1' == r
+                        then return t'
+                        else throwError $ "return type of " ++ show r ++ " claimed, but real return type is " ++ show t1'
+                 _  -> return t'
+         x -> throwError $ "weird! " ++ show x
+typeof (App e1 e2) = do
+    ty1 <- typeof e1
+    ty2 <- typeof e2
+    case ty1 of
+        (TyArr l r) -> if ty2 == l then return r else throwError "argument mismatch"
+        _ -> if ty1 == ty2 then return ty2 else throwError "return type mismatch"
 typeof x = throwError $ show x
 
 runTypeOf :: Env -> Term -> Either String Ty

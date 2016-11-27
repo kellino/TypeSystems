@@ -8,9 +8,12 @@ succ true   # type error
 {succ 0, "hello"}.2
 {succ 0, "hello"}.1
 (\x:Bool->Nat. if x then 0 else succ 0) true
-(\x:Nat. succ (pred (pred x))) (succ (succ (succ 0)))
+(\x:Bool->Nat. if x then true else false) true   # should fail to typecheck
+(\x:Nat->Nat. succ (pred (pred x))) (succ (succ (succ 0)))
 {x=succ (succ 0), y = 2.3}.y 
 {x=succ (succ 0), y = 2.3}.z  # should fail with an error
+if true then 2.2 else 2.3
+if false then (succ 0) else 4.4 # should fail to typecheck
 let x = 0 in succ x
 let x = true in if x then (succ 0) else (succ (succ 0))
 let x = false in if x then (succ 0) else (succ (succ 0))

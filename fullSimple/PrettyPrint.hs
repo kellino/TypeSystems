@@ -25,7 +25,7 @@ instance Display (Term, Ty) where
     display (a, b) = bold (display a) <> text " : " <> display b
 
 instance Display Term where
-    display (TmString str) = text str
+    display (TmString str) = dquote <> text str <> dquote
     display TmTrue = text "true"
     display TmFalse = text "false"
     display TmUnit = text "()"

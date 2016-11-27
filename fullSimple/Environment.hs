@@ -24,5 +24,7 @@ lookUpVar v = do
          Nothing -> throwError "unbound variable"
          Just r -> return r
 
-extendCtx :: MonadReader Env m => (TName, Ty) -> m a -> m a
-extendCtx d = local (\m@Env{ ctx = cs } -> m { ctx = d:cs })
+{-extendCtx :: MonadReader Env m => (TName, Ty) -> m a -> m a-}
+{-extendCtx d = do-}
+    {-cs <- ask-}
+    {-local (\m@Env{ ctx = cs } -> m { ctx = d:cs })-}
