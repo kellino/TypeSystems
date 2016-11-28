@@ -15,7 +15,7 @@ class Display a where
     display :: a -> Doc
 
 instance Display String where
-    display = text . ppLambda
+    display = text . ppString
 
 instance (Display b) => Display (Either String b) where
     display (Left a) = ppError a 
@@ -51,13 +51,16 @@ count TmZero = 0
 count (TmSucc t) = 1 + count t
 count (TmPred t) = count t
 
-ppLambda :: String -> String
-ppLambda = map (\x -> if x == '\\' then 'λ' else x) . takeWhile (/= '#')
+ppString :: String -> String
+ppString = unwords . map alter . words
+    where alter = id
 
 ppError :: String -> Doc
 ppError s = red (text "Error") <> text " : " <> edit (words s)
     where edit = foldr (\x y-> alter x <> space <> y) (text "")
           alter t@(n:_) 
+              | isType t  = display t
               | isUpper n = underline (text t)
               | t == "not" = bold $ text t
               | otherwise = text t
+          isType x = x `elem` ["TyBool", "TyNat"]
