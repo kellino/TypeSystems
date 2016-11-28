@@ -1,3 +1,5 @@
 λx:Num.0
 2.3
 if error then true else false
+(λx:Bool→Num. if x then 1 else error) true
+(λx:Bool→Num. if x then 1 else error) false

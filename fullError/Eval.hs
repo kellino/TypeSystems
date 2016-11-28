@@ -1,6 +1,7 @@
 module Eval where
 
 import Syntax
+import TypeCheck
 
 import Control.Monad.Except
 import Unbound.Generics.LocallyNameless
@@ -40,3 +41,9 @@ eval (TmIf b t1 t2) = do
          TmTrue ->  eval t1
          TmFalse -> eval t2
 eval x = throwError $ show x
+
+tyAndEval :: Term -> Either String (Term, Ty)
+tyAndEval t = do
+    ty <- runTypeOf t
+    t' <- runEval t
+    return (t', ty)
