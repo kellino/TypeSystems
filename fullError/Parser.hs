@@ -26,7 +26,7 @@ sc :: Parser ()
 sc = L.space (void $ oneOf " \t") lineCmnt empty
 
 lineCmnt :: Parser ()
-lineCmnt = L.skipLineComment "//"
+lineCmnt = L.skipLineComment "#"
 
 rword :: String -> Parser ()
 rword w = string w *> notFollowedBy alphaNumChar *> sc
