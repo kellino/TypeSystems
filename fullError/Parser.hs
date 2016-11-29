@@ -29,12 +29,6 @@ rawData = between scn eof (sepEndBy e scn)
     where e = withRecovery recover (Right <$> expr)
           recover err = Left err <$ manyTill anyChar eol
 
-{-parseProgram :: String -> T.Text -> Either (ParseError Char Dec) [Term]-}
-{-parseProgram = runParser prog-}
-
-{-prog :: Parser [Term]-}
-{-prog = between scn eof (sepEndBy expr scn)-}
-
 scn :: Parser ()
 scn = L.space (void spaceChar) lineCmnt empty
 
