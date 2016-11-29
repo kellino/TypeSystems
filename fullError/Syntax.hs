@@ -11,15 +11,12 @@ type TName = Name Term
 data Ty =
         TyBool
         | TyArr Ty Ty
-        | TyTop
         | TyBot
-        | TyVar
         | TyNum
           deriving (Eq, Show, Generic, Typeable)
 
 data Term =
         Type Ty
-      | TmVar TName
       | TmAbs (Bind (TName, Embed Annot) Term)
       | TmApp Term Term
       | TmFalse
@@ -27,7 +24,8 @@ data Term =
       | TmNumber Double
       | TmIf Term Term Term
       | TmError
-      | TmTry
+      | TmTry Term Term
+      | TmVar TName
         deriving (Show, Generic, Typeable)
 
 newtype Annot = Annot (Maybe Term) deriving (Show, Generic, Typeable)

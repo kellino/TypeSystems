@@ -1,3 +1,5 @@
+{-# LANGUAGE TypeFamilies #-}
+
 module Parser (parseProgram) where
 
 import Syntax
@@ -13,11 +15,25 @@ import qualified Data.Text as T
 import Control.Applicative (empty)
 import Data.Scientific
 
-parseProgram :: String -> T.Text -> Either (ParseError Char Dec) [Term]
-parseProgram = runParser prog
+-----------------
+-- PARSER TYPE --
+-----------------
 
-prog :: Parser [Term]
-prog = between scn eof (sepEndBy expr scn)
+type RawData t e = [Either (ParseError t e) Term]
+
+parseProgram :: String -> T.Text -> Either (ParseError Char Dec) (RawData Char Dec)
+parseProgram = runParser rawData
+
+rawData :: Parser (RawData Char Dec)
+rawData = between scn eof (sepEndBy e scn)
+    where e = withRecovery recover (Right <$> expr)
+          recover err = Left err <$ manyTill anyChar eol
+
+{-parseProgram :: String -> T.Text -> Either (ParseError Char Dec) [Term]-}
+{-parseProgram = runParser prog-}
+
+{-prog :: Parser [Term]-}
+{-prog = between scn eof (sepEndBy expr scn)-}
 
 scn :: Parser ()
 scn = L.space (void spaceChar) lineCmnt empty
@@ -80,13 +96,20 @@ lam = do
     return $ TmAbs (bind (string2Name name, embed $ Annot $ Just (Type (wrap tys))) body)
     where wrap = foldl1 TyArr
 
+try' :: Parser Term
+try' = do
+    rword "try"
+    t1 <- term
+    rword "with"
+    t2 <- expr
+    return $ TmTry t1 t2
+
 typeDec :: Parser Ty
 typeDec = do
     ty <- some alphaNumChar <* sc
     case ty of
          "Bool" -> return TyBool
          "Num" -> return TyNum
-         "Var" -> return TyVar
          x -> fail $ "unrecognized primitive type " ++ show x
 
 term :: Parser Term
@@ -97,6 +120,7 @@ term =  parens expr
     <|> error
     <|> number
     <|> lam
+    <|> try'
     <|> var
 
 expr :: Parser Term

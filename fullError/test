@@ -1,6 +1,9 @@
 λx:Num.0
 2.3
-if error then true else false
+.2  # should fail to parse
+if error then true else false       # should throw an error
 (λx:Bool→Num. if x then 1 else error) true
 (λx:Bool→Num. if x then 1 else error) false     # should throw an error
 (λx:Bool→Bool. if x then 1 else 2) true     # should fail to typecheck
+try ((λx:Bool→Num. if x then 1 else 2) false) with error
+try ((λx:Bool→Num. if x then 1 else error) false) with 4.5

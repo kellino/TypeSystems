@@ -2,11 +2,13 @@ module Eval where
 
 import Syntax
 import TypeCheck
+import PrettyPrint
 
 import Control.Monad.Except
 import Unbound.Generics.LocallyNameless
+import Text.PrettyPrint.ANSI.Leijen (Doc)
 
-type Eval a = ExceptT String FreshM a
+type Eval a = ExceptT Doc FreshM a
 
 isVal :: Term -> Bool
 isVal TmTrue = True
@@ -15,11 +17,11 @@ isVal TmAbs{} = True
 isVal TmNumber{} = True
 isVal _ = False
 
-runEval :: Term -> Either String Term
+runEval :: Term -> Either Doc Term
 runEval = runFreshM . runExceptT . eval
 
 eval :: Term -> Eval Term
-eval TmError = throwError "error value encountered"
+eval TmError = throwError $ display "error value encountered"
 eval v@TmVar{} = return v
 eval TmTrue = return TmTrue
 eval TmFalse = return TmFalse
@@ -34,15 +36,20 @@ eval (TmApp e1 e2) = do
             ((x,_), body) <- unbind bnd
             let body' = subst x e2' body
             eval body'
-        _ -> throwError "!"
+        _ -> throwError $ display "!"
 eval (TmIf b t1 t2) = do
     b' <- eval b
     case b' of
          TmTrue ->  eval t1
          TmFalse -> eval t2
-eval x = throwError $ show x
+eval (TmTry t1 t2) = do
+    t1' <- eval t1
+    case t1' of
+         TmError -> eval t2
+         res -> return res
+eval x = throwError $ display x
 
-tyAndEval :: Term -> Either String (Term, Ty)
+tyAndEval :: Term -> Either Doc (Term, Ty)
 tyAndEval t = do
     ty <- runTypeOf t
     t' <- runEval t
