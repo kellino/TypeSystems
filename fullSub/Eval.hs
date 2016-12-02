@@ -25,9 +25,11 @@ emptyCtx = Env { vars = [] }
 
 eval :: Term -> Eval Term
 eval TmError = throwError "error value encountered\n"
+eval v@TmVar{} = return v
 eval TmTrue = return TmTrue
 eval TmFalse = return TmFalse
 eval TmZero = return TmZero
+eval a@TmAbs{} = return a
 eval r@TmRecord{} = return r
 eval (TmIsZero TmZero) = return TmTrue
 eval (TmIsZero (TmSucc t)) | isNumerical t = return TmFalse
@@ -52,14 +54,14 @@ eval (TmApp e1 e2) = do
             let body' = subst x e2' body
             eval body'
         x -> local (\ m@Env{ vars = xs } -> m { vars = x:xs }) (eval e1)
-eval x = throwError $ show x
+eval x = throwError $ "eval error: " ++ show x
 
 runEval :: Env -> Term -> Either String Term
 runEval env m = runIdentity $ runExceptT $ runReaderT (runFreshMT (eval m)) env
 
 typeAndEval :: Term -> Either String (Term, Ty)
 typeAndEval t = do
-    ty <- runTypeOf t
+    ty <- runTypeOf initEnv t
     t' <- runEval emptyCtx t
     return (t', ty)
 

@@ -4,4 +4,5 @@ succ succ 0
 (λx:Nat→Nat. succ (pred (pred x))) (succ (succ (succ 0)))
 (λx:Bool→Nat. if x then 0 else error) true
 (λx:Bool→Nat. if x then 0 else error) false
-(λz:Rec. z) {a=Nat}
+(λy:Bool->Bool. if x then 0 else succ 0) true 
+(λy:Bool->Any. if x then 0 else succ 0) true 

@@ -27,7 +27,7 @@ instance Display Term where
     display TmZero = text "0"
     display s@TmSucc{} = text . show $ count s
     display p@TmPred{} = text . show $ count p
-    display (TmRecord tys) = braces $ hcat $ punctuate comma (map (display . runTypeOf . snd) tys)
+    display (TmRecord tys) = braces $ hcat $ punctuate comma (map (display . runTypeOf initEnv . snd) tys)
     display x = text . show $ x
 
 instance Display Ty where

@@ -29,6 +29,7 @@ data Term =
       | TmError
       | TmRecord [(String, Term)]
       | TmProj Term String
+      | TmAscription String Ty
       | TmAbs (Bind (TName, Embed [String]) Term)
       -- | TmAbs (Bind (TName, Embed Term) Term)
       | TmApp Term Term

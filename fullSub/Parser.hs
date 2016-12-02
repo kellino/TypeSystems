@@ -134,7 +134,7 @@ lam = do
     void $ symbol "λ" <|> symbol "\\"
     (TmVar n) <- var
     void $ symbol ":"
-    ty <- some validChars `sepBy` symbol "->"
+    ty <- some validChars `sepBy` (symbol "->" <|> symbol "→")
     void $ symbol "."
     body <- expr
     return $ TmAbs (bind (n, embed ty) body)
