@@ -1,0 +1,7 @@
+succ succ 0
+(λx:Nat. succ (succ x)) (succ 0)
+(λx:Bool.(λy:Nat. if x then (succ y) else (succ (succ y))) 0) true
+(λx:Nat→Nat. succ (pred (pred x))) (succ (succ (succ 0)))
+(λx:Bool→Nat. if x then 0 else error) true
+(λx:Bool→Nat. if x then 0 else error) false
+(λz:Rec. z) {a=Nat}
