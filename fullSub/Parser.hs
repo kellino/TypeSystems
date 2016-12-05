@@ -11,6 +11,7 @@ import Control.Applicative (empty)
 import Text.Megaparsec
 import Text.Megaparsec.Text
 import qualified Text.Megaparsec.Lexer as L
+import Data.Scientific (toRealFloat)
 
 import qualified Data.Text as T
 
@@ -23,6 +24,17 @@ rawData :: Parser (RawData Char Dec)
 rawData = between scn eof (sepEndBy e scn)
     where e = withRecovery recover (Right <$> expr)
           recover err = Left err <$ manyTill anyChar eol
+
+rws :: [String] -- list of reserved words
+rws = ["if", "then", "else", "true", "false"]
+
+identifier :: Parser String
+identifier = (lexeme . try) (p >>= check)
+  where
+    p       = (:) <$> letterChar <*> many alphaNumChar
+    check x = if x `elem` rws
+                then fail $ "keyword " ++ show x ++ " cannot be an identifier"
+                else return x
 
 sc :: Parser ()
 sc = L.space (void $ oneOf " \t") lineCmnt empty
@@ -44,6 +56,18 @@ lineCmnt = L.skipLineComment "#"
 
 rword :: String -> Parser ()
 rword w = string w *> notFollowedBy alphaNumChar *> sc
+
+number :: Parser Term
+number = do
+    n <- toRealFloat <$> lexeme L.number
+    return $ TmFloat n
+
+floattimes :: Parser Term
+floattimes = do
+    rword "floattimes"
+    n1 <- term
+    n2 <- term
+    return $ TmFloatTimes n1 n2
 
 stringLit :: Parser Term
 stringLit = do
@@ -80,8 +104,14 @@ false = rword "false" *> pure TmFalse
 
 var :: Parser Term
 var = do
-    n <- some alphaNumChar <* sc
+    n <- identifier
     return $ TmVar (string2Name n)
+
+letRec :: Parser Term
+letRec = do
+    rword "rec"
+    t1 <- expr
+    return $ TmFix t1
 
 lam :: Parser Term
 lam = do
@@ -99,11 +129,11 @@ validChars = alphaNumChar <|> oneOf "{:}"
 ifThenElse :: Parser Term
 ifThenElse = do
     rword "if"
-    b <- term
+    b <- expr
     rword "then"
-    e1 <- term
+    e1 <- expr 
     rword "else"
-    e2 <- term
+    e2 <- expr 
     return $ TmIf b e1 e2
 
 ascription :: Parser Term
@@ -130,6 +160,9 @@ term =  parens expr
     <|> ifThenElse
     <|> error
     <|> stringLit
+    <|> number
+    <|> floattimes
+    <|> letRec
     <|> var
     <?> "term"
 
