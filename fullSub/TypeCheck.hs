@@ -23,6 +23,7 @@ typeof TmAscription{} = return TyUnit
 typeof TmError = return TyBot
 typeof TmTrue = return TyBool
 typeof TmFalse = return TyBool
+typeof TmString{} = return TyString
 typeof (TmVar x) = do
     (Env env) <- ask
     let found = lookup (decrement x) env
@@ -53,12 +54,12 @@ typeof (TmSucc t) = typeof t
 typeof (TmPred t) = typeof t
 typeof (TmIf b e1 e2) = do
     b' <- typeof b
-    case b' of
-         TyBool -> do
-             e1' <- typeof e1
-             e2' <- typeof e2
-             if e1' == e2' then return e2' else throwError "arms of conditional are different types"
-         _ -> throwError "guard of conditional is not a boolean"
+    if b' `isSubTypeOf` TyBool
+       then do
+           e1' <- typeof e1
+           e2' <- typeof e2
+           joinTypes e1' e2'
+       else throwError "guard of conditional is not a boolean"
 typeof (TmApp e1 e2) = 
     case e1 of 
         (TmAbs bnd) -> do
@@ -79,3 +80,9 @@ isSubTypeOf (TyArr s1 s2) (TyArr t1 t2) = isSubTypeOf t1 s1 && isSubTypeOf s2 t2
 isSubTypeOf x y
     | x == y     = True
     | otherwise = False
+
+joinTypes :: Ty -> Ty -> TypeM Ty
+joinTypes t1 t2
+    | t1 `isSubTypeOf` t2 = return t2
+    | t2 `isSubTypeOf` t1 = return t1
+    | otherwise           = return TyTop

@@ -15,6 +15,7 @@ data Ty
     | TyTop
     | TyBot
     | TyUnit
+    | TyString
     | TyArr Ty Ty
   deriving (Show, Eq, Generic, Typeable)
 
@@ -27,6 +28,8 @@ data Term
     | TmZero
     | TmIsZero Term
     | TmError
+    | TmString String
+    | TmFloat Double
     | TmAscription [String] String
     | TmApp Term Term
     | TmAbs (Bind (TName, Embed [String]) Term)

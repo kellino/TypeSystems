@@ -4,6 +4,7 @@ error
 iszero 0
 iszero false
 (λm:Nat. 0)
+(λs:String->String. s) "hello"
 alias Bool->Nat as BN
 ((λn:Nat->Nat. succ (succ n)) true)
 (λm:Nat->Nat. succ (succ m)) ((λn:Nat->Nat. succ (succ n)) 0)

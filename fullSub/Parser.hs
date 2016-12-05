@@ -45,6 +45,12 @@ lineCmnt = L.skipLineComment "#"
 rword :: String -> Parser ()
 rword w = string w *> notFollowedBy alphaNumChar *> sc
 
+stringLit :: Parser Term
+stringLit = do
+    void $ symbol "\""
+    str <- anyChar `manyTill` symbol "\""
+    return $ TmString str
+
 successor :: Parser Term
 successor = do
     rword "succ"
@@ -123,6 +129,7 @@ term =  parens expr
     <|> false
     <|> ifThenElse
     <|> error
+    <|> stringLit
     <|> var
     <?> "term"
 

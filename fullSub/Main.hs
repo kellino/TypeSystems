@@ -1,10 +1,11 @@
 module Main where
 
+import Syntax
 import Parser
 import TypeCheck
-import Syntax
 import Environment
 import PrettyPrint
+import Text.PrettyPrint.ANSI.Leijen
 
 import System.Environment (getArgs)
 import qualified Data.Text.IO as T
@@ -20,8 +21,10 @@ main = do
          Right r -> do
              let ctx' = addToContext $ filterAscrips r
              let output = zip (T.lines contents) r 
-             mapM_ (display ctx') output
+             mapM_ (process ctx') output
 
-display :: Show a => TypeEnv -> (T.Text, Either a Term) -> IO ()
-display _ (x, Left err) = T.putStrLn $ remComments x `T.append` T.pack " ⇒ " `T.append` T.pack (show err)
-display nctx (x, Right r) = T.putStrLn $ remComments x `T.append` T.pack " ⇒ " `T.append` T.pack (show (runTypeOf initEnv nctx r))
+process :: TypeEnv -> (T.Text, Either a Term) -> IO ()
+process _ (x, Left err) = T.putStr (remComments x)
+process nctx (x, Right r) = do
+    T.putStr (remComments x)
+    putDoc $ dullmagenta (text " ⇒ ") <> disp (runTypeOf initEnv nctx r) <> hardline

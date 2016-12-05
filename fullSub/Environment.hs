@@ -2,6 +2,7 @@ module Environment where
 
 import Syntax
 
+import Data.Maybe (fromMaybe)
 import Data.Char (isDigit)
 import Unbound.Generics.LocallyNameless
 import Control.Monad.Except
@@ -57,7 +58,7 @@ filterAscrips (x:xs) =
         _ -> filterAscrips xs
 
 primitives :: [(String, Ty)]
-primitives = [("Nat", TyNat), ("Bool", TyBool)] 
+primitives = [("Nat", TyNat), ("Bool", TyBool), ("String", TyString)] 
 
 addToContext :: [Either a Term] -> TypeEnv
 addToContext [] = TypeEnv { types = primitives }
@@ -71,6 +72,4 @@ newCxt (Right (TmAscription ty n) : xs) = (n, toType ty) : newCxt xs
 toType :: [String] -> Ty
 toType xs = foldl1 TyArr (new xs)
     where new = map tt 
-          tt x = case x of
-                      "Nat" -> TyNat
-                      "Bool" -> TyBool
+          tt x = fromMaybe (error "") (lookup x primitives)
