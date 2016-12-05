@@ -58,7 +58,7 @@ filterAscrips (x:xs) =
         _ -> filterAscrips xs
 
 primitives :: [(String, Ty)]
-primitives = [("Nat", TyNat), ("Bool", TyBool), ("String", TyString)] 
+primitives = [("Nat", TyNat), ("Bool", TyBool), ("String", TyString), ("Float", TyFloat)] 
 
 addToContext :: [Either a Term] -> TypeEnv
 addToContext [] = TypeEnv { types = primitives }

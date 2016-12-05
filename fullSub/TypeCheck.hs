@@ -24,6 +24,13 @@ typeof TmError = return TyBot
 typeof TmTrue = return TyBool
 typeof TmFalse = return TyBool
 typeof TmString{} = return TyString
+typeof TmFloat{} = return TyFloat
+typeof (TmFloatTimes n1 n2) = do 
+    n1' <- typeof n1
+    n2' <- typeof n2
+    if (n1' == n2') && n1' == TyFloat 
+       then return TyFloat
+       else throwError $ "expecting two numbers, but got " ++ show n1' ++ " and " ++ show n2'
 typeof (TmVar x) = do
     (Env env) <- ask
     let found = lookup (decrement x) env
@@ -70,7 +77,9 @@ typeof (TmApp e1 e2) =
                 case e1' of
                     (TyArr l r) -> if l == e2' then return r else throwError "annotation mismatch"
                     err -> throwError $ "expecting an arrow type, but got " ++ show err
-        _ -> throwError "expecting a lambda abstraction as the first value"
+        app@TmApp{} -> typeof app
+        x -> throwError $ "weird! " ++ show x
+typeof (TmFix t) = typeof t
 
 isSubTypeOf :: Ty -> Ty -> Bool
 isSubTypeOf _ TyTop = True

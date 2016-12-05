@@ -70,16 +70,16 @@ instance Display Term where
 
 instance Display Ty where
     display TyTop = return $ text "Top"
-    display TyBool = return $ text "Bool"
-    display TyNat = return $ text "Nat"
-    display TyUnit = return $ text "()"
-    display TyString = return $ text "String"
+    display TyBool = return $ dullblue $ text "Bool"
+    display TyNat = return $ red $ text "Nat"
+    display TyUnit = return $ bold $ text "()"
+    display TyString = return $ dullmagenta $ text "String"
     display TyBot = return $ text "Bot"
+    display TyFloat = return $ dullyellow $ text "Float"
     display (TyArr l r) = do
         l' <- display l
         r' <- display r
-        return $ l' <> text " → " <> r'
+        return $ l' <> bold (blue (text " → ")) <> r'
 
 remComments :: T.Text -> T.Text
 remComments = T.strip . T.takeWhile (/= '#') 
-

@@ -16,6 +16,7 @@ data Ty
     | TyBot
     | TyUnit
     | TyString
+    | TyFloat
     | TyArr Ty Ty
   deriving (Show, Eq, Generic, Typeable)
 
@@ -30,10 +31,12 @@ data Term
     | TmError
     | TmString String
     | TmFloat Double
+    | TmFloatTimes Term Term
     | TmAscription [String] String
     | TmApp Term Term
     | TmAbs (Bind (TName, Embed [String]) Term)
     | TmIf Term Term Term
+    | TmFix Term
   deriving (Show, Generic, Typeable)
 
 instance Alpha Term

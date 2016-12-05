@@ -1,10 +1,12 @@
 alias Nat as N
 (λm:BN. if m then 0 else succ 0) true
-error
 iszero 0
 iszero false
+(λt:Nat->Bool. if (iszero t) then true else false) (succ (succ 0))
 (λm:Nat. 0)
 (λs:String->String. s) "hello"
+2.3
+floattimes 2.3 4.5
 alias Bool->Nat as BN
 ((λn:Nat->Nat. succ (succ n)) true)
 (λm:Nat->Nat. succ (succ m)) ((λn:Nat->Nat. succ (succ n)) 0)
@@ -12,4 +14,5 @@ alias Bool->Nat as BN
 (λn:Nat→Nat. succ n) (succ 0)
 (λn:Nat→Nat. succ n) false # should fail to typecheck
 (λm:Bool→Nat. if m then 0 else succ 0) true
+(λm:Bool→Nat. if m then error else succ 0) true
 (λm:Bool→Nat. if m then 0 else error) true

@@ -5,8 +5,9 @@ import Parser
 import TypeCheck
 import Environment
 import PrettyPrint
-import Text.PrettyPrint.ANSI.Leijen
+import Eval
 
+import Text.PrettyPrint.ANSI.Leijen
 import System.Environment (getArgs)
 import qualified Data.Text.IO as T
 import qualified Data.Text as T
@@ -23,8 +24,13 @@ main = do
              let output = zip (T.lines contents) r 
              mapM_ (process ctx') output
 
-process :: TypeEnv -> (T.Text, Either a Term) -> IO ()
-process _ (x, Left err) = T.putStr (remComments x)
+process :: Show a => TypeEnv -> (T.Text, Either a Term) -> IO ()
+process _ (x, Left err) = T.putStr $ remComments x `T.append` T.pack (show err)
 process nctx (x, Right r) = do
-    T.putStr (remComments x)
-    putDoc $ dullmagenta (text " ⇒ ") <> disp (runTypeOf initEnv nctx r) <> hardline
+    let ty = runTypeOf initEnv nctx r
+    let e = runEval r
+    T.putStr $ remComments x `T.append` T.pack " "
+    case e of
+         Left err -> T.putStr (T.pack err)
+         Right ev -> T.putStr (T.pack $ show ev)
+    putDoc $ dullmagenta (text " ⇒ ") <> disp ty <> hardline
