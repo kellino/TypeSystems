@@ -1,8 +1,14 @@
-succ succ 0
-(λx:Nat. succ (succ x)) (succ 0)
-(λx:Bool.(λy:Nat. if x then (succ y) else (succ (succ y))) 0) true
-(λx:Nat→Nat. succ (pred (pred x))) (succ (succ (succ 0)))
-(λx:Bool→Nat. if x then 0 else error) true
-(λx:Bool→Nat. if x then 0 else error) false
-(λy:Bool->Bool. if x then 0 else succ 0) true 
-(λy:Bool->Any. if x then 0 else succ 0) true 
+alias Nat as N
+(λm:BN. if m then 0 else succ 0) true
+error
+iszero 0
+iszero false
+(λm:Nat. 0)
+alias Bool->Nat as BN
+((λn:Nat->Nat. succ (succ n)) true)
+(λm:Nat->Nat. succ (succ m)) ((λn:Nat->Nat. succ (succ n)) 0)
+(λm:Bool->Nat. succ (succ m)) ((λn:Nat->Nat. succ (succ n)) 0) # should fail to typecheck
+(λn:Nat→Nat. succ n) (succ 0)
+(λn:Nat→Nat. succ n) false # should fail to typecheck
+(λm:Bool→Nat. if m then 0 else succ 0) true
+(λm:Bool→Nat. if m then 0 else error) true

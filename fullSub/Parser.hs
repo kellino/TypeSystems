@@ -1,4 +1,4 @@
-{-# LANGUAGE TypeFamilies, DeriveDataTypeable #-}
+{-# LANGUAGE TypeFamilies #-}
 
 module Parser where
 
@@ -9,58 +9,28 @@ import Unbound.Generics.LocallyNameless
 import Control.Monad (void)
 import Control.Applicative (empty)
 import Text.Megaparsec
-import Data.Data
+import Text.Megaparsec.Text
 import qualified Text.Megaparsec.Lexer as L
+
 import qualified Data.Text as T
-
------------------------
--- CUSTOM ERROR TYPE --
------------------------
-
-type Parser = Parsec Cec T.Text
-
-data Cec
-  = CecFail String
-  | CecIndentation Ordering Pos Pos
-  | CecConversionError String
-  deriving (Eq, Data, Typeable, Ord, Read, Show)
-
-instance ShowErrorComponent Cec where
-  showErrorComponent (CecFail msg) = msg
-  showErrorComponent (CecIndentation ord ref actual) =
-    "incorrect indentation (got " ++ show (unPos actual) ++
-    ", should be " ++ p ++ show (unPos ref) ++ ")"
-    where p = case ord of
-                LT -> "less than "
-                EQ -> "equal to "
-                GT -> "greater than "
-  showErrorComponent (CecConversionError msg) =
-    "conversion error: " ++ msg
-
-instance ErrorComponent Cec where
-  representFail        = CecFail
-  representIndentation = CecIndentation
 
 type RawData t e = [Either (ParseError t e) Term]
 
-parseProgram :: String -> T.Text -> Either (ParseError Char Cec) [Either (ParseError Char Cec) Term]
+parseProgram :: String -> T.Text -> Either (ParseError Char Dec) (RawData Char Dec)
 parseProgram = runParser rawData
 
-rawData :: Parser [Either (ParseError Char Cec) Term]
+rawData :: Parser (RawData Char Dec)
 rawData = between scn eof (sepEndBy e scn)
     where e = withRecovery recover (Right <$> expr)
           recover err = Left err <$ manyTill anyChar eol
 
-scn :: Parser ()
-scn = L.space (void spaceChar) lineCmnt empty
-
 sc :: Parser ()
 sc = L.space (void $ oneOf " \t") lineCmnt empty
 
-lineCmnt :: Parser ()
-lineCmnt = L.skipLineComment "#"
+scn :: Parser ()
+scn = L.space (void spaceChar) lineCmnt empty
 
-lexeme :: Parser a -> Parser a
+lexeme :: Parser a -> Parser a 
 lexeme = L.lexeme sc
 
 symbol :: String -> Parser String
@@ -69,65 +39,43 @@ symbol = L.symbol sc
 parens :: Parser a -> Parser a
 parens = between (symbol "(") (symbol ")")
 
+lineCmnt :: Parser ()
+lineCmnt = L.skipLineComment "#"
+
+rword :: String -> Parser ()
+rword w = string w *> notFollowedBy alphaNumChar *> sc
+
+successor :: Parser Term
+successor = do
+    rword "succ"
+    n <- expr
+    return $ TmSucc n
+
+predecessor :: Parser Term
+predecessor = do
+    rword "pred"
+    n <- expr
+    return $ TmPred n
+
+zero :: Parser Term
+zero = rword "0" *> pure TmZero
+
+iszero :: Parser Term
+iszero = do
+    rword "iszero"
+    t <- expr
+    return $ TmIsZero t
+
 true :: Parser Term
-true = reserved "true" *> pure TmTrue
+true = rword "true" *> pure TmTrue
 
 false :: Parser Term
-false = reserved "false" *> pure TmFalse
-
-reserved :: String -> Parser ()
-reserved w = string w *> notFollowedBy alphaNumChar *> sc
+false = rword "false" *> pure TmFalse
 
 var :: Parser Term
 var = do
     n <- some alphaNumChar <* sc
     return $ TmVar (string2Name n)
-
-successor :: Parser Term
-successor = do 
-    reserved "succ" 
-    num <- expr
-    return $ TmSucc num
-
-predecessor :: Parser Term
-predecessor = do
-    reserved "pred"
-    num <- expr
-    return $ TmPred num
-
-error :: Parser Term
-error = reserved "error" *> pure TmError
-
-record :: Parser Term
-record = do
-    void $ symbol "{"
-    fields <- recs `sepBy` symbol ","
-    void $ symbol "}"
-    return $ TmRecord fields
-    where recs = do
-              name <- some alphaNumChar <* sc
-              void $ symbol "="
-              val <- expr
-              return (name, val)
-
-zero :: Parser Term
-zero = (reserved "0" <|> reserved "Z") *> pure TmZero
-
-isZero :: Parser Term
-isZero = do
-    reserved "iszero" <|> reserved "0?"
-    t <- expr
-    return $ TmIsZero t
-
-ifThenElse :: Parser Term
-ifThenElse = do
-    reserved "if"
-    b <- term
-    reserved "then"
-    t1 <- term
-    reserved "else"
-    t2 <- term
-    return $ TmIf b t1 t2
 
 lam :: Parser Term
 lam = do
@@ -138,32 +86,47 @@ lam = do
     void $ symbol "."
     body <- expr
     return $ TmAbs (bind (n, embed ty) body)
-    where validChars = alphaNumChar <|> oneOf "{}:"
 
-projection :: Parser Term 
-projection = do
-    rec <- record
-    void $ symbol "."
-    field <- some alphaNumChar <* sc
-    return $ TmProj rec field
+validChars :: Parser Char
+validChars = alphaNumChar <|> oneOf "{:}"
+
+ifThenElse :: Parser Term
+ifThenElse = do
+    rword "if"
+    b <- term
+    rword "then"
+    e1 <- term
+    rword "else"
+    e2 <- term
+    return $ TmIf b e1 e2
+
+ascription :: Parser Term
+ascription = do
+    rword "alias"
+    ty1 <- some validChars `sepBy` (symbol "->" <|> symbol "→") <* sc
+    rword "as"
+    ty2 <- some alphaNumChar <* sc
+    return $ TmAscription ty1 ty2
+
+error :: Parser Term
+error = rword "error" *> pure TmError
 
 term :: Parser Term
-term =  parens term
+term =  parens expr
     <|> successor
     <|> predecessor
     <|> zero
-    <|> isZero
-    <|> error
+    <|> iszero
+    <|> ascription
     <|> lam
-    <|> ifThenElse
     <|> true
     <|> false
-    <|> try projection
-    <|> record
+    <|> ifThenElse
+    <|> error
     <|> var
     <?> "term"
 
 expr :: Parser Term
 expr = do
-    es <- some term 
-    return $ foldl1 TmApp es
+    tms <- some term 
+    return $ foldl1 TmApp tms

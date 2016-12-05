@@ -1,12 +1,12 @@
 module Main where
 
-import Syntax
 import Parser
-import Eval
+import TypeCheck
+import Syntax
+import Environment
 import PrettyPrint
 
 import System.Environment (getArgs)
-import Text.PrettyPrint.ANSI.Leijen
 import qualified Data.Text.IO as T
 import qualified Data.Text as T
 
@@ -15,13 +15,13 @@ main = do
     (file:_) <- getArgs
     contents <- T.readFile file
     let res = parseProgram file contents
-    case res of 
+    case res of
          Left err -> print err
-         Right res' -> mapM_ dispAll $ zip (T.lines contents) res'
+         Right r -> do
+             let ctx' = addToContext $ filterAscrips r
+             let output = zip (T.lines contents) r 
+             mapM_ (display ctx') output
 
-
-dispAll :: (T.Text, Either t Term) -> IO ()
-dispAll (x, Left _) = T.putStrLn $ T.pack "parse error in " `T.append` x
-dispAll (x, Right y) = do
-    T.putStr $ T.strip $ T.takeWhile (/= '#') x
-    putDoc $ dullmagenta (text " ⇒ ") <> display (typeAndEval y)
+display :: Show a => TypeEnv -> (T.Text, Either a Term) -> IO ()
+display _ (x, Left err) = T.putStrLn $ remComments x `T.append` T.pack " ⇒ " `T.append` T.pack (show err)
+display nctx (x, Right r) = T.putStrLn $ remComments x `T.append` T.pack " ⇒ " `T.append` T.pack (show (runTypeOf initEnv nctx r))
