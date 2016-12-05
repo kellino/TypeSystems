@@ -35,6 +35,7 @@ data Term
     | TmAscription [String] String
     | TmApp Term Term
     | TmAbs (Bind (TName, Embed [String]) Term)
+    | TmLet (Bind (TName, Embed Term) Term)
     | TmIf Term Term Term
     | TmFix Term
   deriving (Show, Generic, Typeable)

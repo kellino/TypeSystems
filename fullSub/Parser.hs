@@ -26,7 +26,7 @@ rawData = between scn eof (sepEndBy e scn)
           recover err = Left err <$ manyTill anyChar eol
 
 rws :: [String] -- list of reserved words
-rws = ["if", "then", "else", "true", "false"]
+rws = ["if", "then", "else", "true", "false", "in"]
 
 identifier :: Parser String
 identifier = (lexeme . try) (p >>= check)
@@ -113,6 +113,16 @@ letRec = do
     t1 <- expr
     return $ TmFix t1
 
+letIn :: Parser Term
+letIn = do
+    rword "let"
+    n <- identifier
+    void $ symbol "="
+    t <- expr
+    rword "in"
+    body <- expr
+    return $ TmLet (bind (string2Name n, embed t) body)
+
 lam :: Parser Term
 lam = do
     void $ symbol "λ" <|> symbol "\\"
@@ -163,6 +173,7 @@ term =  parens expr
     <|> number
     <|> floattimes
     <|> letRec
+    <|> letIn
     <|> var
     <?> "term"
 

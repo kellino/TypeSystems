@@ -67,6 +67,10 @@ typeof (TmIf b e1 e2) = do
            e2' <- typeof e2
            joinTypes e1' e2'
        else throwError "guard of conditional is not a boolean"
+typeof (TmLet bnd) = do
+    ((x, unembed -> t1), t2) <- unbind bnd
+    let new = subst x t1 t2
+    typeof new
 typeof (TmApp e1 e2) = 
     case e1 of 
         (TmAbs bnd) -> do

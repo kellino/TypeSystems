@@ -7,6 +7,7 @@ iszero false
 (λs:String->String. s) "hello"
 2.3
 floattimes 2.3 4.5
+let x=0 in succ x
 alias Bool->Nat as BN
 ((λn:Nat->Nat. succ (succ n)) true)
 (λm:Nat->Nat. succ (succ m)) ((λn:Nat->Nat. succ (succ n)) 0)
