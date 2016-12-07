@@ -38,10 +38,14 @@ main = do
 process :: Show a => TypeEnv -> (T.Text, Either a Term) -> IO ()
 process _ (x, Left err) = T.putStr $ remComments x `T.append` T.pack (show err)
 process nctx (x, Right r) = do
-    let ty = runTypeOf initEnv nctx r
-    let e = runEval r
-    T.putStr $ remComments x `T.append` T.pack " "
-    case e of
-         Left err -> T.putStr (T.pack err)
-         Right ev -> T.putStr (T.pack $ show ev)
-    putDoc $ dullmagenta (text " ⇒ ") <> disp ty <> hardline
+    let res = typeAndEval nctx r
+    T.putStr (remComments x) -- print the original expression
+    case res of
+         Left str     -> putDoc $ dullmagenta (text " ⇒ ") <> disp str <> hardline
+         Right (t, ty) -> putDoc $ dullmagenta (text " ⇒ ") <> disp t <> text " : " <> disp ty <> hardline
+
+typeAndEval :: TypeEnv -> Term -> Either String (Term, Ty)
+typeAndEval nctx t = do
+    ty <- runTypeOf initEnv nctx t
+    ev <- runEval t
+    return (ev, ty)

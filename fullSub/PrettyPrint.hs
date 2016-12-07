@@ -65,8 +65,27 @@ instance Display String where
     display = return . text
 
 instance Display Term where
+    display (TmVar x) = return $ (text . name2String) x
     display TmTrue = return $ text "true"
     display TmFalse = return $ text "false"
+    display TmZero = return $ text "0"
+    display (TmIsZero b) = do 
+        b' <- display b
+        return $ text "isZero? " <> b'
+    display (TmSucc t) = return $ text . show $ 1 + count t
+    display (TmPred t) = display t
+    display (TmString str) = return $ text "\"" <> text str <> text "\""
+    display (TmFloat f) = return $ double f
+    display (TmFloatTimes f1 f2) = do
+        f1' <- display f1
+        f2' <- display f2
+        return $ f1' <> text " * " <> f2'
+    display a@TmAbs{} = do
+        (binds, body) <- gatherBinders a
+        return $ (text "λ" <> sep binds <> text ".") <> body
+    display (TmAscription tys n) = do 
+        let tys' = displayType tys
+        return $ text n <> text " ascribed the type of " <> tys'
 
 instance Display Ty where
     display TyTop = return $ text "Top"
@@ -83,3 +102,22 @@ instance Display Ty where
 
 remComments :: T.Text -> T.Text
 remComments = T.strip . T.takeWhile (/= '#') 
+
+count :: Term -> Int
+count TmZero = 0
+count (TmSucc t) = 1 + count t
+count x = error $ show x
+
+displayType :: [String] -> Doc
+displayType xs = hcat $ punctuate (text "→") (map text xs)
+
+gatherBinders :: Term -> M ([Doc], Doc)
+gatherBinders (TmAbs b) =
+    lunbind b $ \((n, _), body) -> do
+        let dn = text $ name2String n
+        (rest, bdy) <- gatherBinders body
+        return (dn : rest, bdy)
+
+gatherBinders body = do
+    db <- display body
+    return ([], db)

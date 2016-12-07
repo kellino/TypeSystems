@@ -118,10 +118,10 @@ letIn = do
     rword "let"
     n <- identifier
     void $ symbol "="
-    t <- expr
+    boundExpr <- expr
     rword "in"
     body <- expr
-    return $ TmLet (bind (string2Name n, embed t) body)
+    return $ TmLet (bind (string2Name n, embed boundExpr) body)
 
 lam :: Parser Term
 lam = do
