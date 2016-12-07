@@ -154,6 +154,25 @@ ascription = do
     ty2 <- some alphaNumChar <* sc
     return $ TmAscription ty1 ty2
 
+projection :: Parser Term
+projection = do
+    t <- record
+    void $ symbol "."
+    p <- identifier
+    return $ TmProj t p
+
+record :: Parser Term
+record = do
+    void $ symbol "{"
+    fields <- dec `sepBy` symbol ","
+    void $ symbol "}"
+    return $ TmRecord fields
+    where dec = do
+          n <- identifier
+          void $ symbol "="
+          t <- expr
+          return (n, t)
+
 error :: Parser Term
 error = rword "error" *> pure TmError
 
@@ -174,6 +193,8 @@ term =  parens expr
     <|> floattimes
     <|> letRec
     <|> letIn
+    <|> try projection
+    <|> record
     <|> var
     <?> "term"
 

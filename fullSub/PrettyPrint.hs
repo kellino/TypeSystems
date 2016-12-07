@@ -14,6 +14,7 @@ import qualified Data.Text as T
 import Control.Monad.Reader
 import Control.Monad.Identity
 import qualified Data.Set as S
+import Control.Arrow ((***))
 
 class Disp d where
     disp :: d -> Doc
@@ -86,6 +87,9 @@ instance Display Term where
     display (TmAscription tys n) = do 
         let tys' = displayType tys
         return $ text n <> text " ascribed the type of " <> tys'
+    display (TmRecord re) = do
+        let tups = map (\(x, y) -> disp x <> text " = " <> disp y) re
+        return $ braces $ hcat $ punctuate (text ", ") tups
 
 instance Display Ty where
     display TyTop = return $ text "Top"
@@ -99,6 +103,9 @@ instance Display Ty where
         l' <- display l
         r' <- display r
         return $ l' <> bold (blue (text " → ")) <> r'
+    display (TyRecord tys) = do 
+        tys' <- mapM display tys
+        return $ braces $ hcat $ punctuate (text ", ") tys'
 
 remComments :: T.Text -> T.Text
 remComments = T.strip . T.takeWhile (/= '#') 

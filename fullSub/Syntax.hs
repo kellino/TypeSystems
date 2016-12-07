@@ -17,6 +17,7 @@ data Ty
     | TyUnit
     | TyString
     | TyFloat
+    | TyRecord [Ty]
     | TyArr Ty Ty
   deriving (Show, Eq, Generic, Typeable)
 
@@ -38,6 +39,8 @@ data Term
     | TmLet (Bind (TName, Embed Term) Term)
     | TmIf Term Term Term
     | TmFix Term
+    | TmRecord [(String, Term)]
+    | TmProj Term String
   deriving (Show, Generic, Typeable)
 
 instance Alpha Term

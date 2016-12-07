@@ -4,6 +4,7 @@ module Eval where
 
 import Syntax
 
+import Data.Maybe (fromJust)
 import Unbound.Generics.LocallyNameless
 import Control.Monad.Except
 
@@ -14,6 +15,7 @@ runEval = runFreshM . runExceptT . eval
 
 eval :: Term -> Eval Term
 eval TmError = throwError "Exception encountered"
+eval re@TmRecord{} = return re
 eval str@TmString{} = return str
 eval v@TmVar{} = return v
 eval l@TmAbs{} = return l
@@ -47,4 +49,6 @@ eval (TmApp e1 e2) = do
             let body' = subst x v2 body
             eval body'
         _ -> throwError "first expression is not a lambda abstraction"
+eval (TmProj (TmRecord fields) p) = return $ fromJust $ lookup p fields
+eval (TmProj _ _) = throwError "projection can only be applied to records"
 eval x = throwError $ "not yet implemented: " ++ show x

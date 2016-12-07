@@ -10,6 +10,7 @@ import Control.Monad.Except
 import Control.Monad.State
 import Control.Monad.Reader
 import Control.Monad.Identity
+import qualified Data.Map as M
 
 isVar :: Term -> Bool
 isVar TmVar{} = True
@@ -79,17 +80,29 @@ typeof (TmApp e1 e2) =
             local (\m@Env{ctx = cs} -> m { ctx = (show x, e2'):cs }) $ do
                 e1' <- typeof e1
                 case e1' of
-                    (TyArr l r) -> if l == e2' then return r else throwError "annotation mismatch"
+                    (TyArr l r) -> if e2' `isSubTypeOf` l then return r else throwError "annotation mismatch"
                     err -> throwError $ "expecting an arrow type, but got " ++ show err
         app@TmApp{} -> typeof app
         x -> throwError $ "weird! " ++ show x
 typeof (TmFix t) = typeof t
+typeof (TmRecord fields) = do
+    tys' <- mapM (typeof . snd) fields
+    return $ TyRecord tys'
+typeof (TmProj flds p) = 
+    case flds of
+        (TmRecord fs) -> do
+            let found = lookup p fs
+            case found of
+                 Nothing -> throwError $ show p ++ " not found in the record"
+                 Just p' -> typeof p'
+        _ -> throwError "expecting a record type"
+   
 
 isSubTypeOf :: Ty -> Ty -> Bool
 isSubTypeOf _ TyTop = True
 isSubTypeOf TyBot _ = True
 isSubTypeOf (TyArr s1 s2) (TyArr t1 t2) = isSubTypeOf t1 s1 && isSubTypeOf s2 t2
--- isSubTypeOf r1@TyRecord{} r2@TyRecord{} = recordCheck r1 r2
+isSubTypeOf (TyRecord t1) (TyRecord t2) = undefined
 isSubTypeOf x y
     | x == y     = True
     | otherwise = False
