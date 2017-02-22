@@ -10,7 +10,7 @@ import Control.Monad.Except
 import Control.Monad.State
 import Control.Monad.Reader
 import Control.Monad.Identity
-import qualified Data.Map as M
+import Data.List (intersect)
 
 isVar :: Term -> Bool
 isVar TmVar{} = True
@@ -66,7 +66,7 @@ typeof (TmIf b e1 e2) = do
        then do
            e1' <- typeof e1
            e2' <- typeof e2
-           joinTypes e1' e2'
+           join' e1' e2'
        else throwError "guard of conditional is not a boolean"
 typeof (TmLet bnd) = do
     ((x, unembed -> t1), t2) <- unbind bnd
@@ -83,11 +83,12 @@ typeof (TmApp e1 e2) =
                     (TyArr l r) -> if e2' `isSubTypeOf` l then return r else throwError "annotation mismatch"
                     err -> throwError $ "expecting an arrow type, but got " ++ show err
         app@TmApp{} -> typeof app
-        x -> throwError $ "weird! " ++ show x
+        x -> throwError $ "Expecting a lambda abstraction or application, but got: " ++ show x
 typeof (TmFix t) = typeof t
 typeof (TmRecord fields) = do
     tys' <- mapM (typeof . snd) fields
-    return $ TyRecord tys'
+    let bnds = map fst fields
+    return $ TyRecord (zip bnds tys')
 typeof (TmProj flds p) = 
     case flds of
         (TmRecord fs) -> do
@@ -97,18 +98,17 @@ typeof (TmProj flds p) =
                  Just p' -> typeof p'
         _ -> throwError "expecting a record type"
    
-
 isSubTypeOf :: Ty -> Ty -> Bool
 isSubTypeOf _ TyTop = True
 isSubTypeOf TyBot _ = True
 isSubTypeOf (TyArr s1 s2) (TyArr t1 t2) = isSubTypeOf t1 s1 && isSubTypeOf s2 t2
-isSubTypeOf (TyRecord t1) (TyRecord t2) = undefined
+isSubTypeOf (TyRecord t1) (TyRecord t2) = intersect t1 t2 == t2
 isSubTypeOf x y
     | x == y     = True
     | otherwise = False
 
-joinTypes :: Ty -> Ty -> TypeM Ty
-joinTypes t1 t2
+join' :: Ty -> Ty -> TypeM Ty
+join' t1 t2
     | t1 `isSubTypeOf` t2 = return t2
     | t2 `isSubTypeOf` t1 = return t1
     | otherwise           = return TyTop

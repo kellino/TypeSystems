@@ -103,9 +103,8 @@ instance Display Ty where
         l' <- display l
         r' <- display r
         return $ l' <> bold (blue (text " → ")) <> r'
-    display (TyRecord tys) = do 
-        tys' <- mapM display tys
-        return $ braces $ hcat $ punctuate (text ", ") tys'
+    display x = return . text . show $ x
+    -- display (TyRecord tys) = undefined
 
 remComments :: T.Text -> T.Text
 remComments = T.strip . T.takeWhile (/= '#') 
@@ -124,7 +123,6 @@ gatherBinders (TmAbs b) =
         let dn = text $ name2String n
         (rest, bdy) <- gatherBinders body
         return (dn : rest, bdy)
-
 gatherBinders body = do
     db <- display body
     return ([], db)

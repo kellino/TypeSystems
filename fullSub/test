@@ -17,5 +17,6 @@ alias Bool->Nat as BN
 (λm:Bool→Nat. if m then error else succ 0) true
 (λm:Bool→Nat. if m then 0 else error) true
 (λm:Bool→Nat. if error then 0 else succ 0) true # should typecheck (bot is subtype of bool) but throw an error in evaluation
+{a=0, b=2}
 {a=0, b=2}.b
 {a=0, b=2}.c

@@ -17,7 +17,7 @@ data Ty
     | TyUnit
     | TyString
     | TyFloat
-    | TyRecord [Ty]
+    | TyRecord [(String, Ty)]
     | TyArr Ty Ty
   deriving (Show, Eq, Generic, Typeable)
 
