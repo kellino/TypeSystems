@@ -2,29 +2,17 @@ module Parser where
 
 import Syntax
 
-import Unbound.Generics.LocallyNameless (bind, string2Name, embed)
 import Control.Monad (void)
 import Control.Applicative (empty)
 import Text.Megaparsec
 import Text.Megaparsec.Text
+import Text.Megaparsec.Expr
 import qualified Text.Megaparsec.Lexer as L
-import qualified Data.Text as T
+import qualified Data.Text as T -- for testing in ghci, not needed for anything else
 
---------------------
--- Program Parser -- 
---------------------
-
-parseProgram :: String -> T.Text -> Either (ParseError Char Dec) Phrase
-parseProgram  = runParser phrase 
-
-phrase :: Parser Phrase
-phrase = do
-    ex <- expression
-    return $ Ex ex
-
------------------
--- Conbinators -- 
------------------
+-------------------------
+-- General Combinators --
+-------------------------
 
 sc :: Parser ()
 sc = L.space (void $ oneOf " \t") lineCmnt empty
@@ -51,101 +39,81 @@ rword w = string w *> notFollowedBy alphaNumChar *> sc
 -- Expression Parsers --
 ------------------------
 
-expression :: Parser Expr
-expression = parens expression
-          <|> number
-          <|> add
-          <|> equal
-          <|> lessThan
-          <|> var
+var :: Parser Expr
+var = do
+    v <- some alphaNumChar <* sc
+    return $ Var v
 
 number :: Parser Expr
 number = do
     n <- lexeme L.integer
     return $ Num n
 
-add :: Parser Expr
-add = do
-    n1 <- expression
-    void (symbol "+")
-    n2 <- expression
-    return $ Add n1 n2
+doNothing :: Parser Expr
+doNothing = rword "skip" *> return Skip
 
-sub :: Parser Expr
-sub = do
-    n1 <- expression
-    void (symbol "-")
-    n2 <- expression
-    return $ Sub n1 n2
-
-equal :: Parser Expr
-equal = do
-    n1 <- expression
-    void (symbol "=")
-    n2 <- expression
-    return $ Equal n1 n2
-
-lessThan :: Parser Expr
-lessThan = do
-    n1 <- expression
-    void (symbol "≤" <|> symbol "<=")
-    n2 <- expression
-    return $ Lt n1 n2
-
-var :: Parser Expr
-var = do
-    v <- some alphaNumChar <* sc
-    return $ Var (string2Name v)
-
----------------------
--- Command Parsers --
----------------------
-
-command :: Parser Command
-command = parens command
-      <|> ifTerm
-      <|> while
-      <|> try letVar
-      <|> assign
-      <|> app
-     
-ifTerm :: Parser Command
-ifTerm = do
-    rword "if"
-    ex <- expression
-    rword "then"
-    com1 <- command
-    rword "else"
-    com2 <- command
-    return $ IfThenElse ex com1 com2
-    
-assign :: Parser Command
+assign :: Parser Expr
 assign = do
-    v <- var
-    void (symbol ":=")
-    e' <- expression
-    return $ Assign v e'
+    name <- var
+    void $ symbol ":="
+    body <- expr
+    return $ Assign name body
 
-while :: Parser Command
+ifExpr :: Parser Expr
+ifExpr = do
+    rword "if"
+    gd <- expr
+    rword "then"
+    l <- expr
+    rword "else"
+    r <- expr
+    return $ IfThenElse gd l r
+
+while :: Parser Expr
 while = do
     rword "while"
-    gd <- expression
+    gd <- expr
     rword "do"
-    body <- command
+    body <- expr
     return $ While gd body
 
-letVar :: Parser Command
-letVar = do
-    rword "let"
-    v <- some alphaNumChar <* sc
-    void $ symbol ":="
-    expr <- expression
-    rword "in"
-    body <- command
-    return $ Let (bind (string2Name v, embed expr) body)
+-----------
+-- Bools --
+-----------
 
--- is this correct? 
-app :: Parser Command
-app = do
-    cs <- some command
-    return $ foldl1 App cs
+true :: Parser Expr
+true = rword "true" *> pure (BoolExpr TmTrue)
+
+false :: Parser Expr
+false = rword "false" *> pure (BoolExpr TmFalse)
+
+-------------------
+-- Arith Parsers --
+-------------------
+
+arithExpr :: Parser Expr
+arithExpr = makeExprParser term table <?> "expression"
+
+table :: [[Operator Parser Expr]]
+table = [ [ InfixL (Add <$ symbol "+")  
+         ,  InfixL (Sub <$ symbol "-") ] ]
+
+-----------------
+-- Main parsers --
+------------------
+
+-- main expression parser
+term :: Parser Expr
+term =  parens expr
+    <|> true
+    <|> false
+    <|> number
+    <|> ifExpr
+    -- <|> arithExpr
+    <|> var
+    <?> "term"
+
+expr :: Parser Expr
+expr = do
+    es <- some term
+    return $ foldl1 App es
