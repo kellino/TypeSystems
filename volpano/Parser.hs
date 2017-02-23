@@ -62,11 +62,11 @@ assign = do
 ifExpr :: Parser Expr
 ifExpr = do
     rword "if"
-    gd <- expr
+    gd <- term
     rword "then"
-    l <- expr
+    l <- term
     rword "else"
-    r <- expr
+    r <- term
     return $ IfThenElse gd l r
 
 while :: Parser Expr
@@ -95,8 +95,15 @@ arithExpr :: Parser Expr
 arithExpr = makeExprParser term table <?> "expression"
 
 table :: [[Operator Parser Expr]]
-table = [ [ InfixL (Add <$ symbol "+")  
-         ,  InfixL (Sub <$ symbol "-") ] ]
+table = [[ infixOp "+" (Op Add)
+         , infixOp "-" (Op Sub)
+         , infixOp "==" (Op Equal)
+         , infixOp "≡" (Op Equal)
+         , infixOp "<" (Op LessThan)
+         , infixOp "<=" (Op LessThanEq)
+         , infixOp "≤" (Op LessThanEq) ] ]
+
+infixOp x f = InfixL (symbol x >> return f)
 
 -----------------
 -- Main parsers --
@@ -109,11 +116,10 @@ term =  parens expr
     <|> false
     <|> number
     <|> ifExpr
-    -- <|> arithExpr
     <|> var
     <?> "term"
 
 expr :: Parser Expr
 expr = do
-    es <- some term
+    es <- some (try arithExpr <|> term)
     return $ foldl1 App es
