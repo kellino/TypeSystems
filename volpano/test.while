@@ -1,9 +1,6 @@
 xₕ            # fine
-
 xₕ := 2       # should be fine
-
 skip            # fine
-
 1 + 2           # fine
 1 ≡ 1           # fine
 (xₕ:= 1 + 2); (xₕ := 2 + 3)     # fine
@@ -11,3 +8,5 @@ skip            # fine
 (xₗ := 1 + true); (xₗ := 2+2)  # should throw a type-type error
 if (xₕ ≡ 1) then (yₗ := 1) else (yₗ := 0)
 if (1 ≡ 1) then (yₕ := 1) else (yₕ := 0)
+
+
