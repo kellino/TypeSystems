@@ -20,11 +20,11 @@ instance Display String where
 
 instance Display Expr where
     display (Skip l) = text "skip : " <> display l <> " Cmd"
-    display (BoolExpr TmTrue l) = text "true : " <> display l
-    display (BoolExpr TmFalse l) = text "false : " <> display l
-    display (Num n l) = text $ show n ++ " : Int " ++ show l
-    display (Assign (Var x l) y) = "var "  <> text x <> text " = " <> display y <> text " : " <> display l <> text " Cmd"
-    display (Var x l) = text "var " <> display x <> display l
+    display (BoolExpr TmTrue l) = text "true : " <> display TyBool <> display l
+    display (BoolExpr TmFalse l) = text "false : " <> display TyBool <> display l
+    display (Num n l) = display (show n) <> text " : " <> display TyNum <> display l
+    display (Assign (Var x l) (Num n _)) = "var "  <> text x <> text " = " <> text (show n) <> text " : " <> display l <> text " Cmd"
+    display (Var x l) = text "var " <> display x <> text " : " <> display l
     display x = text $ show x
 
 instance Display Label where
@@ -33,7 +33,7 @@ instance Display Label where
     display High = text "High"
 
 instance Display Ty where
-    display TyBool = green $ text "Bool"
-    display TyNum = blue $ text "Int"
-    display TyUnit = red $ text "()"
-    display TyLoc = dullyellow $ text "Location"
+    display TyBool = green $ text "Bool "
+    display TyNum = blue $ text "Int "
+    display TyUnit = red $ text "() "
+    display TyLoc = dullyellow $ text "Location "

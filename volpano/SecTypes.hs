@@ -32,17 +32,20 @@ secCheck (Assign var val) = do
     val' <- secCheck val
     if var' `confines` val'
        then return val'
-       else throwError "not typeable"
+       else throwError $ "not typeable: implicit flow from " ++ show val' ++ " to " ++ show var'
 secCheck (IfThenElse b c1 c2) = do
     b' <- secCheck b
     c1' <- secCheck c1
     c2' <- secCheck c2
-    if c1' `eq` c2' && b' `eq` join c1' c2'
-        then return (join c1' c2')
-        else throwError "UnTypeable"
+    let arms = c1' `join` c2'
+    if b' `isSubTypeOf` arms
+       then return arms
+       else throwError $ "Untypeable: implicit flow from " ++ show b' ++ " to " ++ show arms
 secCheck err = throwError $ show err
 
--- assignment is contravariant, so check that the input value is at least as 
--- strict as the label on the container
+
+isSubTypeOf :: Label -> Label -> Bool
+isSubTypeOf l1 l2 = l1 `eq` l2
+
 confines :: Label -> Label -> Bool
-confines l1 l2 = l1 `eq` l2
+confines l1 l2 = l2 `eq` l1
