@@ -2,7 +2,8 @@ x{H} := 2
 skip
 1 + 2
 1 ≡ 1
-(1 + 2); (2 + 3)
+(x{H}:= 1 + 2); (x{H} := 2 + 3)
+(x{L} := y{H})
 (1 + true); (2+2) # should throw an error
 if (x{H}≡1) then (y{L} := 1) else (y{L} := 0)
 if (1≡1) then (y{H} := 1) else (y{H} := 0)
