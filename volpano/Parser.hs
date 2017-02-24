@@ -58,10 +58,14 @@ rword w = string w *> notFollowedBy alphaNumChar *> sc
 rws :: [String] -- list of reserved words
 rws = ["if", "then", "else", "true", "false"]
 
+-- for this simple parser, let's only allow simple letter identifiers
+legalChars :: String
+legalChars = "abcdefghijklmnopqrstuvwxyz0123456789"
+
 identifier :: Parser String
 identifier = (lexeme . try) (p >>= check)
   where
-    p       = (:) <$> letterChar <*> many alphaNumChar
+    p       = (:) <$> letterChar <*> many (oneOf legalChars)
     check x = if x `elem` rws
                 then fail $ "keyword " ++ show x ++ " cannot be an identifier"
                 else return x
@@ -82,8 +86,8 @@ sec 'ₕ' = High
 var :: Parser Expr
 var = do
     v <- identifier
-    label <- braces (oneOf "lmhₕₗₘ") 
-    return $ Var v (sec label)
+    labl <- (oneOf "ₕₗₘ" <|> braces (oneOf "hml")) <* sc
+    return $ Var v (sec labl)
 
 number :: Parser Expr
 number = do
