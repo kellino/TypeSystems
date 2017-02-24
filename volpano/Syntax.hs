@@ -37,6 +37,7 @@ instance Lattice Label where
 
 data Ty = TyNum 
         | TyBool 
+        | TyLoc     -- for (null) var declarations
         | TyUnit
         deriving (Show, Eq)
 

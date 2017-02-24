@@ -35,7 +35,7 @@ secCheck (IfThenElse b c1 c2) = do
     b' <- secCheck b
     c1' <- secCheck c1
     c2' <- secCheck c2
-    if (b' `eq` c1') && (c1' `eq` c2') 
-       then return c1'
-       else throwError "not typeable"
+    if c1' `eq` c2' && b' `eq` join c1' c2'
+        then return (join c1' c2')
+        else throwError "UnTypeable"
 secCheck err = throwError $ show err

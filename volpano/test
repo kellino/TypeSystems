@@ -1,9 +1,10 @@
-x{H} := 2
-skip
-1 + 2
-1 ≡ 1
-(x{H}:= 1 + 2); (x{H} := 2 + 3)
-(x{L} := y{H})
-(1 + true); (2+2) # should throw an error
-if (x{H}≡1) then (y{L} := 1) else (y{L} := 0)
-if (1≡1) then (y{H} := 1) else (y{H} := 0)
+x{ₕ}            # fine
+x{ₕ} := 2       # should be fine
+skip            # fine
+1 + 2           # fine
+1 ≡ 1           # fine
+(x{h}:= 1 + 2); (x{h} := 2 + 3)     # fine
+(x{l} := y{h})      # explict flow! Fail
+(x{l} := 1 + true); (x{l} := 2+2)  # should throw a type-type error
+if (x{h}≡1) then (y{l} := 1) else (y{l} := 0)
+if (1≡1) then (y{h} := 1) else (y{h} := 0)

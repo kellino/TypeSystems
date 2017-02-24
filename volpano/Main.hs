@@ -2,6 +2,7 @@
 
 module Main where
 
+import Syntax
 import Parser 
 import TypeCheck
 import SecTypes
@@ -10,7 +11,6 @@ import Eval
 import System.Environment (getArgs)
 import System.Directory (doesFileExist)
 import System.Exit (exitFailure)
-import Data.Either
 import Text.PrettyPrint.ANSI.Leijen
 import qualified Data.Text as T
 import qualified Data.Text.IO as T
@@ -36,18 +36,15 @@ process file = do
     prog <- T.readFile file
     let parsed = parseProgram file prog
     case parsed of
-         Left err -> T.putStrLn (T.pack $ show err)
-         Right res -> mapM_ (print . evalExpr)  res
+        Left err -> T.putStrLn (T.pack $ show err)
+        Right res -> mapM_ (T.putStrLn . T.pack . evalExpr)  res
 
-{-evalExpr p = -}
-    {-either show (show . runSecTypeCheck) p-}
-
-{-evalExpr p =-}
-    {-either show (show . runSecTypeCheck) p-}
-
+-- how can we rewrite this so it's easier to read?
+-- consider using Control.Error
+evalExpr :: Show a => Either a Expr -> String
 evalExpr p =
     case p of
-         Left err -> show err
+         Left err -> show err -- major parse error
          Right p' ->
              case runSecTypeCheck p' of
                   Left err -> err
@@ -58,4 +55,3 @@ evalExpr p =
                             case runEval p' of 
                                  Left err -> err
                                  Right res' -> show res'
-

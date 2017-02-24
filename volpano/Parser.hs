@@ -55,11 +55,25 @@ braces = between (symbol "{") (symbol "}")
 rword :: String -> Parser ()
 rword w = string w *> notFollowedBy alphaNumChar *> sc
 
+rws :: [String] -- list of reserved words
+rws = ["if", "then", "else", "true", "false"]
+
+identifier :: Parser String
+identifier = (lexeme . try) (p >>= check)
+  where
+    p       = (:) <$> letterChar <*> many alphaNumChar
+    check x = if x `elem` rws
+                then fail $ "keyword " ++ show x ++ " cannot be an identifier"
+                else return x
+
 -- crude and ugly, but good enough for our needs here
 sec :: Char -> Label
-sec 'L' = Low
-sec 'M' = Medium
-sec 'H' = High
+sec 'l' = Low
+sec 'ₗ' = Low
+sec 'm' = Medium
+sec 'ₘ' = Medium
+sec 'h' = High
+sec 'ₕ' = High
 
 ------------------------
 -- Expression Parsers --
@@ -67,8 +81,8 @@ sec 'H' = High
 
 var :: Parser Expr
 var = do
-    v <- some alphaNumChar <* sc
-    label <- braces (oneOf "LMH")
+    v <- identifier
+    label <- braces (oneOf "lmhₕₗₘ") 
     return $ Var v (sec label)
 
 number :: Parser Expr
@@ -80,7 +94,6 @@ doNothing :: Parser Expr
 doNothing = do
     rword "skip"
     return $ Skip High 
---doNothing = rword "skip" *> return $ Skip Low
 
 assign :: Parser Expr
 assign = do

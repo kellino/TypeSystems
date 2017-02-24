@@ -12,6 +12,7 @@ runTypeOf = runIdentity . runExceptT . typeof
 
 -- this checks concrete types, not security types, which is done in a separate pass
 typeof :: Expr -> Type Ty
+typeof Var{} = return TyLoc
 typeof Assign{} = return TyUnit
 typeof Skip{} = return TyUnit
 typeof (BoolExpr _ _) = return TyBool 
@@ -19,10 +20,25 @@ typeof (Num _ _) = return TyNum
 typeof (Op op n1 n2) = do
     t1 <- typeof n1
     t2 <- typeof n2
-    if (t1 == TyNum) && (t2 == TyNum)
+    if t1 == TyNum && t2 == TyNum && op == Add
        then return TyNum
-       else throwError $ "UnTypeable: cannot apply " ++ show op ++ " to operands of types " ++ show t1 ++ " and " ++ show t2
+       else return TyBool
+    {-t1 <- typeof n1-}
+    {-t2 <- typeof n2-}
+    {-if (t1 == TyNum) && (t2 == TyNum)-}
+       {-then return TyNum-}
+       {-else throwError $ "UnTypeable: cannot apply " ++ show op ++ " to operands of types " ++ show t1 ++ " and " ++ show t2-}
 typeof (Seq e1 e2) = do
     _ <- typeof e1 -- check and then throw away
     typeof e2
-typeof err = throwError $ "This is either not (yet) typeable :( or you've made a mistake\n" ++ show err
+typeof (IfThenElse b e1 e2) = do
+    b' <- typeof b
+    if b' /= TyBool
+       then throwError "guard is not a boolean"
+       else do
+           e1' <- typeof e1
+           e2' <- typeof e2
+           if e1' == e2' 
+              then return e1'
+              else throwError "arms of conditional do not match"
+typeof err = throwError $ "This is either not (yet) typeable :( or you've made a mistake: " ++ show err
