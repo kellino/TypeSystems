@@ -2,18 +2,20 @@
 
 module Main where
 
-import Syntax
-import Parser 
+
+import Parser
+import Eval
+import Pretty
 import TypeCheck
 import SecTypes
---import Pretty 
-import Eval
+import Syntax (Expr)
+
 import System.Environment (getArgs)
+import Text.PrettyPrint.ANSI.Leijen 
+import System.Exit
 import System.Directory (doesFileExist)
-import System.Exit (exitFailure)
-import Text.PrettyPrint.ANSI.Leijen
-import qualified Data.Text as T
 import qualified Data.Text.IO as T
+import qualified Data.Text as T
 
 main :: IO ()
 main = do
@@ -37,21 +39,21 @@ process file = do
     let parsed = parseProgram file prog
     case parsed of
         Left err -> T.putStrLn (T.pack $ show err)
-        Right res -> mapM_ (T.putStrLn . T.pack . evalExpr)  res
+        Right res -> mapM_ (\x -> putDoc (evalExpr x  <> hardline)) res
 
 -- how can we rewrite this so it's easier to read?
 -- consider using Control.Error
-evalExpr :: Show a => Either a Expr -> String
+evalExpr :: Show a => Either a Expr -> Doc
 evalExpr p =
     case p of
-         Left err -> show err -- major parse error
+         Left err -> (display . show) err -- major parse error
          Right p' ->
              case runSecTypeCheck p' of
-                  Left err -> err
+                  Left err -> display err
                   Right _ -> 
                     case runTypeOf p' of
-                         Left err -> err
+                         Left err -> display err
                          Right _ -> 
                             case runEval p' of 
-                                 Left err -> err
-                                 Right res' -> show res'
+                                 Left err -> display err
+                                 Right res' -> display res'
