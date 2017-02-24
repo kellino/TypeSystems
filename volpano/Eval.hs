@@ -14,7 +14,9 @@ eval t@(BoolExpr TmTrue _) = return t
 eval f@(BoolExpr TmFalse _) = return f
 eval s@Skip{} = return s
 -- these two to do
-eval a@Assign{} = return a
+eval (Assign n v) = do
+    v' <- eval v
+    return (Assign n v')
 eval app@App{} = throwError $ show app
 eval (IfThenElse b e1 e2) = do
     b' <- eval b
