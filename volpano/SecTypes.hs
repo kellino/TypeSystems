@@ -22,15 +22,17 @@ secCheck (Op _ n1 n2) = do
     return $ join n1' n2'
 secCheck (Skip l) = return l
 secCheck (Seq e1 e2) = do
-    _ <- secCheck e1
-    secCheck e2
--- assign is contravariant !!
+    e1' <- secCheck e1
+    e2' <- secCheck e2
+    if e1' `confines` e2'
+       then return e2'
+       else throwError "not typeable"
 secCheck (Assign var val) = do
     var' <- secCheck var
     val' <- secCheck val
-    if val' `eq` var' 
-       then return  (join var' val')
-       else throwError $ "not typeable: " ++ show var' ++ " and " ++ show val'
+    if var' `confines` val'
+       then return val'
+       else throwError "not typeable"
 secCheck (IfThenElse b c1 c2) = do
     b' <- secCheck b
     c1' <- secCheck c1
@@ -39,3 +41,8 @@ secCheck (IfThenElse b c1 c2) = do
         then return (join c1' c2')
         else throwError "UnTypeable"
 secCheck err = throwError $ show err
+
+-- assignment is contravariant, so check that the input value is at least as 
+-- strict as the label on the container
+confines :: Label -> Label -> Bool
+confines l1 l2 = l1 `eq` l2
