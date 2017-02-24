@@ -1,3 +1,5 @@
+{-# LANGUAGE TypeFamilies #-}
+
 module Parser where
 
 import Syntax
@@ -9,6 +11,21 @@ import Text.Megaparsec.Text
 import Text.Megaparsec.Expr
 import qualified Text.Megaparsec.Lexer as L
 import qualified Data.Text as T -- for testing in ghci, not needed for anything else
+
+
+-----------------
+-- Main Parser --
+-----------------
+
+type RawData t e = [Either (ParseError t e) Expr]
+
+parseProgram :: String -> T.Text -> Either (ParseError Char Dec) (RawData Char Dec)
+parseProgram = runParser rawData
+
+rawData :: Parser (RawData Char Dec)
+rawData = between scn eof (sepEndBy e scn)
+    where e = withRecovery recover (Right <$> expr)
+          recover err = Left err <$ manyTill anyChar eol
 
 -------------------------
 -- General Combinators --
@@ -32,8 +49,17 @@ symbol = L.symbol sc
 parens :: Parser a -> Parser a
 parens = between (symbol "(") (symbol ")")
 
+braces :: Parser a -> Parser a
+braces = between (symbol "{") (symbol "}")
+
 rword :: String -> Parser ()
 rword w = string w *> notFollowedBy alphaNumChar *> sc
+
+-- crude and ugly, but good enough for our needs here
+sec :: Char -> Label
+sec 'L' = Low
+sec 'M' = Medium
+sec 'H' = High
 
 ------------------------
 -- Expression Parsers --
@@ -42,22 +68,26 @@ rword w = string w *> notFollowedBy alphaNumChar *> sc
 var :: Parser Expr
 var = do
     v <- some alphaNumChar <* sc
-    return $ Var v
+    label <- braces (oneOf "LMH")
+    return $ Var v (sec label)
 
 number :: Parser Expr
 number = do
     n <- lexeme L.integer
-    return $ Num n
+    return $ Num n Low
 
 doNothing :: Parser Expr
-doNothing = rword "skip" *> return Skip
+doNothing = do
+    rword "skip"
+    return $ Skip High 
+--doNothing = rword "skip" *> return $ Skip Low
 
 assign :: Parser Expr
 assign = do
     name <- var
     void $ symbol ":="
     body <- expr
-    return $ Assign name body
+    return $ Assign name body 
 
 ifExpr :: Parser Expr
 ifExpr = do
@@ -69,7 +99,7 @@ ifExpr = do
     r <- term
     return $ IfThenElse gd l r
 
-while :: Parser Expr
+while :: Parser Expr 
 while = do
     rword "while"
     gd <- expr
@@ -77,15 +107,22 @@ while = do
     body <- expr
     return $ While gd body
 
+lattice :: Parser Expr
+lattice = do
+    rword "lattice"
+    void $ symbol ":="
+    str <- some (alphaNumChar <|> oneOf "{}, ") <* eol
+    return $ Lattice str
+
 -----------
 -- Bools --
 -----------
 
 true :: Parser Expr
-true = rword "true" *> pure (BoolExpr TmTrue)
+true = rword "true" *> pure (BoolExpr TmTrue Low)
 
 false :: Parser Expr
-false = rword "false" *> pure (BoolExpr TmFalse)
+false = rword "false" *> pure (BoolExpr TmFalse Low)
 
 -------------------
 -- Arith Parsers --
@@ -95,27 +132,30 @@ arithExpr :: Parser Expr
 arithExpr = makeExprParser term table <?> "expression"
 
 table :: [[Operator Parser Expr]]
-table = [[ infixOp "+" (Op Add)
+table = [[ infixOp ";" (Seq)
+         , infixOp "+" (Op Add)
          , infixOp "-" (Op Sub)
          , infixOp "==" (Op Equal)
          , infixOp "≡" (Op Equal)
          , infixOp "<" (Op LessThan)
          , infixOp "<=" (Op LessThanEq)
-         , infixOp "≤" (Op LessThanEq) ] ]
+         , infixOp "≤" (Op LessThanEq) ]]
 
 infixOp x f = InfixL (symbol x >> return f)
 
------------------
--- Main parsers --
-------------------
+------------------------
+-- Expression parsers --
+------------------------
 
--- main expression parser
 term :: Parser Expr
 term =  parens expr
+    <|> lattice
+    <|> doNothing
     <|> true
     <|> false
     <|> number
     <|> ifExpr
+    <|> try assign
     <|> var
     <?> "term"
 
