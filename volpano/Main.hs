@@ -41,8 +41,7 @@ process file = do
         Left err -> T.putStrLn (T.pack $ show err)
         Right res -> mapM_ (\x -> putDoc (evalExpr x  <> hardline)) res
 
--- how can we rewrite this so it's easier to read?
--- consider using Control.Error
+
 evalExpr :: Show a => Either a Expr -> Doc
 evalExpr p =
     case p of
