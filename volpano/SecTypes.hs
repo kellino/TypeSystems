@@ -1,26 +1,37 @@
+{-# LANGUAGE FlexibleContexts #-}
+
 module SecTypes where
 
 import Syntax
 import Control.Monad.Except hiding (join)
 import Control.Monad.Identity hiding (join)
-
+import Control.Monad.Writer hiding (join)
 
 type Flow = String
+type Step = String
 
-type SecType a = ExceptT Flow Identity a
+type SecType a = WriterT [Step] (ExceptT Flow Identity) a
 
-runSecTypeCheck :: Expr -> Either Flow Label
-runSecTypeCheck = runIdentity . runExceptT . secCheck
+runSecTypeCheck :: Expr -> Either Flow (Label, [Step])
+runSecTypeCheck =  runIdentity . runExceptT . runWriterT . secCheck 
 
 secCheck :: Expr -> SecType Label
-secCheck (Var _ l) = return l
-secCheck (Num _ l) = return l
-secCheck (BoolExpr _ l) = return l
+secCheck (Var _ l) = do
+    tell ["var"]
+    return l
+secCheck (Num _ l) = do
+    tell ["num"]
+    return l
 secCheck (Op _ n1 n2) = do
     n1' <- secCheck n1
     n2' <- secCheck n2
     return $ join n1' n2'
-secCheck (Skip l) = return l
+secCheck (BoolExpr _ l) = do
+    tell ["bool"]
+    return l
+secCheck (Skip l) = do
+    tell ["skip"]
+    return l
 secCheck (Seq e1 e2) = do
     e1' <- secCheck e1
     e2' <- secCheck e2
@@ -42,7 +53,6 @@ secCheck (IfThenElse b c1 c2) = do
        then return arms
        else throwError $ "Untypeable: implicit flow from " ++ show b' ++ " to " ++ show arms
 secCheck err = throwError $ show err
-
 
 isSubTypeOf :: Label -> Label -> Bool
 isSubTypeOf l1 l2 = l1 `eq` l2
