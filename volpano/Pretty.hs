@@ -24,7 +24,7 @@ instance Display Expr where
     display (BoolExpr TmFalse l) = text "false : " <> display TyBool <> display l
     display (Num n l) = display (show n) <> text " : " <> display TyNum <> display l
     display (Assign (Var x l) (Num n _)) = "var "  <> text x <> text " = " <> text (show n) <> text " : " <> display l <> text " Cmd"
-    display (Var x l) = text "var " <> display x <> text " : " <> display l
+    display (Var x l) = text "var " <> display x <> text " : " <> display l <> " Var"
     display x = text $ show x
 
 instance Display Label where

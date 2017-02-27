@@ -39,10 +39,11 @@ process file = do
     let parsed = parseProgram file prog
     case parsed of
         Left err -> T.putStrLn (T.pack $ show err)
-        Right res -> mapM_ (\x -> putDoc (evalExpr x  <> hardline)) res
+        Right res -> mapM_ (\(x, l) -> do
+                          T.putStr $ stripComments l
+                          putDoc $ red $ text " ⇒  "
+                          putDoc $ evalExpr x <> hardline) $ zip res (T.lines prog)
 
--- how can we rewrite this so it's easier to read?
--- consider using Control.Error
 evalExpr :: Show a => Either a Expr -> Doc
 evalExpr p =
     case p of
@@ -57,3 +58,6 @@ evalExpr p =
                             case runEval p' of 
                                  Left err -> display err
                                  Right res' -> display res'
+
+stripComments :: T.Text -> T.Text
+stripComments = T.strip . T.takeWhile (/= '#')

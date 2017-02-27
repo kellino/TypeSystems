@@ -43,19 +43,26 @@ secCheck (Assign var val) = do
     val' <- secCheck val
     if var' `confines` val'
        then return val'
-       else throwError $ "not typeable: implicit flow from " ++ show val' ++ " to " ++ show var'
+       else throwError $ flowError val' var'
 secCheck (IfThenElse b c1 c2) = do
     b' <- secCheck b
-    c1' <- secCheck c1
-    c2' <- secCheck c2
-    let arms = c1' `join` c2'
-    if b' `isSubTypeOf` arms
-       then return arms
-       else throwError $ "Untypeable: implicit flow from " ++ show b' ++ " to " ++ show arms
+    case (c1, c2) of 
+        (Assign{}, Assign{}) -> do
+            c1' <- secCheck c1
+            c2' <- secCheck c2
+            let arms = c1' `meet` c2'
+             in if b' `isSubTypeOf` arms
+                   then return $ b' `join` arms
+                   else throwError $ flowError b' arms
+        (_, _) -> throwError "arms of conditional can only be assignments"
 secCheck err = throwError $ show err
 
+flowError :: Label -> Label -> String
+flowError e1 e2 = "not typeable: implicit flow between " ++ show e1 ++ " and " ++ show e2
+ 
+
 isSubTypeOf :: Label -> Label -> Bool
-isSubTypeOf l1 l2 = l1 `eq` l2
+l1 `isSubTypeOf` l2 = l1 `eq` l2
 
 confines :: Label -> Label -> Bool
-confines l1 l2 = l2 `eq` l1
+confines l1 l2 = l2 `isSubTypeOf` l1
