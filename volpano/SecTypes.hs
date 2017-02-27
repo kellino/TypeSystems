@@ -22,7 +22,8 @@ secCheck (Var _ l) = do
 secCheck (Num _ l) = do
     tell ["num"]
     return l
-secCheck (Op _ n1 n2) = do
+secCheck (Op op n1 n2) = do
+    tell ["Op " ++ show op]
     n1' <- secCheck n1
     n2' <- secCheck n2
     return $ join n1' n2'
@@ -33,18 +34,18 @@ secCheck (Skip l) = do
     tell ["skip"]
     return l
 secCheck (Seq e1 e2) = do
-    e1' <- secCheck e1
-    e2' <- secCheck e2
-    if e1' `confines` e2'
-       then return e2'
-       else throwError "not typeable"
+    tell ["seq"]
+    _ <- secCheck e1
+    secCheck e2
 secCheck (Assign var val) = do
+    tell ["assign"]
     var' <- secCheck var
     val' <- secCheck val
     if var' `confines` val'
        then return val'
        else throwError $ flowError val' var'
 secCheck (IfThenElse b c1 c2) = do
+    tell ["ifThenElse"]
     b' <- secCheck b
     case (c1, c2) of 
         (Assign{}, Assign{}) -> do
@@ -54,12 +55,11 @@ secCheck (IfThenElse b c1 c2) = do
              in if b' `isSubTypeOf` arms
                    then return $ b' `join` arms
                    else throwError $ flowError b' arms
-        (_, _) -> throwError "arms of conditional can only be assignments"
-secCheck err = throwError $ show err
+        (_, _) -> throwError "arms of conditional can only be assignments in this simple language"
+secCheck err = throwError $ show err -- this should be unreachable
 
 flowError :: Label -> Label -> String
 flowError e1 e2 = "not typeable: implicit flow between " ++ show e1 ++ " and " ++ show e2
- 
 
 isSubTypeOf :: Label -> Label -> Bool
 l1 `isSubTypeOf` l2 = l1 `eq` l2
