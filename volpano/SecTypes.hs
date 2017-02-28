@@ -16,11 +16,11 @@ runSecTypeCheck :: Expr -> Either Flow (Label, [Step])
 runSecTypeCheck =  runIdentity . runExceptT . runWriterT . secCheck 
 
 secCheck :: Expr -> SecType Label
-secCheck (Var _ l) = do
-    tell ["var"]
+secCheck (Var n l) = do
+    tell ["γ ⊦ " ++ n ++ ":" ++ show l]
     return l
-secCheck (Num _ l) = do
-    tell ["num"]
+secCheck (Num n l) = do
+    tell ["num " ++ show n ++ " " ++ show l]
     return l
 secCheck (Op op n1 n2) = do
     tell ["Op " ++ show op]
@@ -28,21 +28,23 @@ secCheck (Op op n1 n2) = do
     n2' <- secCheck n2
     return $ join n1' n2'
 secCheck (BoolExpr _ l) = do
-    tell ["bool"]
+    tell ["bool " ++ show l]
     return l
 secCheck (Skip l) = do
-    tell ["skip"]
+    tell ["skip " ++ show l]
     return l
 secCheck (Seq e1 e2) = do
     tell ["seq"]
     _ <- secCheck e1
     secCheck e2
-secCheck (Assign var val) = do
-    tell ["assign"]
+secCheck (Assign var@(Var n _) val@(Var n' _)) = do
     var' <- secCheck var
     val' <- secCheck val
     if var' `confines` val'
-       then return val'
+       then do 
+           tell [n ++ " := " ++ n' ++ " : " ++ show (var' `join` val') ++ " cmd"]
+           tell ["assign"]
+           return var'
        else throwError $ flowError val' var'
 secCheck (IfThenElse b c1 c2) = do
     tell ["ifThenElse"]

@@ -51,13 +51,14 @@ evalExpr p =
          Right p' ->
              case runSecTypeCheck p' of
                   Left err -> display err
-                  Right _ -> 
-                    case runTypeOf p' of
-                         Left err -> display err
-                         Right _ -> 
-                            case runEval p' of 
-                                 Left err -> display err
-                                 Right res' -> display res'
+                  Right res -> display res
+                  {-Right _ -> -}
+                    {-case runTypeOf p' of-}
+                         {-Left err -> display err-}
+                         {-Right _ -> -}
+                            {-case runEval p' of -}
+                                 {-Left err -> display err-}
+                                 {-Right res' -> display res'-}
 
 stripComments :: T.Text -> T.Text
 stripComments = T.strip . T.takeWhile (/= '#')
