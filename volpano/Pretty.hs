@@ -42,3 +42,4 @@ instance Display Ty where
     display TyNum = blue $ text "Int "
     display TyUnit = red $ text "() "
     display TyLoc = dullyellow $ text "Location "
+

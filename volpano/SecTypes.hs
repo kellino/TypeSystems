@@ -22,10 +22,15 @@ secCheck (Var n l) = do
 secCheck (Num n l) = do
     tell ["num " ++ show n ++ " " ++ show l]
     return l
-secCheck (Op op n1 n2) = do
+secCheck (Op op n1@(Num n _) n2@(Num n' _)) = do
     n1' <- secCheck n1
     n2' <- secCheck n2
-    tell [show n1 ++ " " ++ show op ++ " " ++ show n2 ++ " : " ++ show (join n1' n2')]
+    tell [show n ++ " " ++ show op ++ " " ++ show n' ++ " : " ++ show (join n1' n2')]
+    return $ join n1' n2'
+secCheck (Op op n1@(Var n _) n2@(Var n' _)) = do
+    n1' <- secCheck n1
+    n2' <- secCheck n2
+    tell [n ++ " " ++ show op ++ " " ++ n' ++ " : " ++ show (join n1' n2')]
     return $ join n1' n2'
 secCheck (BoolExpr _ l) = do
     tell ["bool " ++ show l]
@@ -55,7 +60,7 @@ secCheck (IfThenElse b c1 c2) = do
             let arms = c1' `meet` c2'
              in if b' `isSubTypeOf` arms
                    then do
-                       tell ["if...then...else : " ++ show (b' `join` arms) ++ " Cmd"]
+                       tell ["if...then...else" ++ show (b' `join` arms) ++ " Cmd"]
                        return $ b' `join` arms
                    else throwError $ flowError b' arms
         (_, _) -> throwError "arms of conditional can only be assignments in this simple language"
