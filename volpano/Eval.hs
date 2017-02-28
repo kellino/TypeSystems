@@ -46,10 +46,13 @@ eval err = throwError $ "The expression " ++ show err ++ " cannot be evaluated"
 
 add :: Expr -> Expr -> Expr
 add (Num n1 l) (Num n2 _) = Num (n1 + n2) l
+add v@Var{} _ = v
 
 sub :: Expr -> Expr -> Expr
 sub (Num n1 l) (Num n2 _) = Num (n1 - n2) l
+sub v@Var{} _ = v
 
 comp :: (Integer -> Integer -> Bool) -> Expr -> Expr -> Expr
 comp f (Num n1 l) (Num n2 _) = if n1 `f` n2 then BoolExpr TmTrue l else BoolExpr TmFalse l
+comp _ (Var _ l) _ = BoolExpr TmTrue l
 
