@@ -50,15 +50,17 @@ evalExpr p =
          Left err -> (display . show) err -- major parse error
          Right p' ->
              case runSecTypeCheck p' of
-                  Left err -> display err
-                  Right res -> display res
-                  {-Right _ -> -}
-                    {-case runTypeOf p' of-}
-                         {-Left err -> display err-}
-                         {-Right _ -> -}
-                            {-case runEval p' of -}
-                                 {-Left err -> display err-}
-                                 {-Right res' -> display res'-}
+                  Left _ -> text "implicit flow"
+                  Right derivation -> 
+                    case runTypeOf p' of
+                         Left err -> display err
+                         Right _ -> 
+                            case runEval p' of 
+                                 Left err -> display err
+                                 Right res' -> display res' 
+                                        <> hardline 
+                                        <> blue (text "Derivation:")
+                                        <> display derivation
 
 stripComments :: T.Text -> T.Text
 stripComments = T.strip . T.takeWhile (/= '#')

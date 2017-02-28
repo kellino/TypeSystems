@@ -17,15 +17,15 @@ runSecTypeCheck =  runIdentity . runExceptT . runWriterT . secCheck
 
 secCheck :: Expr -> SecType Label
 secCheck (Var n l) = do
-    tell ["γ ⊦ " ++ n ++ ":" ++ show l]
+    tell ["γ ⊦ " ++ n ++ " : " ++ show l]
     return l
 secCheck (Num n l) = do
     tell ["num " ++ show n ++ " " ++ show l]
     return l
 secCheck (Op op n1 n2) = do
-    tell ["Op " ++ show op]
     n1' <- secCheck n1
     n2' <- secCheck n2
+    tell [show n1 ++ " " ++ show op ++ " " ++ show n2 ++ " : " ++ show (join n1' n2')]
     return $ join n1' n2'
 secCheck (BoolExpr _ l) = do
     tell ["bool " ++ show l]
@@ -45,9 +45,8 @@ secCheck (Assign var@(Var n _) val@(Var n' _)) = do
            tell [n ++ " := " ++ n' ++ " : " ++ show (var' `join` val') ++ " cmd"]
            tell ["assign"]
            return var'
-       else throwError $ flowError val' var'
+       else throwError ""
 secCheck (IfThenElse b c1 c2) = do
-    tell ["ifThenElse"]
     b' <- secCheck b
     case (c1, c2) of 
         (Assign{}, Assign{}) -> do
@@ -55,7 +54,9 @@ secCheck (IfThenElse b c1 c2) = do
             c2' <- secCheck c2
             let arms = c1' `meet` c2'
              in if b' `isSubTypeOf` arms
-                   then return $ b' `join` arms
+                   then do
+                       tell ["if...then...else : " ++ show (b' `join` arms) ++ " Cmd"]
+                       return $ b' `join` arms
                    else throwError $ flowError b' arms
         (_, _) -> throwError "arms of conditional can only be assignments in this simple language"
 secCheck err = throwError $ show err -- this should be unreachable

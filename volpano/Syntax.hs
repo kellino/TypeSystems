@@ -51,7 +51,14 @@ data Op =
       | Equal 
       | LessThan 
       | LessThanEq 
-      deriving (Show, Eq)
+      deriving Eq
+
+instance Show Op where
+    show Add = "+"
+    show Sub = "-"
+    show Equal = "≡"
+    show LessThan = "<"
+    show LessThanEq = "≤"
 
 data Expr =
         Var Name Label
