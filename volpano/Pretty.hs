@@ -33,9 +33,9 @@ instance Display Expr where
     display x = text $ show x
 
 instance Display Label where
-    display Low = text "Low"
-    display Medium = text "Medium"
-    display High = text "High"
+    display Low    = blue $ text "Low"
+    display Medium = green $ text "Medium"
+    display High   = red $ text "High"
 
 instance Display Ty where
     display TyBool = green $ text "Bool "
