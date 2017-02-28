@@ -50,7 +50,7 @@ evalExpr p =
          Left err -> (display . show) err -- major parse error
          Right p' ->
              case runSecTypeCheck p' of
-                  Left _ -> text "implicit flow"
+                  Left _ -> text "error"
                   Right derivation -> 
                     case runTypeOf p' of
                          Left err -> display err

@@ -60,7 +60,7 @@ secCheck (IfThenElse b c1 c2) = do
             let arms = c1' `meet` c2'
              in if b' `isSubTypeOf` arms
                    then do
-                       tell ["if...then...else" ++ show (b' `join` arms) ++ " Cmd"]
+                       tell ["if...then...else : " ++ show (b' `join` arms) ++ " Cmd"]
                        return $ b' `join` arms
                    else throwError $ flowError b' arms
         (_, _) -> throwError "arms of conditional can only be assignments in this simple language"
