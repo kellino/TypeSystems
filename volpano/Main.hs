@@ -61,6 +61,7 @@ evalExpr p =
                                         <> hardline 
                                         <> blue (text "Derivation:")
                                         <> display derivation
+                                        <> hardline
 
 stripComments :: T.Text -> T.Text
 stripComments = T.strip . T.takeWhile (/= '#')
