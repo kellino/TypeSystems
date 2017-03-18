@@ -21,7 +21,7 @@ data BinOp = And | Or | Implies deriving (Show, Generic, Typeable)
 
 data Term =
       Var TName
-    | Val Boolean GType
+    | Val Boolean GLabel
     | Lam (Bind (TName, Embed Annot) Term)
     | App Term Term
     | IfThenElse Term Term Term
