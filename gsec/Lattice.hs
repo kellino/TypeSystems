@@ -45,11 +45,11 @@ instance Lattice GLabel where
     H \/ MA = H
     H \/ MB = H
     H \/ H = H
-    H \/ Any = Any
+    H \/ Any = H
     Any \/ L = Any
     Any \/ MA = Any
     Any \/ MB = Any
-    Any \/ H = Any
+    Any \/ H = H
     Any \/ Any = Any
     -- meets
     L /\ L = L
@@ -72,7 +72,7 @@ instance Lattice GLabel where
     H /\ MB = MB
     H /\ H = H
     H /\ Any = Any
-    Any /\ L = Any
+    Any /\ L = L
     Any /\ MA = Any
     Any /\ MB = Any
     Any /\ H = Any

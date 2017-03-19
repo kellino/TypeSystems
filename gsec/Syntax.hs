@@ -26,6 +26,7 @@ data Term =
     | App Term Term
     | IfThenElse Term Term Term
     | Op BinOp Term Term 
+    | Ascription Term GLabel
       deriving (Show, Generic, Typeable)
 
 newtype Annot = Annot (Maybe Term) deriving (Show, Generic, Typeable)
