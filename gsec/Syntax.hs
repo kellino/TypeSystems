@@ -7,8 +7,11 @@ import Lattice
 import Unbound.Generics.LocallyNameless
 import GHC.Generics (Generic)
 import Data.Typeable
+import qualified Data.Map as M
 
 type TName = Name Term
+
+type TermEnv = M.Map String Term
 
 data Boolean = TmTrue | TmFalse deriving (Eq, Show, Generic, Typeable)
 
@@ -29,7 +32,7 @@ data Term =
     | Ascription Term GLabel
       deriving (Show, Generic, Typeable)
 
-newtype Annot = Annot (Maybe Term) deriving (Show, Generic, Typeable)
+newtype Annot = Annot (Maybe GLabel) deriving (Show, Generic, Typeable)
 
 instance Alpha Term
 instance Alpha BinOp

@@ -4,11 +4,16 @@ import Syntax
 import Data.Maybe (fromMaybe)
 import qualified Data.Map as M
 
-newtype Gamma = Gamma { gamma :: M.Map TName GType}
+type Gamma = M.Map String GType
 
-lookupType :: TName -> Gamma -> GType
-lookupType n g = fromMaybe (error "not found in env") (M.lookup n (gamma g)) 
+{-newtype Gamma = Gamma { gamma :: M.Map TName GType}-}
+
+{-instance Show Gamma where-}
+    {-show g = show (gamma g)-}
+
+lookupType :: String -> Gamma -> GType
+lookupType n g = fromMaybe (error "not found in env") (M.lookup n g)
 
 -- for testing
 env :: Gamma
-env = Gamma { gamma = M.empty }
+env = M.empty

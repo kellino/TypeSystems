@@ -8,20 +8,27 @@ import Gamma
 
 import Unbound.Generics.LocallyNameless
 import Control.Monad.Except hiding (join)
-import Control.Monad.Reader hiding (join)
+import Control.Monad.State hiding (join)
 import Control.Monad.Identity hiding (join)
+import qualified Data.Map as M
 
-type StaticType = FreshMT (ReaderT Gamma (ExceptT String Identity))
+data Ctx = Ctx { termctx :: TermEnv, gammactx :: Gamma } deriving Show
 
-runStatic :: Gamma -> Term -> Either String GType
-runStatic env t = runIdentity . runExceptT $ runReaderT (runFreshMT $ typeOf t) env
+emptyContext :: Ctx
+emptyContext = Ctx { termctx = M.empty, gammactx = M.empty }
+
+type StaticType = FreshMT (StateT Ctx (ExceptT String Identity))
+
+runStatic :: Ctx -> Term -> Either String (GType, Ctx)
+runStatic ctx t = runIdentity . runExceptT $ runStateT (runFreshMT $ typeOf t) ctx
 
 typeOf :: Term -> StaticType GType
 -- variables
 typeOf (Var n) = do
-    en <- ask
-    let nty = lookupType n en
-    return nty
+    en <- get
+    let nty = lookupType (name2String n) (gammactx en)
+    return $ TyArr (TyBool L) (TyBool L) L
+    --return nty
 -- values
 typeOf (Val _ t) = return $ TyBool t
 -- boolean operations
@@ -31,14 +38,11 @@ typeOf (Op _ b1 b2) = do
     return $ TyBool (l \/ l')
 -- lambda abstraction
 typeOf (Lam bnd) = do
-    ((_, unembed -> Annot l), body) <- unbind bnd
+    ((n, unembed -> Annot l), body) <- unbind bnd
     b' <- typeOf body
-    _ <- case l of
-         Nothing -> return $ TyArr (TyBool Any) b' Any
-         (Just l') -> do 
-             t1 <- typeOf l'
-             return $ TyArr t1 b' (getLabel t1)
-    throwError "undefined"
+    case l of
+        Nothing -> return $ TyArr (TyBool Any) b' Any
+        (Just l') -> return $ TyArr (TyBool l') b' (l' /\ getLabel b')
 -- application    
 typeOf (App t1 t2) = do
     t1' <- typeOf t1
@@ -60,7 +64,7 @@ typeOf (IfThenElse b a1 a2) = do
              arms@(TyBool l') <- gradJoin a1' a2'
              if l `flowsTo` l'
                 then gradJoin b' arms
-                else throwError "flow not allowed"
+                else throwError $ "flow between " ++ show l ++ " and " ++ show l' ++ " is not allowed."
          _ -> throwError "arms of conditional must be a boolean expression"
 -- ascription 
 typeOf (Ascription t l) = do
@@ -68,7 +72,6 @@ typeOf (Ascription t l) = do
     if getLabel t' `flowsTo` l
        then return $ setLabel t' l
        else throwError $ show t' ++ " is not a subtype of " ++ show l
-
 
 gradJoin :: GType -> GType -> StaticType GType
 gradJoin (TyBool l1) (TyBool l2) = return $ TyBool (l1 \/ l2)
