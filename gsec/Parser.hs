@@ -153,9 +153,6 @@ letDecl = do
     rword "let"
     name <- identifier
     lbl <- optional $ braces labels
-    {-let lbl' = case lbl of -}
-                    {-Nothing -> Just Any-}
-                    {-Just r -> Just $ match r-}
     binds <- many variable
     void $ symbol "="
     body <- expr

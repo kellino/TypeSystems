@@ -1,19 +1,18 @@
+{-# LANGUAGE GeneralizedNewtypeDeriving #-}
+
 module Gamma where
 
 import Syntax
-import Data.Maybe (fromMaybe)
 import qualified Data.Map as M
 
-type Gamma = M.Map String GType
+newtype Gamma = Gamma (M.Map String GType) deriving (Show, Monoid)
 
-{-newtype Gamma = Gamma { gamma :: M.Map TName GType}-}
+lookupType :: String -> Gamma -> Maybe GType
+lookupType n (Gamma g) = M.lookup n g
 
-{-instance Show Gamma where-}
-    {-show g = show (gamma g)-}
-
-lookupType :: String -> Gamma -> GType
-lookupType n g = fromMaybe (error "not found in env") (M.lookup n g)
+extend :: Gamma -> (String, GType) -> Gamma
+extend (Gamma env) (nm, ty) = Gamma $ M.insert nm ty env
 
 -- for testing
 env :: Gamma
-env = M.empty
+env = Gamma M.empty

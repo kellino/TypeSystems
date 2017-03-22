@@ -6,14 +6,14 @@ import System.IO
 import Data.List (nub)
 
 type File = String
-data Flag = TypeCheck | Repl | Help deriving (Eq, Ord, Show, Enum, Bounded)
+data Flag = Static | Dynamic | Help deriving (Eq, Ord, Show, Enum, Bounded)
 
 flags :: [OptDescr Flag]
 flags =
-    [ Option ['s'] []    (NoArg TypeCheck)
+    [ Option ['s'] []    (NoArg Static)
         "Runs the static typechecker over a file"
-    , Option ['r'] []    (NoArg Repl)
-        "Launches the interactive repl"
+    , Option ['r'] []    (NoArg Dynamic)
+        "Launches the dynamic checker over a file"
     , Option ['h'] []    (NoArg Help)
         "Shows this help information"
     ]

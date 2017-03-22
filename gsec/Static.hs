@@ -12,10 +12,10 @@ import Control.Monad.State hiding (join)
 import Control.Monad.Identity hiding (join)
 import qualified Data.Map as M
 
-data Ctx = Ctx { termctx :: TermEnv, gammactx :: Gamma } deriving Show
+data Ctx = Ctx { termctx :: TermEnv, gammactx :: Gamma } 
 
 emptyContext :: Ctx
-emptyContext = Ctx { termctx = M.empty, gammactx = M.empty }
+emptyContext = Ctx { termctx = M.empty, gammactx = env }
 
 type StaticType = FreshMT (StateT Ctx (ExceptT String Identity))
 
