@@ -1,8 +1,10 @@
-module DynamicCheck (evalDef, runDynamic) where
+module DynamicCheck where
 
 import Syntax
 import Lattice
+import StaticCheck (getLabel)
 
+import Data.Maybe (fromJust)
 import Unbound.Generics.LocallyNameless
 import Control.Monad.Except
 import qualified Data.Map as M
@@ -28,12 +30,15 @@ eval env expr =
     case expr of
          Val b l -> return $ Val b l
 
-         Var n -> do
-             let Just v = M.lookup (name2String n) env
-             return v
+         Var n ->
+             case M.lookup (name2String n) env of
+                  Nothing -> throwError $ NotInScope (show n)
+                  Just v -> return v
+             --let Just v = M.lookup (name2String n) env
+             -- return v
 
          oper@(Op op b1 b2) -> do
-             check env oper
+             -- check env oper
              b1' <- eval env b1
              b2' <- eval env b2
              case op of
@@ -50,12 +55,12 @@ eval env expr =
              eval nenv t2
 
          app@(App t1 t2) -> do
-             check env app
+             -- let _ = check env app
              t1' <- eval env t1
              eval env (App t1' t2)
 
          cond@(IfThenElse b tr fl) -> do
-             check env cond
+             -- check env cond
              b' <- eval env b
              case b' of
                  (Val TmTrue _) -> eval env tr
@@ -80,18 +85,20 @@ bImplies (Val TmTrue l) (Val TmTrue l') = return (Val TmTrue (l \/ l'))
 bImplies (Val _ l) (Val _ l') = return (Val TmFalse (l \/ l'))
 bImplies _ _ = throwError $ Undefined "undefined"
 
-check :: TermEnv -> Term -> Eval Term
+check :: TermEnv -> Term -> Eval GLabel
 check env tm = 
     case tm of
-         app@(App t1 (App t2 a)) -> return app
-         app@App{} -> return app
-         IfThenElse b a1 a2 -> do
-             b' <- eval env b
-             a1' <- eval env a1
-             a2' <- eval env a2
-             throwError $ Undefined ""
-         x -> throwError $ Undefined $ show x
+         app@(App (Var n) t2) -> do
+             t1' <- getLabel' $ fromJust $ M.lookup (name2String n) env
+             t2' <- getLabel' t2
+             return $ dynamicMeet t1' t2'
+         x -> getLabel' x
 
+dynamicMeet :: GLabel -> GLabel -> GLabel
+dynamicMeet x Any = x
+dynamicMeet Any x = x
+dynamicMeet x y = x /\ y
 
-dynamicJoin :: GType -> GType -> Eval GType
-dynamicJoin = undefined
+getLabel' :: Term -> Eval GLabel
+getLabel' (Val _ l) = return l
+getLabel' _ = undefined

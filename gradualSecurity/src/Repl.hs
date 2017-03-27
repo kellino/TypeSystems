@@ -65,7 +65,7 @@ load args =
 
 comp :: (Monad m, MonadState Ctx m) => WordCompleter m
 comp n = do
-  let names = [":load", ":help", ":quit", ":browse", ":typeof"] -- placeholder
+  let names = [":load", ":help", ":quit", ":browse", ":typeof", "true", "false", "if", "then", "else"] -- placeholder
   return $ filter (isPrefixOf n) names
 
 options :: [(String, [String] -> Repl ())]

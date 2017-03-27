@@ -56,7 +56,7 @@ processStatic source static = do
     staticCtx <- hoist $ runOverFile st $ rights contents
     let (Gamma stx) = gamma staticCtx
     let (Gamma gm) = gamma st
-    let st' = st { termenv = termenv st
+    let st' = st { termenv = termenv
                  , gamma = Gamma (stx <> gm) }
     put st'
     let (Gamma new) = gamma st'

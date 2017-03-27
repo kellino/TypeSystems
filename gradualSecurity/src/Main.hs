@@ -22,7 +22,7 @@ main = do
     (args, files) <- getArgs >>= parse 
     if Static `elem` args 
        then do
-           _ <- createProcess $ proc "cat" ["/home/david/Programming/Haskell/TypeSystems/gradSec/src/logo"]
+           -- _ <- createProcess $ proc "cat" ["/home/david/Programming/Haskell/TypeSystems/gradualSecurity/logo"]
            putStrLn "The results of static checking are: \n"
            contents <- T.readFile $ head files
            evalStateT (processStatic contents True) initCtx

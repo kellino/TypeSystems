@@ -29,6 +29,7 @@ instance Display GLabel where
 instance Display Term where
     display (Val TmTrue l) = text "True" <> display l
     display (Val TmFalse l) = text "False" <> display l
+    display Lam{} = bold . text $ "<<closure>>"
     display x = text $ show x
 
 instance Display TypeError where
