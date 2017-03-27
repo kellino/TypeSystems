@@ -1,6 +1,6 @@
 {-# LANGUAGE FlexibleContexts #-}
 
-module Repl where
+module Repl (repl) where
 
 import Gamma 
 import Syntax

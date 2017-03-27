@@ -1,4 +1,4 @@
-module DynamicCheck where
+module DynamicCheck (evalDef, runDynamic) where
 
 import Syntax
 import Lattice
@@ -91,6 +91,7 @@ check env tm =
              a2' <- eval env a2
              throwError $ Undefined ""
          x -> throwError $ Undefined $ show x
+
 
 dynamicJoin :: GType -> GType -> Eval GType
 dynamicJoin = undefined
