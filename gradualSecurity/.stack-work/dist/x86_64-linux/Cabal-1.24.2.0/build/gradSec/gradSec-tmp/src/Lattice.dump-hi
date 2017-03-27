@@ -1,0 +1,1280 @@
+
+==================== FINAL INTERFACE ====================
+2017-03-27 12:48:19.350938575 UTC
+
+interface main@main:Lattice [family instance module] 8002
+  interface hash: 324b8461f3bfb6f2af41a71be529b6e1
+  ABI hash: 88fcd7154be3313c1d1dd4a146e11a7c
+  export-list hash: 495e954e0fa964baf836dbc63274531d
+  orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
+  flag hash: d1efd0c6814044e0f247b370bfef0389
+  sig of: Nothing
+  used TH splices: False
+  where
+exports:
+  Lattice.GLabel{Lattice.Any Lattice.H Lattice.L Lattice.MA Lattice.MB}
+  Lattice.Lattice{Lattice./\ Lattice.\/ Lattice.bottom Lattice.flowsTo Lattice.top}
+module dependencies:
+package dependencies: base-4.9.1.0* ghc-prim-0.5.0.0
+                      integer-gmp-1.0.0.1
+orphans: base-4.9.1.0:GHC.Base base-4.9.1.0:GHC.Float
+family instance modules: base-4.9.1.0:Control.Applicative
+                         base-4.9.1.0:Data.Either base-4.9.1.0:Data.Functor.Const
+                         base-4.9.1.0:Data.Monoid base-4.9.1.0:Data.Type.Equality
+                         base-4.9.1.0:GHC.Generics base-4.9.1.0:GHC.IO.Exception
+                         base-4.9.1.0:GHC.TypeLits
+import  -/  base-4.9.1.0:GHC.Generics 1dbec2bc7dd1c5bd8c89ed857eaed19b
+import  -/  base-4.9.1.0:GHC.Show a027f5ac24879eaba752f44aa90fe511
+import  -/  base-4.9.1.0:Prelude 22dd289b8469a8fa8dc81cab7b237771
+import  -/  ghc-prim-0.5.0.0:GHC.Classes 0bdf3d057a415ec1b84a7b1994efbe47
+import  -/  ghc-prim-0.5.0.0:GHC.Types 89f8de4f08018c9177c98d979eae0e45
+9052b3c150b0d7c7ae0110d0be5cae63
+  $fEqGLabel :: GHC.Classes.Eq Lattice.GLabel
+  DFunId
+  {- HasNoCafRefs, Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ Lattice.GLabel Lattice.$fEqGLabel_$c== Lattice.$fEqGLabel_$c/= -}
+9052b3c150b0d7c7ae0110d0be5cae63
+  $fEqGLabel_$c/= ::
+    Lattice.GLabel -> Lattice.GLabel -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: (\ (a :: Lattice.GLabel) (b :: Lattice.GLabel) ->
+                 case a of wild {
+                   Lattice.L
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.True Lattice.L -> GHC.Types.False }
+                   Lattice.MA
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.True Lattice.MA -> GHC.Types.False }
+                   Lattice.MB
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.True Lattice.MB -> GHC.Types.False }
+                   Lattice.H
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.True Lattice.H -> GHC.Types.False }
+                   Lattice.Any
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.True Lattice.Any -> GHC.Types.False } }) -}
+9052b3c150b0d7c7ae0110d0be5cae63
+  $fEqGLabel_$c== ::
+    Lattice.GLabel -> Lattice.GLabel -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: (\ (ds :: Lattice.GLabel) (ds1 :: Lattice.GLabel) ->
+                 case ds of wild {
+                   Lattice.L
+                   -> case ds1 of wild1 {
+                        DEFAULT -> GHC.Types.False Lattice.L -> GHC.Types.True }
+                   Lattice.MA
+                   -> case ds1 of wild1 {
+                        DEFAULT -> GHC.Types.False Lattice.MA -> GHC.Types.True }
+                   Lattice.MB
+                   -> case ds1 of wild1 {
+                        DEFAULT -> GHC.Types.False Lattice.MB -> GHC.Types.True }
+                   Lattice.H
+                   -> case ds1 of wild1 {
+                        DEFAULT -> GHC.Types.False Lattice.H -> GHC.Types.True }
+                   Lattice.Any
+                   -> case ds1 of wild1 {
+                        DEFAULT -> GHC.Types.False Lattice.Any -> GHC.Types.True } }) -}
+9052b3c150b0d7c7ae0110d0be5cae63
+  $fGenericGLabel :: GHC.Generics.Generic Lattice.GLabel
+  DFunId
+  {- HasNoCafRefs, Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ Lattice.GLabel
+                  Lattice.$fGenericGLabel_$cfrom
+                  Lattice.$fGenericGLabel_$cto -}
+9052b3c150b0d7c7ae0110d0be5cae63
+  $fGenericGLabel1 ::
+    Lattice.GLabel
+    -> (GHC.Generics.:+:)
+         (GHC.Generics.M1
+            GHC.Generics.C
+            ('GHC.Generics.MetaCons "L" 'GHC.Generics.PrefixI 'GHC.Types.False)
+            GHC.Generics.U1
+          GHC.Generics.:+: GHC.Generics.M1
+                             GHC.Generics.C
+                             ('GHC.Generics.MetaCons
+                                "MA" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                             GHC.Generics.U1)
+         (GHC.Generics.M1
+            GHC.Generics.C
+            ('GHC.Generics.MetaCons
+               "MB" 'GHC.Generics.PrefixI 'GHC.Types.False)
+            GHC.Generics.U1
+          GHC.Generics.:+: (GHC.Generics.M1
+                              GHC.Generics.C
+                              ('GHC.Generics.MetaCons "H" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                              GHC.Generics.U1
+                            GHC.Generics.:+: GHC.Generics.M1
+                                               GHC.Generics.C
+                                               ('GHC.Generics.MetaCons
+                                                  "Any" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                                               GHC.Generics.U1))
+         x
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U>,
+     Unfolding: InlineRule (1, True, False)
+                (\ @ x (x1 :: Lattice.GLabel) ->
+                 case x1 of wild {
+                   Lattice.L -> Lattice.$fGenericGLabel12 @ x
+                   Lattice.MA -> Lattice.$fGenericGLabel10 @ x
+                   Lattice.MB -> Lattice.$fGenericGLabel8 @ x
+                   Lattice.H -> Lattice.$fGenericGLabel5 @ x
+                   Lattice.Any -> Lattice.$fGenericGLabel2 @ x }) -}
+01028feb58211bf9296975a3bad595a4
+  $fGenericGLabel10 ::
+    (GHC.Generics.:+:)
+      (GHC.Generics.M1
+         GHC.Generics.C
+         ('GHC.Generics.MetaCons "L" 'GHC.Generics.PrefixI 'GHC.Types.False)
+         GHC.Generics.U1
+       GHC.Generics.:+: GHC.Generics.M1
+                          GHC.Generics.C
+                          ('GHC.Generics.MetaCons
+                             "MA" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                          GHC.Generics.U1)
+      (GHC.Generics.M1
+         GHC.Generics.C
+         ('GHC.Generics.MetaCons
+            "MB" 'GHC.Generics.PrefixI 'GHC.Types.False)
+         GHC.Generics.U1
+       GHC.Generics.:+: (GHC.Generics.M1
+                           GHC.Generics.C
+                           ('GHC.Generics.MetaCons "H" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                           GHC.Generics.U1
+                         GHC.Generics.:+: GHC.Generics.M1
+                                            GHC.Generics.C
+                                            ('GHC.Generics.MetaCons
+                                               "Any" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                                            GHC.Generics.U1))
+      x
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (\ @ x ->
+                 GHC.Generics.L1
+                   @ (GHC.Generics.M1
+                        GHC.Generics.C
+                        ('GHC.Generics.MetaCons "L" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                        GHC.Generics.U1
+                      GHC.Generics.:+: GHC.Generics.M1
+                                         GHC.Generics.C
+                                         ('GHC.Generics.MetaCons
+                                            "MA" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                                         GHC.Generics.U1)
+                   @ (GHC.Generics.M1
+                        GHC.Generics.C
+                        ('GHC.Generics.MetaCons
+                           "MB" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                        GHC.Generics.U1
+                      GHC.Generics.:+: (GHC.Generics.M1
+                                          GHC.Generics.C
+                                          ('GHC.Generics.MetaCons
+                                             "H" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                                          GHC.Generics.U1
+                                        GHC.Generics.:+: GHC.Generics.M1
+                                                           GHC.Generics.C
+                                                           ('GHC.Generics.MetaCons
+                                                              "Any"
+                                                              'GHC.Generics.PrefixI
+                                                              'GHC.Types.False)
+                                                           GHC.Generics.U1))
+                   @ x
+                   (Lattice.$fGenericGLabel11 @ x)) -}
+01679215e961d3bc48ddb472c085d98a
+  $fGenericGLabel11 ::
+    (GHC.Generics.:+:)
+      (GHC.Generics.M1
+         GHC.Generics.C
+         ('GHC.Generics.MetaCons "L" 'GHC.Generics.PrefixI 'GHC.Types.False)
+         GHC.Generics.U1)
+      (GHC.Generics.M1
+         GHC.Generics.C
+         ('GHC.Generics.MetaCons
+            "MA" 'GHC.Generics.PrefixI 'GHC.Types.False)
+         GHC.Generics.U1)
+      x
+  {- HasNoCafRefs, Strictness: m2,
+     Unfolding: (\ @ x ->
+                 GHC.Generics.R1
+                   @ (GHC.Generics.M1
+                        GHC.Generics.C
+                        ('GHC.Generics.MetaCons "L" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                        GHC.Generics.U1)
+                   @ (GHC.Generics.M1
+                        GHC.Generics.C
+                        ('GHC.Generics.MetaCons
+                           "MA" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                        GHC.Generics.U1)
+                   @ x
+                   (GHC.Generics.U1 @ x)
+                     `cast`
+                   (Sym (GHC.Generics.N:M1[0]
+                             <GHC.Generics.C>_P
+                             <'GHC.Generics.MetaCons
+                                "MA" 'GHC.Generics.PrefixI 'GHC.Types.False>_P
+                             <GHC.Generics.U1>_R) <x>_N)) -}
+66818b6ac732885848383932b3655f43
+  $fGenericGLabel12 ::
+    (GHC.Generics.:+:)
+      (GHC.Generics.M1
+         GHC.Generics.C
+         ('GHC.Generics.MetaCons "L" 'GHC.Generics.PrefixI 'GHC.Types.False)
+         GHC.Generics.U1
+       GHC.Generics.:+: GHC.Generics.M1
+                          GHC.Generics.C
+                          ('GHC.Generics.MetaCons
+                             "MA" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                          GHC.Generics.U1)
+      (GHC.Generics.M1
+         GHC.Generics.C
+         ('GHC.Generics.MetaCons
+            "MB" 'GHC.Generics.PrefixI 'GHC.Types.False)
+         GHC.Generics.U1
+       GHC.Generics.:+: (GHC.Generics.M1
+                           GHC.Generics.C
+                           ('GHC.Generics.MetaCons "H" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                           GHC.Generics.U1
+                         GHC.Generics.:+: GHC.Generics.M1
+                                            GHC.Generics.C
+                                            ('GHC.Generics.MetaCons
+                                               "Any" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                                            GHC.Generics.U1))
+      x
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (\ @ x ->
+                 GHC.Generics.L1
+                   @ (GHC.Generics.M1
+                        GHC.Generics.C
+                        ('GHC.Generics.MetaCons "L" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                        GHC.Generics.U1
+                      GHC.Generics.:+: GHC.Generics.M1
+                                         GHC.Generics.C
+                                         ('GHC.Generics.MetaCons
+                                            "MA" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                                         GHC.Generics.U1)
+                   @ (GHC.Generics.M1
+                        GHC.Generics.C
+                        ('GHC.Generics.MetaCons
+                           "MB" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                        GHC.Generics.U1
+                      GHC.Generics.:+: (GHC.Generics.M1
+                                          GHC.Generics.C
+                                          ('GHC.Generics.MetaCons
+                                             "H" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                                          GHC.Generics.U1
+                                        GHC.Generics.:+: GHC.Generics.M1
+                                                           GHC.Generics.C
+                                                           ('GHC.Generics.MetaCons
+                                                              "Any"
+                                                              'GHC.Generics.PrefixI
+                                                              'GHC.Types.False)
+                                                           GHC.Generics.U1))
+                   @ x
+                   (Lattice.$fGenericGLabel13 @ x)) -}
+a1ef6dc6484262b3c3386aaa985b8fb0
+  $fGenericGLabel13 ::
+    (GHC.Generics.:+:)
+      (GHC.Generics.M1
+         GHC.Generics.C
+         ('GHC.Generics.MetaCons "L" 'GHC.Generics.PrefixI 'GHC.Types.False)
+         GHC.Generics.U1)
+      (GHC.Generics.M1
+         GHC.Generics.C
+         ('GHC.Generics.MetaCons
+            "MA" 'GHC.Generics.PrefixI 'GHC.Types.False)
+         GHC.Generics.U1)
+      x
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (\ @ x ->
+                 GHC.Generics.L1
+                   @ (GHC.Generics.M1
+                        GHC.Generics.C
+                        ('GHC.Generics.MetaCons "L" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                        GHC.Generics.U1)
+                   @ (GHC.Generics.M1
+                        GHC.Generics.C
+                        ('GHC.Generics.MetaCons
+                           "MA" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                        GHC.Generics.U1)
+                   @ x
+                   (GHC.Generics.U1 @ x)
+                     `cast`
+                   (Sym (GHC.Generics.N:M1[0]
+                             <GHC.Generics.C>_P
+                             <'GHC.Generics.MetaCons
+                                "L" 'GHC.Generics.PrefixI 'GHC.Types.False>_P
+                             <GHC.Generics.U1>_R) <x>_N)) -}
+40e07bc666a2f5c1e8ad5a242d7460a4
+  $fGenericGLabel2 ::
+    (GHC.Generics.:+:)
+      (GHC.Generics.M1
+         GHC.Generics.C
+         ('GHC.Generics.MetaCons "L" 'GHC.Generics.PrefixI 'GHC.Types.False)
+         GHC.Generics.U1
+       GHC.Generics.:+: GHC.Generics.M1
+                          GHC.Generics.C
+                          ('GHC.Generics.MetaCons
+                             "MA" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                          GHC.Generics.U1)
+      (GHC.Generics.M1
+         GHC.Generics.C
+         ('GHC.Generics.MetaCons
+            "MB" 'GHC.Generics.PrefixI 'GHC.Types.False)
+         GHC.Generics.U1
+       GHC.Generics.:+: (GHC.Generics.M1
+                           GHC.Generics.C
+                           ('GHC.Generics.MetaCons "H" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                           GHC.Generics.U1
+                         GHC.Generics.:+: GHC.Generics.M1
+                                            GHC.Generics.C
+                                            ('GHC.Generics.MetaCons
+                                               "Any" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                                            GHC.Generics.U1))
+      x
+  {- HasNoCafRefs, Strictness: m2,
+     Unfolding: (\ @ x ->
+                 GHC.Generics.R1
+                   @ (GHC.Generics.M1
+                        GHC.Generics.C
+                        ('GHC.Generics.MetaCons "L" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                        GHC.Generics.U1
+                      GHC.Generics.:+: GHC.Generics.M1
+                                         GHC.Generics.C
+                                         ('GHC.Generics.MetaCons
+                                            "MA" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                                         GHC.Generics.U1)
+                   @ (GHC.Generics.M1
+                        GHC.Generics.C
+                        ('GHC.Generics.MetaCons
+                           "MB" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                        GHC.Generics.U1
+                      GHC.Generics.:+: (GHC.Generics.M1
+                                          GHC.Generics.C
+                                          ('GHC.Generics.MetaCons
+                                             "H" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                                          GHC.Generics.U1
+                                        GHC.Generics.:+: GHC.Generics.M1
+                                                           GHC.Generics.C
+                                                           ('GHC.Generics.MetaCons
+                                                              "Any"
+                                                              'GHC.Generics.PrefixI
+                                                              'GHC.Types.False)
+                                                           GHC.Generics.U1))
+                   @ x
+                   (Lattice.$fGenericGLabel3 @ x)) -}
+9d0334835144cf4c4c860e835391deb3
+  $fGenericGLabel3 ::
+    (GHC.Generics.:+:)
+      (GHC.Generics.M1
+         GHC.Generics.C
+         ('GHC.Generics.MetaCons
+            "MB" 'GHC.Generics.PrefixI 'GHC.Types.False)
+         GHC.Generics.U1)
+      (GHC.Generics.M1
+         GHC.Generics.C
+         ('GHC.Generics.MetaCons "H" 'GHC.Generics.PrefixI 'GHC.Types.False)
+         GHC.Generics.U1
+       GHC.Generics.:+: GHC.Generics.M1
+                          GHC.Generics.C
+                          ('GHC.Generics.MetaCons
+                             "Any" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                          GHC.Generics.U1)
+      x
+  {- HasNoCafRefs, Strictness: m2,
+     Unfolding: (\ @ x ->
+                 GHC.Generics.R1
+                   @ (GHC.Generics.M1
+                        GHC.Generics.C
+                        ('GHC.Generics.MetaCons
+                           "MB" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                        GHC.Generics.U1)
+                   @ (GHC.Generics.M1
+                        GHC.Generics.C
+                        ('GHC.Generics.MetaCons "H" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                        GHC.Generics.U1
+                      GHC.Generics.:+: GHC.Generics.M1
+                                         GHC.Generics.C
+                                         ('GHC.Generics.MetaCons
+                                            "Any" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                                         GHC.Generics.U1)
+                   @ x
+                   (Lattice.$fGenericGLabel4 @ x)) -}
+237c26019718342bc8d99eeff2c1f29c
+  $fGenericGLabel4 ::
+    (GHC.Generics.:+:)
+      (GHC.Generics.M1
+         GHC.Generics.C
+         ('GHC.Generics.MetaCons "H" 'GHC.Generics.PrefixI 'GHC.Types.False)
+         GHC.Generics.U1)
+      (GHC.Generics.M1
+         GHC.Generics.C
+         ('GHC.Generics.MetaCons
+            "Any" 'GHC.Generics.PrefixI 'GHC.Types.False)
+         GHC.Generics.U1)
+      x
+  {- HasNoCafRefs, Strictness: m2,
+     Unfolding: (\ @ x ->
+                 GHC.Generics.R1
+                   @ (GHC.Generics.M1
+                        GHC.Generics.C
+                        ('GHC.Generics.MetaCons "H" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                        GHC.Generics.U1)
+                   @ (GHC.Generics.M1
+                        GHC.Generics.C
+                        ('GHC.Generics.MetaCons
+                           "Any" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                        GHC.Generics.U1)
+                   @ x
+                   (GHC.Generics.U1 @ x)
+                     `cast`
+                   (Sym (GHC.Generics.N:M1[0]
+                             <GHC.Generics.C>_P
+                             <'GHC.Generics.MetaCons
+                                "Any" 'GHC.Generics.PrefixI 'GHC.Types.False>_P
+                             <GHC.Generics.U1>_R) <x>_N)) -}
+5a55c7b6f9beb02f47aae320cb87091a
+  $fGenericGLabel5 ::
+    (GHC.Generics.:+:)
+      (GHC.Generics.M1
+         GHC.Generics.C
+         ('GHC.Generics.MetaCons "L" 'GHC.Generics.PrefixI 'GHC.Types.False)
+         GHC.Generics.U1
+       GHC.Generics.:+: GHC.Generics.M1
+                          GHC.Generics.C
+                          ('GHC.Generics.MetaCons
+                             "MA" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                          GHC.Generics.U1)
+      (GHC.Generics.M1
+         GHC.Generics.C
+         ('GHC.Generics.MetaCons
+            "MB" 'GHC.Generics.PrefixI 'GHC.Types.False)
+         GHC.Generics.U1
+       GHC.Generics.:+: (GHC.Generics.M1
+                           GHC.Generics.C
+                           ('GHC.Generics.MetaCons "H" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                           GHC.Generics.U1
+                         GHC.Generics.:+: GHC.Generics.M1
+                                            GHC.Generics.C
+                                            ('GHC.Generics.MetaCons
+                                               "Any" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                                            GHC.Generics.U1))
+      x
+  {- HasNoCafRefs, Strictness: m2,
+     Unfolding: (\ @ x ->
+                 GHC.Generics.R1
+                   @ (GHC.Generics.M1
+                        GHC.Generics.C
+                        ('GHC.Generics.MetaCons "L" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                        GHC.Generics.U1
+                      GHC.Generics.:+: GHC.Generics.M1
+                                         GHC.Generics.C
+                                         ('GHC.Generics.MetaCons
+                                            "MA" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                                         GHC.Generics.U1)
+                   @ (GHC.Generics.M1
+                        GHC.Generics.C
+                        ('GHC.Generics.MetaCons
+                           "MB" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                        GHC.Generics.U1
+                      GHC.Generics.:+: (GHC.Generics.M1
+                                          GHC.Generics.C
+                                          ('GHC.Generics.MetaCons
+                                             "H" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                                          GHC.Generics.U1
+                                        GHC.Generics.:+: GHC.Generics.M1
+                                                           GHC.Generics.C
+                                                           ('GHC.Generics.MetaCons
+                                                              "Any"
+                                                              'GHC.Generics.PrefixI
+                                                              'GHC.Types.False)
+                                                           GHC.Generics.U1))
+                   @ x
+                   (Lattice.$fGenericGLabel6 @ x)) -}
+542d40c4ee339250ca840a9c75a41aa1
+  $fGenericGLabel6 ::
+    (GHC.Generics.:+:)
+      (GHC.Generics.M1
+         GHC.Generics.C
+         ('GHC.Generics.MetaCons
+            "MB" 'GHC.Generics.PrefixI 'GHC.Types.False)
+         GHC.Generics.U1)
+      (GHC.Generics.M1
+         GHC.Generics.C
+         ('GHC.Generics.MetaCons "H" 'GHC.Generics.PrefixI 'GHC.Types.False)
+         GHC.Generics.U1
+       GHC.Generics.:+: GHC.Generics.M1
+                          GHC.Generics.C
+                          ('GHC.Generics.MetaCons
+                             "Any" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                          GHC.Generics.U1)
+      x
+  {- HasNoCafRefs, Strictness: m2,
+     Unfolding: (\ @ x ->
+                 GHC.Generics.R1
+                   @ (GHC.Generics.M1
+                        GHC.Generics.C
+                        ('GHC.Generics.MetaCons
+                           "MB" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                        GHC.Generics.U1)
+                   @ (GHC.Generics.M1
+                        GHC.Generics.C
+                        ('GHC.Generics.MetaCons "H" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                        GHC.Generics.U1
+                      GHC.Generics.:+: GHC.Generics.M1
+                                         GHC.Generics.C
+                                         ('GHC.Generics.MetaCons
+                                            "Any" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                                         GHC.Generics.U1)
+                   @ x
+                   (Lattice.$fGenericGLabel7 @ x)) -}
+3f973adcbb9ca0556f25667ac11d7ab1
+  $fGenericGLabel7 ::
+    (GHC.Generics.:+:)
+      (GHC.Generics.M1
+         GHC.Generics.C
+         ('GHC.Generics.MetaCons "H" 'GHC.Generics.PrefixI 'GHC.Types.False)
+         GHC.Generics.U1)
+      (GHC.Generics.M1
+         GHC.Generics.C
+         ('GHC.Generics.MetaCons
+            "Any" 'GHC.Generics.PrefixI 'GHC.Types.False)
+         GHC.Generics.U1)
+      x
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (\ @ x ->
+                 GHC.Generics.L1
+                   @ (GHC.Generics.M1
+                        GHC.Generics.C
+                        ('GHC.Generics.MetaCons "H" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                        GHC.Generics.U1)
+                   @ (GHC.Generics.M1
+                        GHC.Generics.C
+                        ('GHC.Generics.MetaCons
+                           "Any" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                        GHC.Generics.U1)
+                   @ x
+                   (GHC.Generics.U1 @ x)
+                     `cast`
+                   (Sym (GHC.Generics.N:M1[0]
+                             <GHC.Generics.C>_P
+                             <'GHC.Generics.MetaCons
+                                "H" 'GHC.Generics.PrefixI 'GHC.Types.False>_P
+                             <GHC.Generics.U1>_R) <x>_N)) -}
+287086d2f306b47c21637a9138c4b17d
+  $fGenericGLabel8 ::
+    (GHC.Generics.:+:)
+      (GHC.Generics.M1
+         GHC.Generics.C
+         ('GHC.Generics.MetaCons "L" 'GHC.Generics.PrefixI 'GHC.Types.False)
+         GHC.Generics.U1
+       GHC.Generics.:+: GHC.Generics.M1
+                          GHC.Generics.C
+                          ('GHC.Generics.MetaCons
+                             "MA" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                          GHC.Generics.U1)
+      (GHC.Generics.M1
+         GHC.Generics.C
+         ('GHC.Generics.MetaCons
+            "MB" 'GHC.Generics.PrefixI 'GHC.Types.False)
+         GHC.Generics.U1
+       GHC.Generics.:+: (GHC.Generics.M1
+                           GHC.Generics.C
+                           ('GHC.Generics.MetaCons "H" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                           GHC.Generics.U1
+                         GHC.Generics.:+: GHC.Generics.M1
+                                            GHC.Generics.C
+                                            ('GHC.Generics.MetaCons
+                                               "Any" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                                            GHC.Generics.U1))
+      x
+  {- HasNoCafRefs, Strictness: m2,
+     Unfolding: (\ @ x ->
+                 GHC.Generics.R1
+                   @ (GHC.Generics.M1
+                        GHC.Generics.C
+                        ('GHC.Generics.MetaCons "L" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                        GHC.Generics.U1
+                      GHC.Generics.:+: GHC.Generics.M1
+                                         GHC.Generics.C
+                                         ('GHC.Generics.MetaCons
+                                            "MA" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                                         GHC.Generics.U1)
+                   @ (GHC.Generics.M1
+                        GHC.Generics.C
+                        ('GHC.Generics.MetaCons
+                           "MB" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                        GHC.Generics.U1
+                      GHC.Generics.:+: (GHC.Generics.M1
+                                          GHC.Generics.C
+                                          ('GHC.Generics.MetaCons
+                                             "H" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                                          GHC.Generics.U1
+                                        GHC.Generics.:+: GHC.Generics.M1
+                                                           GHC.Generics.C
+                                                           ('GHC.Generics.MetaCons
+                                                              "Any"
+                                                              'GHC.Generics.PrefixI
+                                                              'GHC.Types.False)
+                                                           GHC.Generics.U1))
+                   @ x
+                   (Lattice.$fGenericGLabel9 @ x)) -}
+f1432a44addbf8053212e737d7b5fe1c
+  $fGenericGLabel9 ::
+    (GHC.Generics.:+:)
+      (GHC.Generics.M1
+         GHC.Generics.C
+         ('GHC.Generics.MetaCons
+            "MB" 'GHC.Generics.PrefixI 'GHC.Types.False)
+         GHC.Generics.U1)
+      (GHC.Generics.M1
+         GHC.Generics.C
+         ('GHC.Generics.MetaCons "H" 'GHC.Generics.PrefixI 'GHC.Types.False)
+         GHC.Generics.U1
+       GHC.Generics.:+: GHC.Generics.M1
+                          GHC.Generics.C
+                          ('GHC.Generics.MetaCons
+                             "Any" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                          GHC.Generics.U1)
+      x
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (\ @ x ->
+                 GHC.Generics.L1
+                   @ (GHC.Generics.M1
+                        GHC.Generics.C
+                        ('GHC.Generics.MetaCons
+                           "MB" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                        GHC.Generics.U1)
+                   @ (GHC.Generics.M1
+                        GHC.Generics.C
+                        ('GHC.Generics.MetaCons "H" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                        GHC.Generics.U1
+                      GHC.Generics.:+: GHC.Generics.M1
+                                         GHC.Generics.C
+                                         ('GHC.Generics.MetaCons
+                                            "Any" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                                         GHC.Generics.U1)
+                   @ x
+                   (GHC.Generics.U1 @ x)
+                     `cast`
+                   (Sym (GHC.Generics.N:M1[0]
+                             <GHC.Generics.C>_P
+                             <'GHC.Generics.MetaCons
+                                "MB" 'GHC.Generics.PrefixI 'GHC.Types.False>_P
+                             <GHC.Generics.U1>_R) <x>_N)) -}
+9052b3c150b0d7c7ae0110d0be5cae63
+  $fGenericGLabel_$cfrom ::
+    Lattice.GLabel -> GHC.Generics.Rep Lattice.GLabel x
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U>,
+     Unfolding: InlineRule (0, True, True)
+                Lattice.$fGenericGLabel1
+                  `cast`
+                (forall (x :: <GHC.Types.*>_N).
+                 <Lattice.GLabel>_R
+                 ->_R Trans
+                          (Sym (GHC.Generics.N:M1[0]
+                                    <GHC.Generics.D>_P
+                                    <'GHC.Generics.MetaData
+                                       "GLabel" "Lattice" "main" 'GHC.Types.False>_P
+                                    <(GHC.Generics.M1
+                                        GHC.Generics.C
+                                        ('GHC.Generics.MetaCons
+                                           "L" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                                        GHC.Generics.U1
+                                      GHC.Generics.:+: GHC.Generics.M1
+                                                         GHC.Generics.C
+                                                         ('GHC.Generics.MetaCons
+                                                            "MA"
+                                                            'GHC.Generics.PrefixI
+                                                            'GHC.Types.False)
+                                                         GHC.Generics.U1)
+                                     GHC.Generics.:+: (GHC.Generics.M1
+                                                         GHC.Generics.C
+                                                         ('GHC.Generics.MetaCons
+                                                            "MB"
+                                                            'GHC.Generics.PrefixI
+                                                            'GHC.Types.False)
+                                                         GHC.Generics.U1
+                                                       GHC.Generics.:+: (GHC.Generics.M1
+                                                                           GHC.Generics.C
+                                                                           ('GHC.Generics.MetaCons
+                                                                              "H"
+                                                                              'GHC.Generics.PrefixI
+                                                                              'GHC.Types.False)
+                                                                           GHC.Generics.U1
+                                                                         GHC.Generics.:+: GHC.Generics.M1
+                                                                                            GHC.Generics.C
+                                                                                            ('GHC.Generics.MetaCons
+                                                                                               "Any"
+                                                                                               'GHC.Generics.PrefixI
+                                                                                               'GHC.Types.False)
+                                                                                            GHC.Generics.U1))>_R))
+                          (Sub (Sym (Lattice.Rep_GLabel[0]))) <x>_N) -}
+9052b3c150b0d7c7ae0110d0be5cae63
+  $fGenericGLabel_$cto ::
+    GHC.Generics.Rep Lattice.GLabel x -> Lattice.GLabel
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U>,
+     Unfolding: (\ @ x (ds :: GHC.Generics.Rep Lattice.GLabel x) ->
+                 case ds
+                        `cast`
+                      (Trans
+                           (Sub (Lattice.Rep_GLabel[0]))
+                           (GHC.Generics.N:M1[0]
+                                <GHC.Generics.D>_P
+                                <'GHC.Generics.MetaData
+                                   "GLabel" "Lattice" "main" 'GHC.Types.False>_P
+                                <(GHC.Generics.M1
+                                    GHC.Generics.C
+                                    ('GHC.Generics.MetaCons
+                                       "L" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                                    GHC.Generics.U1
+                                  GHC.Generics.:+: GHC.Generics.M1
+                                                     GHC.Generics.C
+                                                     ('GHC.Generics.MetaCons
+                                                        "MA" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                                                     GHC.Generics.U1)
+                                 GHC.Generics.:+: (GHC.Generics.M1
+                                                     GHC.Generics.C
+                                                     ('GHC.Generics.MetaCons
+                                                        "MB" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                                                     GHC.Generics.U1
+                                                   GHC.Generics.:+: (GHC.Generics.M1
+                                                                       GHC.Generics.C
+                                                                       ('GHC.Generics.MetaCons
+                                                                          "H"
+                                                                          'GHC.Generics.PrefixI
+                                                                          'GHC.Types.False)
+                                                                       GHC.Generics.U1
+                                                                     GHC.Generics.:+: GHC.Generics.M1
+                                                                                        GHC.Generics.C
+                                                                                        ('GHC.Generics.MetaCons
+                                                                                           "Any"
+                                                                                           'GHC.Generics.PrefixI
+                                                                                           'GHC.Types.False)
+                                                                                        GHC.Generics.U1))>_R) <x>_N) of wild {
+                   GHC.Generics.L1 ds1
+                   -> case ds1 of wild1 {
+                        GHC.Generics.L1 ds2 -> case ds2 of tpl { DEFAULT -> Lattice.L }
+                        GHC.Generics.R1 ds2 -> case ds2 of tpl { DEFAULT -> Lattice.MA } }
+                   GHC.Generics.R1 ds1
+                   -> case ds1 of wild1 {
+                        GHC.Generics.L1 ds2 -> case ds2 of tpl { DEFAULT -> Lattice.MB }
+                        GHC.Generics.R1 ds2
+                        -> case ds2 of wild2 {
+                             GHC.Generics.L1 ds3 -> case ds3 of tpl { DEFAULT -> Lattice.H }
+                             GHC.Generics.R1 ds3
+                             -> case ds3 of tpl { DEFAULT -> Lattice.Any } } } }) -}
+58d412278b6d77e3ae71326e3acd4cee
+  $fLatticeGLabel :: Lattice.Lattice Lattice.GLabel
+  DFunId
+  {- HasNoCafRefs, Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ Lattice.GLabel
+                  Lattice.$fOrdGLabel
+                  Lattice.H
+                  Lattice.L
+                  Lattice.$fLatticeGLabel_$c\/
+                  Lattice.$fLatticeGLabel_$c/\
+                  Lattice.$fLatticeGLabel_$cflowsTo -}
+4446dc8cbcb1bb2888b45f9b6bc05e51
+  $fLatticeGLabel_$c/\ ::
+    Lattice.GLabel -> Lattice.GLabel -> Lattice.GLabel
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: (\ (ds :: Lattice.GLabel) (ds1 :: Lattice.GLabel) ->
+                 case ds of wild {
+                   Lattice.L -> case ds1 of wild1 { DEFAULT -> Lattice.L }
+                   Lattice.MA
+                   -> case ds1 of wild1 {
+                        DEFAULT -> Lattice.L
+                        Lattice.MA -> Lattice.MA
+                        Lattice.H -> Lattice.MA
+                        Lattice.Any -> Lattice.Any }
+                   Lattice.MB
+                   -> case ds1 of wild1 {
+                        DEFAULT -> Lattice.L
+                        Lattice.MB -> Lattice.MB
+                        Lattice.H -> Lattice.MB
+                        Lattice.Any -> Lattice.Any }
+                   Lattice.H -> ds1
+                   Lattice.Any
+                   -> case ds1 of wild1 {
+                        Lattice.L -> Lattice.L
+                        Lattice.MA -> Lattice.Any
+                        Lattice.MB -> Lattice.Any
+                        Lattice.H -> Lattice.Any
+                        Lattice.Any -> Lattice.Any } }) -}
+56b65b6c347910674717b9107196355d
+  $fLatticeGLabel_$c\/ ::
+    Lattice.GLabel -> Lattice.GLabel -> Lattice.GLabel
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: (\ (ds :: Lattice.GLabel) (ds1 :: Lattice.GLabel) ->
+                 case ds of wild {
+                   Lattice.L -> ds1
+                   Lattice.MA
+                   -> case ds1 of wild1 {
+                        DEFAULT -> Lattice.MA
+                        Lattice.MB -> Lattice.H
+                        Lattice.H -> Lattice.H
+                        Lattice.Any -> Lattice.Any }
+                   Lattice.MB
+                   -> case ds1 of wild1 {
+                        DEFAULT -> Lattice.MB
+                        Lattice.MA -> Lattice.H
+                        Lattice.H -> Lattice.H
+                        Lattice.Any -> Lattice.Any }
+                   Lattice.H -> case ds1 of wild1 { DEFAULT -> Lattice.H }
+                   Lattice.Any
+                   -> case ds1 of wild1 {
+                        DEFAULT -> Lattice.Any Lattice.H -> Lattice.H } }) -}
+fb050a8ba344a3dc64ad57c272e44b95
+  $fLatticeGLabel_$cflowsTo ::
+    Lattice.GLabel -> Lattice.GLabel -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: (\ (ds :: Lattice.GLabel) (ds1 :: Lattice.GLabel) ->
+                 case ds of wild {
+                   Lattice.L -> case ds1 of wild1 { DEFAULT -> GHC.Types.True }
+                   Lattice.MA
+                   -> case ds1 of wild1 {
+                        DEFAULT -> GHC.Types.False
+                        Lattice.MA -> GHC.Types.True
+                        Lattice.H -> GHC.Types.True
+                        Lattice.Any -> GHC.Types.True }
+                   Lattice.MB
+                   -> case ds1 of wild1 {
+                        DEFAULT -> GHC.Types.False
+                        Lattice.MB -> GHC.Types.True
+                        Lattice.H -> GHC.Types.True
+                        Lattice.Any -> GHC.Types.True }
+                   Lattice.H
+                   -> case ds1 of wild1 {
+                        DEFAULT -> GHC.Types.False
+                        Lattice.H -> GHC.Types.True
+                        Lattice.Any -> GHC.Types.True }
+                   Lattice.Any
+                   -> case ds1 of wild1 { DEFAULT -> GHC.Types.True } }) -}
+9052b3c150b0d7c7ae0110d0be5cae63
+  $fOrdGLabel :: GHC.Classes.Ord Lattice.GLabel
+  DFunId
+  {- HasNoCafRefs, Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ Lattice.GLabel
+                  Lattice.$fEqGLabel
+                  Lattice.$fOrdGLabel_$ccompare
+                  Lattice.$fOrdGLabel_$c<
+                  Lattice.$fOrdGLabel_$c<=
+                  Lattice.$fOrdGLabel_$c>
+                  Lattice.$fOrdGLabel_$c>=
+                  Lattice.$fOrdGLabel_$cmax
+                  Lattice.$fOrdGLabel_$cmin -}
+9052b3c150b0d7c7ae0110d0be5cae63
+  $fOrdGLabel_$c< ::
+    Lattice.GLabel -> Lattice.GLabel -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: (\ (a :: Lattice.GLabel) (b :: Lattice.GLabel) ->
+                 case a of wild {
+                   Lattice.L
+                   -> case b of wild1 {
+                        Lattice.L -> GHC.Types.False
+                        Lattice.MA -> GHC.Types.True
+                        Lattice.MB -> GHC.Types.True
+                        Lattice.H -> GHC.Types.True
+                        Lattice.Any -> GHC.Types.True }
+                   Lattice.MA
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.False
+                        Lattice.MB -> GHC.Types.True
+                        Lattice.H -> GHC.Types.True
+                        Lattice.Any -> GHC.Types.True }
+                   Lattice.MB
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.False
+                        Lattice.H -> GHC.Types.True
+                        Lattice.Any -> GHC.Types.True }
+                   Lattice.H
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.False Lattice.Any -> GHC.Types.True }
+                   Lattice.Any -> case b of wild1 { DEFAULT -> GHC.Types.False } }) -}
+9052b3c150b0d7c7ae0110d0be5cae63
+  $fOrdGLabel_$c<= ::
+    Lattice.GLabel -> Lattice.GLabel -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: (\ (a :: Lattice.GLabel) (b :: Lattice.GLabel) ->
+                 case a of wild {
+                   Lattice.L -> case b of wild1 { DEFAULT -> GHC.Types.True }
+                   Lattice.MA
+                   -> case b of wild1 {
+                        Lattice.L -> GHC.Types.False
+                        Lattice.MA -> GHC.Types.True
+                        Lattice.MB -> GHC.Types.True
+                        Lattice.H -> GHC.Types.True
+                        Lattice.Any -> GHC.Types.True }
+                   Lattice.MB
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.False
+                        Lattice.MB -> GHC.Types.True
+                        Lattice.H -> GHC.Types.True
+                        Lattice.Any -> GHC.Types.True }
+                   Lattice.H
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.False
+                        Lattice.H -> GHC.Types.True
+                        Lattice.Any -> GHC.Types.True }
+                   Lattice.Any
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.False Lattice.Any -> GHC.Types.True } }) -}
+9052b3c150b0d7c7ae0110d0be5cae63
+  $fOrdGLabel_$c> ::
+    Lattice.GLabel -> Lattice.GLabel -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: (\ (a :: Lattice.GLabel) (b :: Lattice.GLabel) ->
+                 case a of wild {
+                   Lattice.L -> case b of wild1 { DEFAULT -> GHC.Types.False }
+                   Lattice.MA
+                   -> case b of wild1 {
+                        Lattice.L -> GHC.Types.True
+                        Lattice.MA -> GHC.Types.False
+                        Lattice.MB -> GHC.Types.False
+                        Lattice.H -> GHC.Types.False
+                        Lattice.Any -> GHC.Types.False }
+                   Lattice.MB
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.True
+                        Lattice.MB -> GHC.Types.False
+                        Lattice.H -> GHC.Types.False
+                        Lattice.Any -> GHC.Types.False }
+                   Lattice.H
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.True
+                        Lattice.H -> GHC.Types.False
+                        Lattice.Any -> GHC.Types.False }
+                   Lattice.Any
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.True Lattice.Any -> GHC.Types.False } }) -}
+9052b3c150b0d7c7ae0110d0be5cae63
+  $fOrdGLabel_$c>= ::
+    Lattice.GLabel -> Lattice.GLabel -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: (\ (a :: Lattice.GLabel) (b :: Lattice.GLabel) ->
+                 case a of wild {
+                   Lattice.L
+                   -> case b of wild1 {
+                        Lattice.L -> GHC.Types.True
+                        Lattice.MA -> GHC.Types.False
+                        Lattice.MB -> GHC.Types.False
+                        Lattice.H -> GHC.Types.False
+                        Lattice.Any -> GHC.Types.False }
+                   Lattice.MA
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.True
+                        Lattice.MB -> GHC.Types.False
+                        Lattice.H -> GHC.Types.False
+                        Lattice.Any -> GHC.Types.False }
+                   Lattice.MB
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.True
+                        Lattice.H -> GHC.Types.False
+                        Lattice.Any -> GHC.Types.False }
+                   Lattice.H
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.True Lattice.Any -> GHC.Types.False }
+                   Lattice.Any -> case b of wild1 { DEFAULT -> GHC.Types.True } }) -}
+9052b3c150b0d7c7ae0110d0be5cae63
+  $fOrdGLabel_$ccompare ::
+    Lattice.GLabel -> Lattice.GLabel -> GHC.Types.Ordering
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: (\ (a :: Lattice.GLabel) (b :: Lattice.GLabel) ->
+                 case a of wild {
+                   Lattice.L
+                   -> case b of wild1 {
+                        Lattice.L -> GHC.Types.EQ
+                        Lattice.MA -> GHC.Types.LT
+                        Lattice.MB -> GHC.Types.LT
+                        Lattice.H -> GHC.Types.LT
+                        Lattice.Any -> GHC.Types.LT }
+                   Lattice.MA
+                   -> case b of wild1 {
+                        Lattice.L -> GHC.Types.GT
+                        Lattice.MA -> GHC.Types.EQ
+                        Lattice.MB -> GHC.Types.LT
+                        Lattice.H -> GHC.Types.LT
+                        Lattice.Any -> GHC.Types.LT }
+                   Lattice.MB
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.GT
+                        Lattice.MB -> GHC.Types.EQ
+                        Lattice.H -> GHC.Types.LT
+                        Lattice.Any -> GHC.Types.LT }
+                   Lattice.H
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.GT
+                        Lattice.H -> GHC.Types.EQ
+                        Lattice.Any -> GHC.Types.LT }
+                   Lattice.Any
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.GT Lattice.Any -> GHC.Types.EQ } }) -}
+9052b3c150b0d7c7ae0110d0be5cae63
+  $fOrdGLabel_$cmax ::
+    Lattice.GLabel -> Lattice.GLabel -> Lattice.GLabel
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: (\ (x :: Lattice.GLabel) (y :: Lattice.GLabel) ->
+                 case x of wild {
+                   Lattice.L -> y
+                   Lattice.MA
+                   -> case y of wild1 {
+                        DEFAULT -> Lattice.MA
+                        Lattice.MB -> Lattice.MB
+                        Lattice.H -> Lattice.H
+                        Lattice.Any -> Lattice.Any }
+                   Lattice.MB
+                   -> case y of wild1 {
+                        DEFAULT -> Lattice.MB
+                        Lattice.H -> Lattice.H
+                        Lattice.Any -> Lattice.Any }
+                   Lattice.H
+                   -> case y of wild1 {
+                        DEFAULT -> Lattice.H Lattice.Any -> Lattice.Any }
+                   Lattice.Any -> case y of wild1 { DEFAULT -> Lattice.Any } }) -}
+9052b3c150b0d7c7ae0110d0be5cae63
+  $fOrdGLabel_$cmin ::
+    Lattice.GLabel -> Lattice.GLabel -> Lattice.GLabel
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: (\ (x :: Lattice.GLabel) (y :: Lattice.GLabel) ->
+                 case x of wild {
+                   Lattice.L -> case y of wild1 { DEFAULT -> Lattice.L }
+                   Lattice.MA
+                   -> case y of wild1 {
+                        Lattice.L -> Lattice.L
+                        Lattice.MA -> Lattice.MA
+                        Lattice.MB -> Lattice.MA
+                        Lattice.H -> Lattice.MA
+                        Lattice.Any -> Lattice.MA }
+                   Lattice.MB
+                   -> case y of wild1 {
+                        DEFAULT -> wild1
+                        Lattice.MB -> Lattice.MB
+                        Lattice.H -> Lattice.MB
+                        Lattice.Any -> Lattice.MB }
+                   Lattice.H
+                   -> case y of wild1 {
+                        DEFAULT -> wild1 Lattice.H -> Lattice.H Lattice.Any -> Lattice.H }
+                   Lattice.Any -> y }) -}
+9052b3c150b0d7c7ae0110d0be5cae63
+  $fShowGLabel :: GHC.Show.Show Lattice.GLabel
+  DFunId
+  {- Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ Lattice.GLabel
+                  Lattice.$fShowGLabel_$cshowsPrec
+                  Lattice.$fShowGLabel_$cshow
+                  Lattice.$fShowGLabel_$cshowList -}
+39f34d38e0b7ebca24b5dfa2cf6cb2dc
+  $fShowGLabel1 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "Any"#) -}
+7813f971566313001f7088cb84cb5a46
+  $fShowGLabel2 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "H"#) -}
+84bd8fa7de4282006fb72310517da03e
+  $fShowGLabel3 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "MB"#) -}
+f97ab0319b3806afae90e36d7a7bfaf1
+  $fShowGLabel4 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "MA"#) -}
+2436bac11966014eafad5ff26bd4a401
+  $fShowGLabel5 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "L"#) -}
+9052b3c150b0d7c7ae0110d0be5cae63
+  $fShowGLabel_$cshow :: Lattice.GLabel -> GHC.Base.String
+  {- Arity: 1, Strictness: <S,1*U>,
+     Unfolding: InlineRule (1, True, False)
+                (\ (x :: Lattice.GLabel) ->
+                 Lattice.$fShowGLabel_$cshowsPrec
+                   GHC.Show.shows22
+                   x
+                   (GHC.Types.[] @ GHC.Types.Char)) -}
+9052b3c150b0d7c7ae0110d0be5cae63
+  $fShowGLabel_$cshowList :: [Lattice.GLabel] -> GHC.Show.ShowS
+  {- Arity: 2,
+     Unfolding: (GHC.Show.showList__
+                   @ Lattice.GLabel
+                   Lattice.$w$cshowsPrec) -}
+9052b3c150b0d7c7ae0110d0be5cae63
+  $fShowGLabel_$cshowsPrec ::
+    GHC.Types.Int -> Lattice.GLabel -> GHC.Show.ShowS
+  {- Arity: 3, Strictness: <L,A><S,1*U><L,1*U>, Inline: INLINE[0],
+     Unfolding: InlineRule (3, True, True)
+                (\ (w :: GHC.Types.Int)
+                   (w1 :: Lattice.GLabel)
+                   (w2 :: GHC.Base.String) ->
+                 Lattice.$w$cshowsPrec w1 w2) -}
+e50998ef26589f7b9fdc1c040870a6ff
+  $tc'Any :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   429046409417681118##
+                   1593746643805270974##
+                   Lattice.$trModule
+                   Lattice.$tc'Any1) -}
+cd36f021d5fd4589dc1de94982609114
+  $tc'Any1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "'Any"#) -}
+93bee42712430fd10b4c16b960e8c646
+  $tc'C:Lattice :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   2680199645947944207##
+                   6589294265204840700##
+                   Lattice.$trModule
+                   Lattice.$tc'C:Lattice1) -}
+a809e8d68a35e6036b5d0a9124d55aac
+  $tc'C:Lattice1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "'C:Lattice"#) -}
+ed3ad7cfceeb1c30c5ea0259d7055c57
+  $tc'H :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   11215012802745968507##
+                   14109740258413659646##
+                   Lattice.$trModule
+                   Lattice.$tc'H1) -}
+728f6aa877341be9ee27193707fa3150
+  $tc'H1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "'H"#) -}
+1552db8a03a78728c9f2f275983d2cd8
+  $tc'L :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   9308856457887809248##
+                   11775472074734388139##
+                   Lattice.$trModule
+                   Lattice.$tc'L1) -}
+e111db6c010b37a5f74f09a32cfe08c0
+  $tc'L1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "'L"#) -}
+bfc32d13cef0d1ad6a949a252f1527ce
+  $tc'MA :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   2084213861664486321##
+                   7759724183352192571##
+                   Lattice.$trModule
+                   Lattice.$tc'MA1) -}
+85f54bb248ed8f3b59b8244df597d365
+  $tc'MA1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "'MA"#) -}
+2b820dc702f0ed05f4d3857783139214
+  $tc'MB :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   5435891953419604060##
+                   9668936223493666734##
+                   Lattice.$trModule
+                   Lattice.$tc'MB1) -}
+bd8195d242599509404d87cabaa3e6a3
+  $tc'MB1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "'MB"#) -}
+84ca752160aba3301d84eda071566772
+  $tcGLabel :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   11959191499514001514##
+                   911294498065600462##
+                   Lattice.$trModule
+                   Lattice.$tcGLabel1) -}
+8b5bfcedc15864fd89eede99f18e9545
+  $tcGLabel1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "GLabel"#) -}
+7c56f595241a3fc73c1cc72ed7df0bb4
+  $tcLattice :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   4966969736177262991##
+                   12464234665441989426##
+                   Lattice.$trModule
+                   Lattice.$trModule1) -}
+6ced7273364c3339df06fc0d9336af78
+  $trModule :: GHC.Types.Module
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.Module
+                   Lattice.$trModule2
+                   Lattice.$trModule1) -}
+80ea15141dd494ef0a184bd1d5e2786d
+  $trModule1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "Lattice"#) -}
+25504d8f0cfeff7cf2cb0a02f509888a
+  $trModule2 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "main"#) -}
+9052b3c150b0d7c7ae0110d0be5cae63
+  $w$cshowsPrec ::
+    Lattice.GLabel -> GHC.Base.String -> GHC.Base.String
+  {- Arity: 2, Strictness: <S,1*U><L,1*U>, Inline: [0],
+     Unfolding: (\ (w :: Lattice.GLabel) (w1 :: GHC.Base.String) ->
+                 case w of wild {
+                   Lattice.L -> GHC.Base.++ @ GHC.Types.Char Lattice.$fShowGLabel5 w1
+                   Lattice.MA -> GHC.Base.++ @ GHC.Types.Char Lattice.$fShowGLabel4 w1
+                   Lattice.MB -> GHC.Base.++ @ GHC.Types.Char Lattice.$fShowGLabel3 w1
+                   Lattice.H -> GHC.Base.++ @ GHC.Types.Char Lattice.$fShowGLabel2 w1
+                   Lattice.Any
+                   -> GHC.Base.++ @ GHC.Types.Char Lattice.$fShowGLabel1 w1 }) -}
+9052b3c150b0d7c7ae0110d0be5cae63
+  data GLabel = L | MA | MB | H | Any
+58d412278b6d77e3ae71326e3acd4cee
+  class GHC.Classes.Ord a => Lattice a where
+    top :: a
+    bottom :: a
+    (\/) :: a -> a -> a
+    (/\) :: a -> a -> a
+    flowsTo :: a -> a -> GHC.Types.Bool
+    {-# MINIMAL top, bottom, (\/), (/\), flowsTo #-}
+9052b3c150b0d7c7ae0110d0be5cae63
+  axiom Rep_GLabel::
+      GHC.Generics.Rep Lattice.GLabel
+        = GHC.Generics.D1
+            ('GHC.Generics.MetaData "GLabel" "Lattice" "main" 'GHC.Types.False)
+            ((GHC.Generics.C1
+                ('GHC.Generics.MetaCons "L" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                GHC.Generics.U1
+              GHC.Generics.:+: GHC.Generics.C1
+                                 ('GHC.Generics.MetaCons
+                                    "MA" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                                 GHC.Generics.U1)
+             GHC.Generics.:+: (GHC.Generics.C1
+                                 ('GHC.Generics.MetaCons
+                                    "MB" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                                 GHC.Generics.U1
+                               GHC.Generics.:+: (GHC.Generics.C1
+                                                   ('GHC.Generics.MetaCons
+                                                      "H" 'GHC.Generics.PrefixI 'GHC.Types.False)
+                                                   GHC.Generics.U1
+                                                 GHC.Generics.:+: GHC.Generics.C1
+                                                                    ('GHC.Generics.MetaCons
+                                                                       "Any"
+                                                                       'GHC.Generics.PrefixI
+                                                                       'GHC.Types.False)
+                                                                    GHC.Generics.U1)))
+instance [safe] GHC.Classes.Eq [Lattice.GLabel]
+  = Lattice.$fEqGLabel
+instance [safe] GHC.Generics.Generic [Lattice.GLabel]
+  = Lattice.$fGenericGLabel
+instance [safe] Lattice.Lattice [Lattice.GLabel]
+  = Lattice.$fLatticeGLabel
+instance [safe] GHC.Classes.Ord [Lattice.GLabel]
+  = Lattice.$fOrdGLabel
+instance [safe] GHC.Show.Show [Lattice.GLabel]
+  = Lattice.$fShowGLabel
+family instance GHC.Generics.Rep [Lattice.GLabel]
+  = Lattice.Rep_GLabel
+vectorised variables:
+vectorised tycons:
+vectorised reused tycons:
+parallel variables:
+parallel tycons:
+trusted: safe
+require own pkg trusted: False
+

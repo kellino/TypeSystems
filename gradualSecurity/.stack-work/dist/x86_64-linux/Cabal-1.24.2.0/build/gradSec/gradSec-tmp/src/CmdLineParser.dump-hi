@@ -1,0 +1,950 @@
+
+==================== FINAL INTERFACE ====================
+2017-03-27 12:48:43.413425897 UTC
+
+interface main@main:CmdLineParser 8002
+  interface hash: b3b3adb97f2116bb297efe37aca13072
+  ABI hash: c8d997349a3039d3a09543ec5c4b9b62
+  export-list hash: 8a42e104f4bbacab07af8159723bff4d
+  orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
+  flag hash: 854d05af4f85b3731631d5c24577127e
+  sig of: Nothing
+  used TH splices: False
+  where
+exports:
+  CmdLineParser.flags
+  CmdLineParser.parse
+  CmdLineParser.File
+  CmdLineParser.Flag{CmdLineParser.Dynamic CmdLineParser.Help CmdLineParser.Static}
+module dependencies:
+package dependencies: array-0.5.1.1@array-0.5.1.1 base-4.9.1.0
+                      cmdargs-0.10.15@cmdargs-0.10.15-5pMpotlNMjUBSUTUykFEtV
+                      deepseq-1.4.2.0@deepseq-1.4.2.0 filepath-1.4.1.1@filepath-1.4.1.1
+                      ghc-prim-0.5.0.0 integer-gmp-1.0.0.1
+                      process-1.4.3.0@process-1.4.3.0 unix-2.7.2.1@unix-2.7.2.1
+orphans: base-4.9.1.0:GHC.Base base-4.9.1.0:GHC.Float
+         cmdargs-0.10.15@cmdargs-0.10.15-5pMpotlNMjUBSUTUykFEtV:System.Console.CmdArgs.Explicit.Help
+family instance modules: base-4.9.1.0:Control.Applicative
+                         base-4.9.1.0:Data.Complex base-4.9.1.0:Data.Either
+                         base-4.9.1.0:Data.Functor.Const base-4.9.1.0:Data.Functor.Identity
+                         base-4.9.1.0:Data.List.NonEmpty base-4.9.1.0:Data.Monoid
+                         base-4.9.1.0:Data.Semigroup base-4.9.1.0:Data.Type.Equality
+                         base-4.9.1.0:Data.Version base-4.9.1.0:Data.Void
+                         base-4.9.1.0:GHC.Exts base-4.9.1.0:GHC.Generics
+                         base-4.9.1.0:GHC.IO.Exception base-4.9.1.0:GHC.TypeLits
+import  -/  base-4.9.1.0:Data.Foldable 3e0b6967a1da89945d0e2d47266337a2
+import  -/  base-4.9.1.0:Data.List 07ae2acca6538aa0800bd0a993ac6ac1
+import  -/  base-4.9.1.0:Data.OldList 27987919d8da2f92e3f472ca81f730f8
+import  -/  base-4.9.1.0:GHC.Base c4231c43c07e46080a26bf94094c7aa1
+import  -/  base-4.9.1.0:GHC.Enum 3811281f7b5f26da514529cf3ed44009
+import  -/  base-4.9.1.0:GHC.Err 3bba35a16538d33d424682ce66876cdd
+import  -/  base-4.9.1.0:GHC.IO.Exception 5064be4c355632a1d1c4f2322f56ac52
+import  -/  base-4.9.1.0:GHC.IO.Handle.FD dbf0d0d4f42ab1465129a88ccf7880ff
+import  -/  base-4.9.1.0:GHC.IO.Handle.Text b65719f3b262b071ab1aabeb72fc9d8b
+import  -/  base-4.9.1.0:GHC.Num 00bfaa7b2f9d6084913c0697a8a49ec8
+import  -/  base-4.9.1.0:GHC.Show a027f5ac24879eaba752f44aa90fe511
+import  -/  base-4.9.1.0:Prelude 22dd289b8469a8fa8dc81cab7b237771
+import  -/  base-4.9.1.0:System.Exit 068ba078eb20417d7af66db8b8ab4db1
+import  -/  base-4.9.1.0:System.IO e4a64a8e3dce8616da54f0ee7104f7db
+import  -/  cmdargs-0.10.15@cmdargs-0.10.15-5pMpotlNMjUBSUTUykFEtV:System.Console.CmdArgs.GetOpt c2768ebf52a37c9668f36f4a379b0a63
+import  -/  ghc-prim-0.5.0.0:GHC.Classes 0bdf3d057a415ec1b84a7b1994efbe47
+import  -/  ghc-prim-0.5.0.0:GHC.Types 89f8de4f08018c9177c98d979eae0e45
+d02923c95fca85ccd704237582564ec1
+  $fBoundedFlag :: GHC.Enum.Bounded CmdLineParser.Flag
+  DFunId
+  {- HasNoCafRefs, Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ CmdLineParser.Flag CmdLineParser.Static CmdLineParser.Help -}
+d02923c95fca85ccd704237582564ec1
+  $fEnumFlag :: GHC.Enum.Enum CmdLineParser.Flag
+  DFunId
+  {- Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ CmdLineParser.Flag
+                  CmdLineParser.$fEnumFlag_$csucc
+                  CmdLineParser.$fEnumFlag_$cpred
+                  CmdLineParser.$fEnumFlag_$ctoEnum
+                  CmdLineParser.$fEnumFlag_$cfromEnum
+                  CmdLineParser.$fEnumFlag_$cenumFrom
+                  CmdLineParser.$fEnumFlag_$cenumFromThen
+                  CmdLineParser.$fEnumFlag_$cenumFromTo
+                  CmdLineParser.$fEnumFlag_$cenumFromThenTo -}
+d02923c95fca85ccd704237582564ec1
+  $fEnumFlag1 :: GHC.Prim.Int# -> CmdLineParser.Flag
+  {- Arity: 1, Strictness: <L,U>x -}
+d02923c95fca85ccd704237582564ec1
+  $fEnumFlag2 :: [CmdLineParser.Flag]
+  {- Unfolding: (CmdLineParser.$fEnumFlag_go3 2#) -}
+d02923c95fca85ccd704237582564ec1
+  $fEnumFlag3 :: [CmdLineParser.Flag]
+  {- Unfolding: (CmdLineParser.$fEnumFlag_go4 1#) -}
+d02923c95fca85ccd704237582564ec1
+  $fEnumFlag4 :: [CmdLineParser.Flag]
+  {- Unfolding: (CmdLineParser.$fEnumFlag_go5 0#) -}
+d02923c95fca85ccd704237582564ec1
+  $fEnumFlag5 :: CmdLineParser.Flag
+  {- Strictness: x -}
+d02923c95fca85ccd704237582564ec1
+  $fEnumFlag6 :: CmdLineParser.Flag
+  {- Strictness: x -}
+d02923c95fca85ccd704237582564ec1
+  $fEnumFlag_$cenumFrom :: CmdLineParser.Flag -> [CmdLineParser.Flag]
+  {- Arity: 1, Strictness: <S,1*U>,
+     Unfolding: (\ (a :: CmdLineParser.Flag) ->
+                 case a of wild {
+                   CmdLineParser.Static -> CmdLineParser.$fEnumFlag4
+                   CmdLineParser.Dynamic -> CmdLineParser.$fEnumFlag3
+                   CmdLineParser.Help -> CmdLineParser.$fEnumFlag2 }) -}
+d02923c95fca85ccd704237582564ec1
+  $fEnumFlag_$cenumFromThen ::
+    CmdLineParser.Flag -> CmdLineParser.Flag -> [CmdLineParser.Flag]
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: (\ (a :: CmdLineParser.Flag)
+                   (b :: CmdLineParser.Flag) ->
+                 let {
+                   $j :: GHC.Prim.Int# -> [CmdLineParser.Flag]
+                     {- Arity: 1, Strictness: <S,U> -}
+                   = \ (a# :: GHC.Prim.Int#)[OneShot] ->
+                     let {
+                       $j1 :: GHC.Prim.Int# -> [CmdLineParser.Flag]
+                         {- Arity: 1, Strictness: <S,U> -}
+                       = \ (b# :: GHC.Prim.Int#)[OneShot] ->
+                         let {
+                           $j2 :: GHC.Prim.Int# -> [CmdLineParser.Flag]
+                             {- Arity: 1, Strictness: <S,U> -}
+                           = \ (y :: GHC.Prim.Int#)[OneShot] ->
+                             case GHC.Prim.tagToEnum#
+                                    @ GHC.Types.Bool
+                                    (GHC.Prim.>=# b# a#) of wild {
+                               GHC.Types.False
+                               -> GHC.Enum.efdtIntDnFB
+                                    @ [CmdLineParser.Flag]
+                                    CmdLineParser.$fEnumFlag_c1
+                                    (GHC.Types.[] @ CmdLineParser.Flag)
+                                    a#
+                                    b#
+                                    y
+                               GHC.Types.True
+                               -> GHC.Enum.efdtIntUpFB
+                                    @ [CmdLineParser.Flag]
+                                    CmdLineParser.$fEnumFlag_c1
+                                    (GHC.Types.[] @ CmdLineParser.Flag)
+                                    a#
+                                    b#
+                                    y }
+                         } in
+                         case GHC.Prim.tagToEnum#
+                                @ GHC.Types.Bool
+                                (GHC.Prim.># a# b#) of wild {
+                           GHC.Types.False -> $j2 2# GHC.Types.True -> $j2 0# }
+                     } in
+                     case b of wild {
+                       CmdLineParser.Static -> $j1 0#
+                       CmdLineParser.Dynamic -> $j1 1#
+                       CmdLineParser.Help -> $j1 2# }
+                 } in
+                 case a of wild {
+                   CmdLineParser.Static -> $j 0#
+                   CmdLineParser.Dynamic -> $j 1#
+                   CmdLineParser.Help -> $j 2# }) -}
+d02923c95fca85ccd704237582564ec1
+  $fEnumFlag_$cenumFromThenTo ::
+    CmdLineParser.Flag
+    -> CmdLineParser.Flag -> CmdLineParser.Flag -> [CmdLineParser.Flag]
+  {- Arity: 3, Strictness: <S,1*U><S,1*U><S,1*U>,
+     Unfolding: (\ (x1 :: CmdLineParser.Flag)
+                   (x2 :: CmdLineParser.Flag)
+                   (y :: CmdLineParser.Flag) ->
+                 let {
+                   $j :: GHC.Prim.Int# -> [CmdLineParser.Flag]
+                     {- Arity: 1, Strictness: <S,U> -}
+                   = \ (x4 :: GHC.Prim.Int#)[OneShot] ->
+                     let {
+                       $j1 :: GHC.Prim.Int# -> [CmdLineParser.Flag]
+                         {- Arity: 1, Strictness: <S,U> -}
+                       = \ (x5 :: GHC.Prim.Int#)[OneShot] ->
+                         case y of wild {
+                           CmdLineParser.Static
+                           -> case GHC.Prim.tagToEnum#
+                                     @ GHC.Types.Bool
+                                     (GHC.Prim.>=# x5 x4) of wild1 {
+                                GHC.Types.False
+                                -> GHC.Enum.efdtIntDnFB
+                                     @ [CmdLineParser.Flag]
+                                     CmdLineParser.$fEnumFlag_c
+                                     (GHC.Types.[] @ CmdLineParser.Flag)
+                                     x4
+                                     x5
+                                     0#
+                                GHC.Types.True
+                                -> GHC.Enum.efdtIntUpFB
+                                     @ [CmdLineParser.Flag]
+                                     CmdLineParser.$fEnumFlag_c
+                                     (GHC.Types.[] @ CmdLineParser.Flag)
+                                     x4
+                                     x5
+                                     0# }
+                           CmdLineParser.Dynamic
+                           -> case GHC.Prim.tagToEnum#
+                                     @ GHC.Types.Bool
+                                     (GHC.Prim.>=# x5 x4) of wild1 {
+                                GHC.Types.False
+                                -> GHC.Enum.efdtIntDnFB
+                                     @ [CmdLineParser.Flag]
+                                     CmdLineParser.$fEnumFlag_c
+                                     (GHC.Types.[] @ CmdLineParser.Flag)
+                                     x4
+                                     x5
+                                     1#
+                                GHC.Types.True
+                                -> GHC.Enum.efdtIntUpFB
+                                     @ [CmdLineParser.Flag]
+                                     CmdLineParser.$fEnumFlag_c
+                                     (GHC.Types.[] @ CmdLineParser.Flag)
+                                     x4
+                                     x5
+                                     1# }
+                           CmdLineParser.Help
+                           -> case GHC.Prim.tagToEnum#
+                                     @ GHC.Types.Bool
+                                     (GHC.Prim.>=# x5 x4) of wild1 {
+                                GHC.Types.False
+                                -> GHC.Enum.efdtIntDnFB
+                                     @ [CmdLineParser.Flag]
+                                     CmdLineParser.$fEnumFlag_c
+                                     (GHC.Types.[] @ CmdLineParser.Flag)
+                                     x4
+                                     x5
+                                     2#
+                                GHC.Types.True
+                                -> GHC.Enum.efdtIntUpFB
+                                     @ [CmdLineParser.Flag]
+                                     CmdLineParser.$fEnumFlag_c
+                                     (GHC.Types.[] @ CmdLineParser.Flag)
+                                     x4
+                                     x5
+                                     2# } }
+                     } in
+                     case x2 of wild {
+                       CmdLineParser.Static -> $j1 0#
+                       CmdLineParser.Dynamic -> $j1 1#
+                       CmdLineParser.Help -> $j1 2# }
+                 } in
+                 case x1 of wild {
+                   CmdLineParser.Static -> $j 0#
+                   CmdLineParser.Dynamic -> $j 1#
+                   CmdLineParser.Help -> $j 2# }) -}
+d02923c95fca85ccd704237582564ec1
+  $fEnumFlag_$cenumFromTo ::
+    CmdLineParser.Flag -> CmdLineParser.Flag -> [CmdLineParser.Flag]
+  {- Arity: 2, Strictness: <S,1*U><S,1*U>,
+     Unfolding: (\ (x :: CmdLineParser.Flag)
+                   (y :: CmdLineParser.Flag) ->
+                 let {
+                   $j :: GHC.Prim.Int# -> [CmdLineParser.Flag]
+                     {- Arity: 1, Strictness: <S,U> -}
+                   = \ (x1 :: GHC.Prim.Int#)[OneShot] ->
+                     case y of wild {
+                       CmdLineParser.Static
+                       -> case GHC.Prim.tagToEnum#
+                                 @ GHC.Types.Bool
+                                 (GHC.Prim.># x1 0#) of wild1 {
+                            GHC.Types.False -> CmdLineParser.$fEnumFlag_go2 x1
+                            GHC.Types.True -> GHC.Types.[] @ CmdLineParser.Flag }
+                       CmdLineParser.Dynamic
+                       -> case GHC.Prim.tagToEnum#
+                                 @ GHC.Types.Bool
+                                 (GHC.Prim.># x1 1#) of wild1 {
+                            GHC.Types.False -> CmdLineParser.$fEnumFlag_go1 x1
+                            GHC.Types.True -> GHC.Types.[] @ CmdLineParser.Flag }
+                       CmdLineParser.Help
+                       -> case GHC.Prim.tagToEnum#
+                                 @ GHC.Types.Bool
+                                 (GHC.Prim.># x1 2#) of wild1 {
+                            GHC.Types.False -> CmdLineParser.$fEnumFlag_go x1
+                            GHC.Types.True -> GHC.Types.[] @ CmdLineParser.Flag } }
+                 } in
+                 case x of wild {
+                   CmdLineParser.Static -> $j 0#
+                   CmdLineParser.Dynamic -> $j 1#
+                   CmdLineParser.Help -> $j 2# }) -}
+d02923c95fca85ccd704237582564ec1
+  $fEnumFlag_$cfromEnum :: CmdLineParser.Flag -> GHC.Types.Int
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U>m,
+     Unfolding: InlineRule (1, True, False)
+                (\ (a :: CmdLineParser.Flag) ->
+                 case a of wild {
+                   CmdLineParser.Static -> GHC.Types.I# 0#
+                   CmdLineParser.Dynamic -> GHC.Types.I# 1#
+                   CmdLineParser.Help -> GHC.Types.I# 2# }) -}
+d02923c95fca85ccd704237582564ec1
+  $fEnumFlag_$cpred :: CmdLineParser.Flag -> CmdLineParser.Flag
+  {- Arity: 1, Strictness: <S,1*U>,
+     Unfolding: InlineRule (1, True, False)
+                (\ (a :: CmdLineParser.Flag) ->
+                 case a of wild {
+                   CmdLineParser.Static -> CmdLineParser.$fEnumFlag5
+                   CmdLineParser.Dynamic -> CmdLineParser.Static
+                   CmdLineParser.Help -> CmdLineParser.Dynamic }) -}
+d02923c95fca85ccd704237582564ec1
+  $fEnumFlag_$csucc :: CmdLineParser.Flag -> CmdLineParser.Flag
+  {- Arity: 1, Strictness: <S,1*U>,
+     Unfolding: InlineRule (1, True, False)
+                (\ (a :: CmdLineParser.Flag) ->
+                 case a of wild {
+                   CmdLineParser.Static -> CmdLineParser.Dynamic
+                   CmdLineParser.Dynamic -> CmdLineParser.Help
+                   CmdLineParser.Help -> CmdLineParser.$fEnumFlag6 }) -}
+d02923c95fca85ccd704237582564ec1
+  $fEnumFlag_$ctoEnum :: GHC.Types.Int -> CmdLineParser.Flag
+  {- Arity: 1, Strictness: <S(S),1*U(U)>, Inline: INLINE[0],
+     Unfolding: InlineRule (1, True, False)
+                (\ (w :: GHC.Types.Int) ->
+                 case w of ww { GHC.Types.I# ww1 ->
+                 CmdLineParser.$w$ctoEnum ww1 }) -}
+d02923c95fca85ccd704237582564ec1
+  $fEnumFlag_c ::
+    GHC.Types.Int -> [CmdLineParser.Flag] -> [CmdLineParser.Flag]
+  {- Arity: 2, Strictness: <L,1*U(U)><L,U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ (x :: GHC.Types.Int) (ys :: [CmdLineParser.Flag]) ->
+                 GHC.Types.:
+                   @ CmdLineParser.Flag
+                   (CmdLineParser.$fEnumFlag_$ctoEnum x)
+                   ys) -}
+d02923c95fca85ccd704237582564ec1
+  $fEnumFlag_c1 ::
+    GHC.Types.Int -> [CmdLineParser.Flag] -> [CmdLineParser.Flag]
+  {- Arity: 2, HasNoCafRefs, Strictness: <L,1*U(U)><L,U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ (x :: GHC.Types.Int) (ys :: [CmdLineParser.Flag]) ->
+                 GHC.Types.:
+                   @ CmdLineParser.Flag
+                   (case x of wild { GHC.Types.I# a ->
+                    GHC.Prim.tagToEnum# @ CmdLineParser.Flag a })
+                   ys) -}
+d02923c95fca85ccd704237582564ec1
+  $fEnumFlag_go :: GHC.Prim.Int# -> [CmdLineParser.Flag]
+  {- Arity: 1, Strictness: <L,U> -}
+d02923c95fca85ccd704237582564ec1
+  $fEnumFlag_go1 :: GHC.Prim.Int# -> [CmdLineParser.Flag]
+  {- Arity: 1, Strictness: <L,U> -}
+d02923c95fca85ccd704237582564ec1
+  $fEnumFlag_go2 :: GHC.Prim.Int# -> [CmdLineParser.Flag]
+  {- Arity: 1, Strictness: <L,U> -}
+d02923c95fca85ccd704237582564ec1
+  $fEnumFlag_go3 :: GHC.Prim.Int# -> [CmdLineParser.Flag]
+  {- Arity: 1, HasNoCafRefs, Strictness: <L,U> -}
+d02923c95fca85ccd704237582564ec1
+  $fEnumFlag_go4 :: GHC.Prim.Int# -> [CmdLineParser.Flag]
+  {- Arity: 1, HasNoCafRefs, Strictness: <L,U> -}
+d02923c95fca85ccd704237582564ec1
+  $fEnumFlag_go5 :: GHC.Prim.Int# -> [CmdLineParser.Flag]
+  {- Arity: 1, HasNoCafRefs, Strictness: <L,U> -}
+d02923c95fca85ccd704237582564ec1
+  $fEqFlag :: GHC.Classes.Eq CmdLineParser.Flag
+  DFunId
+  {- HasNoCafRefs, Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ CmdLineParser.Flag
+                  CmdLineParser.$fEqFlag_$c==
+                  CmdLineParser.$fEqFlag_$c/= -}
+d02923c95fca85ccd704237582564ec1
+  $fEqFlag_$c/= ::
+    CmdLineParser.Flag -> CmdLineParser.Flag -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ (a :: CmdLineParser.Flag) (b :: CmdLineParser.Flag) ->
+                 case a of wild {
+                   CmdLineParser.Static
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.True CmdLineParser.Static -> GHC.Types.False }
+                   CmdLineParser.Dynamic
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.True
+                        CmdLineParser.Dynamic -> GHC.Types.False }
+                   CmdLineParser.Help
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.True
+                        CmdLineParser.Help -> GHC.Types.False } }) -}
+d02923c95fca85ccd704237582564ec1
+  $fEqFlag_$c== ::
+    CmdLineParser.Flag -> CmdLineParser.Flag -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ (ds :: CmdLineParser.Flag) (ds1 :: CmdLineParser.Flag) ->
+                 case ds of wild {
+                   CmdLineParser.Static
+                   -> case ds1 of wild1 {
+                        DEFAULT -> GHC.Types.False CmdLineParser.Static -> GHC.Types.True }
+                   CmdLineParser.Dynamic
+                   -> case ds1 of wild1 {
+                        DEFAULT -> GHC.Types.False
+                        CmdLineParser.Dynamic -> GHC.Types.True }
+                   CmdLineParser.Help
+                   -> case ds1 of wild1 {
+                        DEFAULT -> GHC.Types.False
+                        CmdLineParser.Help -> GHC.Types.True } }) -}
+d02923c95fca85ccd704237582564ec1
+  $fOrdFlag :: GHC.Classes.Ord CmdLineParser.Flag
+  DFunId
+  {- HasNoCafRefs, Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ CmdLineParser.Flag
+                  CmdLineParser.$fEqFlag
+                  CmdLineParser.$fOrdFlag_$ccompare
+                  CmdLineParser.$fOrdFlag_$c<
+                  CmdLineParser.$fOrdFlag_$c<=
+                  CmdLineParser.$fOrdFlag_$c>
+                  CmdLineParser.$fOrdFlag_$c>=
+                  CmdLineParser.$fOrdFlag_$cmax
+                  CmdLineParser.$fOrdFlag_$cmin -}
+d02923c95fca85ccd704237582564ec1
+  $fOrdFlag_$c< ::
+    CmdLineParser.Flag -> CmdLineParser.Flag -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ (a :: CmdLineParser.Flag) (b :: CmdLineParser.Flag) ->
+                 case a of wild {
+                   CmdLineParser.Static
+                   -> case b of wild1 {
+                        CmdLineParser.Static -> GHC.Types.False
+                        CmdLineParser.Dynamic -> GHC.Types.True
+                        CmdLineParser.Help -> GHC.Types.True }
+                   CmdLineParser.Dynamic
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.False CmdLineParser.Help -> GHC.Types.True }
+                   CmdLineParser.Help
+                   -> case b of wild1 { DEFAULT -> GHC.Types.False } }) -}
+d02923c95fca85ccd704237582564ec1
+  $fOrdFlag_$c<= ::
+    CmdLineParser.Flag -> CmdLineParser.Flag -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ (a :: CmdLineParser.Flag) (b :: CmdLineParser.Flag) ->
+                 case a of wild {
+                   CmdLineParser.Static
+                   -> case b of wild1 { DEFAULT -> GHC.Types.True }
+                   CmdLineParser.Dynamic
+                   -> case b of wild1 {
+                        CmdLineParser.Static -> GHC.Types.False
+                        CmdLineParser.Dynamic -> GHC.Types.True
+                        CmdLineParser.Help -> GHC.Types.True }
+                   CmdLineParser.Help
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.False
+                        CmdLineParser.Help -> GHC.Types.True } }) -}
+d02923c95fca85ccd704237582564ec1
+  $fOrdFlag_$c> ::
+    CmdLineParser.Flag -> CmdLineParser.Flag -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ (a :: CmdLineParser.Flag) (b :: CmdLineParser.Flag) ->
+                 case a of wild {
+                   CmdLineParser.Static
+                   -> case b of wild1 { DEFAULT -> GHC.Types.False }
+                   CmdLineParser.Dynamic
+                   -> case b of wild1 {
+                        CmdLineParser.Static -> GHC.Types.True
+                        CmdLineParser.Dynamic -> GHC.Types.False
+                        CmdLineParser.Help -> GHC.Types.False }
+                   CmdLineParser.Help
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.True
+                        CmdLineParser.Help -> GHC.Types.False } }) -}
+d02923c95fca85ccd704237582564ec1
+  $fOrdFlag_$c>= ::
+    CmdLineParser.Flag -> CmdLineParser.Flag -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ (a :: CmdLineParser.Flag) (b :: CmdLineParser.Flag) ->
+                 case a of wild {
+                   CmdLineParser.Static
+                   -> case b of wild1 {
+                        CmdLineParser.Static -> GHC.Types.True
+                        CmdLineParser.Dynamic -> GHC.Types.False
+                        CmdLineParser.Help -> GHC.Types.False }
+                   CmdLineParser.Dynamic
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.True CmdLineParser.Help -> GHC.Types.False }
+                   CmdLineParser.Help
+                   -> case b of wild1 { DEFAULT -> GHC.Types.True } }) -}
+d02923c95fca85ccd704237582564ec1
+  $fOrdFlag_$ccompare ::
+    CmdLineParser.Flag -> CmdLineParser.Flag -> GHC.Types.Ordering
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: (\ (a :: CmdLineParser.Flag)
+                   (b :: CmdLineParser.Flag) ->
+                 case a of wild {
+                   CmdLineParser.Static
+                   -> case b of wild1 {
+                        CmdLineParser.Static -> GHC.Types.EQ
+                        CmdLineParser.Dynamic -> GHC.Types.LT
+                        CmdLineParser.Help -> GHC.Types.LT }
+                   CmdLineParser.Dynamic
+                   -> case b of wild1 {
+                        CmdLineParser.Static -> GHC.Types.GT
+                        CmdLineParser.Dynamic -> GHC.Types.EQ
+                        CmdLineParser.Help -> GHC.Types.LT }
+                   CmdLineParser.Help
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.GT CmdLineParser.Help -> GHC.Types.EQ } }) -}
+d02923c95fca85ccd704237582564ec1
+  $fOrdFlag_$cmax ::
+    CmdLineParser.Flag -> CmdLineParser.Flag -> CmdLineParser.Flag
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ (x :: CmdLineParser.Flag) (y :: CmdLineParser.Flag) ->
+                 case x of wild {
+                   CmdLineParser.Static -> y
+                   CmdLineParser.Dynamic
+                   -> case y of wild1 {
+                        DEFAULT -> CmdLineParser.Dynamic
+                        CmdLineParser.Help -> CmdLineParser.Help }
+                   CmdLineParser.Help
+                   -> case y of wild1 { DEFAULT -> CmdLineParser.Help } }) -}
+d02923c95fca85ccd704237582564ec1
+  $fOrdFlag_$cmin ::
+    CmdLineParser.Flag -> CmdLineParser.Flag -> CmdLineParser.Flag
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ (x :: CmdLineParser.Flag) (y :: CmdLineParser.Flag) ->
+                 case x of wild {
+                   CmdLineParser.Static
+                   -> case y of wild1 { DEFAULT -> CmdLineParser.Static }
+                   CmdLineParser.Dynamic
+                   -> case y of wild1 {
+                        CmdLineParser.Static -> CmdLineParser.Static
+                        CmdLineParser.Dynamic -> CmdLineParser.Dynamic
+                        CmdLineParser.Help -> CmdLineParser.Dynamic }
+                   CmdLineParser.Help -> y }) -}
+d02923c95fca85ccd704237582564ec1
+  $fShowFlag :: GHC.Show.Show CmdLineParser.Flag
+  DFunId
+  {- Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ CmdLineParser.Flag
+                  CmdLineParser.$fShowFlag_$cshowsPrec
+                  CmdLineParser.$fShowFlag_$cshow
+                  CmdLineParser.$fShowFlag_$cshowList -}
+fda2de2b2f23428c1852ecbcbd27cc4c
+  $fShowFlag1 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "Help"#) -}
+0b2fdfff3ec4e07c4ce84d4d9fb1ca6a
+  $fShowFlag2 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "Dynamic"#) -}
+f5d6a8bbb541135d4a8cde66191b8044
+  $fShowFlag3 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "Static"#) -}
+d02923c95fca85ccd704237582564ec1
+  $fShowFlag_$cshow :: CmdLineParser.Flag -> GHC.Base.String
+  {- Arity: 1, Strictness: <S,1*U>,
+     Unfolding: InlineRule (1, True, False)
+                (\ (x :: CmdLineParser.Flag) ->
+                 case x of wild {
+                   CmdLineParser.Static -> CmdLineParser.$fShowFlag3
+                   CmdLineParser.Dynamic -> CmdLineParser.$fShowFlag2
+                   CmdLineParser.Help -> CmdLineParser.$fShowFlag1 }) -}
+d02923c95fca85ccd704237582564ec1
+  $fShowFlag_$cshowList :: [CmdLineParser.Flag] -> GHC.Show.ShowS
+  {- Arity: 2,
+     Unfolding: (GHC.Show.showList__
+                   @ CmdLineParser.Flag
+                   CmdLineParser.$w$cshowsPrec) -}
+d02923c95fca85ccd704237582564ec1
+  $fShowFlag_$cshowsPrec ::
+    GHC.Types.Int -> CmdLineParser.Flag -> GHC.Show.ShowS
+  {- Arity: 3, Strictness: <L,A><S,1*U><L,1*U>, Inline: INLINE[0],
+     Unfolding: InlineRule (3, True, True)
+                (\ (w :: GHC.Types.Int)
+                   (w1 :: CmdLineParser.Flag)
+                   (w2 :: GHC.Base.String) ->
+                 CmdLineParser.$w$cshowsPrec w1 w2) -}
+6a40af4cd581f324af5f70cc3300a64e
+  $tc'Dynamic :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   124025012767146373##
+                   3109879811124373511##
+                   CmdLineParser.$trModule
+                   CmdLineParser.$tc'Dynamic1) -}
+ffbe0ed95f7134f2b885f0019ba2eba7
+  $tc'Dynamic1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "'Dynamic"#) -}
+79bc7f9874f635537dc7a67848cff5d4
+  $tc'Help :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   2374642360343791441##
+                   10883462262693002971##
+                   CmdLineParser.$trModule
+                   CmdLineParser.$tc'Help1) -}
+a282ccc9b64cb94e85edea4bdef6c735
+  $tc'Help1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "'Help"#) -}
+b4daef712b912f8e3ce80f9e18186bd1
+  $tc'Static :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   13272973958534086382##
+                   16841629460076908177##
+                   CmdLineParser.$trModule
+                   CmdLineParser.$tc'Static1) -}
+47f2ba0b7feae6d672279e884d0fff31
+  $tc'Static1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "'Static"#) -}
+074f4e9da4bfd1ac60cb3ea9157c85c7
+  $tcFlag :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   1540489632514574097##
+                   14605554321453053074##
+                   CmdLineParser.$trModule
+                   CmdLineParser.$tcFlag1) -}
+a3bc9e81b919b89f64c93933dc4aa9a7
+  $tcFlag1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "Flag"#) -}
+bacbf461ffaf6287895f7d12fa3d93e3
+  $trModule :: GHC.Types.Module
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.Module
+                   CmdLineParser.$trModule2
+                   CmdLineParser.$trModule1) -}
+e2e9034fdd9593abc49a91211a972eb9
+  $trModule1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "CmdLineParser"#) -}
+fd34971d6cdbc2ee416ffe5c61204d27
+  $trModule2 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "main"#) -}
+d02923c95fca85ccd704237582564ec1
+  $w$cshowsPrec ::
+    CmdLineParser.Flag -> GHC.Base.String -> GHC.Base.String
+  {- Arity: 2, Strictness: <S,1*U><L,1*U>, Inline: [0],
+     Unfolding: (\ (w :: CmdLineParser.Flag) (w1 :: GHC.Base.String) ->
+                 case w of wild {
+                   CmdLineParser.Static
+                   -> GHC.Base.++ @ GHC.Types.Char CmdLineParser.$fShowFlag3 w1
+                   CmdLineParser.Dynamic
+                   -> GHC.Base.++ @ GHC.Types.Char CmdLineParser.$fShowFlag2 w1
+                   CmdLineParser.Help
+                   -> GHC.Base.++ @ GHC.Types.Char CmdLineParser.$fShowFlag1 w1 }) -}
+d02923c95fca85ccd704237582564ec1
+  $w$ctoEnum :: GHC.Prim.Int# -> CmdLineParser.Flag
+  {- Arity: 1, Strictness: <S,U>, Inline: [0],
+     Unfolding: (\ (ww :: GHC.Prim.Int#) ->
+                 case GHC.Prim.tagToEnum#
+                        @ GHC.Types.Bool
+                        (GHC.Prim.>=# ww 0#) of wild {
+                   GHC.Types.False -> CmdLineParser.$fEnumFlag1 ww
+                   GHC.Types.True
+                   -> case GHC.Prim.tagToEnum#
+                             @ GHC.Types.Bool
+                             (GHC.Prim.<=# ww 2#) of wild1 {
+                        GHC.Types.False -> CmdLineParser.$fEnumFlag1 ww
+                        GHC.Types.True
+                        -> GHC.Prim.tagToEnum# @ CmdLineParser.Flag ww } }) -}
+fd895100b57adfae59d03a6ef325ac86
+  type File = GHC.Base.String
+d02923c95fca85ccd704237582564ec1
+  data Flag = Static | Dynamic | Help
+ad2932d18c2d9b76aa0b49be09530090
+  flags ::
+    [System.Console.CmdArgs.GetOpt.OptDescr CmdLineParser.Flag]
+  {- Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ (System.Console.CmdArgs.GetOpt.OptDescr CmdLineParser.Flag)
+                   CmdLineParser.flags13
+                   CmdLineParser.flags1) -}
+3825c5ecac4f7bb725a1e50d87a283ce
+  flags1 ::
+    [System.Console.CmdArgs.GetOpt.OptDescr CmdLineParser.Flag]
+  {- Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ (System.Console.CmdArgs.GetOpt.OptDescr CmdLineParser.Flag)
+                   CmdLineParser.flags8
+                   CmdLineParser.flags2) -}
+6cd79b36861974665e05a393039e0a8d
+  flags10 ::
+    System.Console.CmdArgs.GetOpt.ArgDescr CmdLineParser.Flag
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (System.Console.CmdArgs.GetOpt.NoArg
+                   @ CmdLineParser.Flag
+                   CmdLineParser.Dynamic) -}
+239f9950262a7fc9bf1388b68c4be6e7
+  flags11 :: [GHC.Types.Char]
+  {- HasNoCafRefs, Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ GHC.Types.Char
+                   CmdLineParser.flags12
+                   (GHC.Types.[] @ GHC.Types.Char)) -}
+01bc3471eaef65bd732362307defa0a9
+  flags12 :: GHC.Types.Char
+  {- HasNoCafRefs, Strictness: m, Unfolding: (GHC.Types.C# 'i'#) -}
+0aabf7ff984dea697950169ba6172b0b
+  flags13 ::
+    System.Console.CmdArgs.GetOpt.OptDescr CmdLineParser.Flag
+  {- Strictness: m,
+     Unfolding: (System.Console.CmdArgs.GetOpt.Option
+                   @ CmdLineParser.Flag
+                   CmdLineParser.flags16
+                   (GHC.Types.[] @ GHC.Base.String)
+                   CmdLineParser.flags15
+                   CmdLineParser.flags14) -}
+1076fa6827e8d1f7ac95bf523afa86d5
+  flags14 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString#
+                   "Runs the static typechecker over a file"#) -}
+1ab76732090a2eded667f3f1aee8bc44
+  flags15 ::
+    System.Console.CmdArgs.GetOpt.ArgDescr CmdLineParser.Flag
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (System.Console.CmdArgs.GetOpt.NoArg
+                   @ CmdLineParser.Flag
+                   CmdLineParser.Static) -}
+93621df1f31b6a25d4914142f3ee21ab
+  flags16 :: [GHC.Types.Char]
+  {- HasNoCafRefs, Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ GHC.Types.Char
+                   CmdLineParser.flags17
+                   (GHC.Types.[] @ GHC.Types.Char)) -}
+fb765147f029863cbf419d0c0238dd8c
+  flags17 :: GHC.Types.Char
+  {- HasNoCafRefs, Strictness: m, Unfolding: (GHC.Types.C# 's'#) -}
+855756fcf23819dd9f245080856e8a9f
+  flags2 ::
+    [System.Console.CmdArgs.GetOpt.OptDescr CmdLineParser.Flag]
+  {- Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ (System.Console.CmdArgs.GetOpt.OptDescr CmdLineParser.Flag)
+                   CmdLineParser.flags3
+                   (GHC.Types.[]
+                      @ (System.Console.CmdArgs.GetOpt.OptDescr CmdLineParser.Flag))) -}
+bc6b632b669a77fd5eab842405b09ede
+  flags3 :: System.Console.CmdArgs.GetOpt.OptDescr CmdLineParser.Flag
+  {- Strictness: m,
+     Unfolding: (System.Console.CmdArgs.GetOpt.Option
+                   @ CmdLineParser.Flag
+                   CmdLineParser.flags6
+                   (GHC.Types.[] @ GHC.Base.String)
+                   CmdLineParser.flags5
+                   CmdLineParser.flags4) -}
+b980498f7d1a48ecd8b4470d1bc97712
+  flags4 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString#
+                   "Shows this help information"#) -}
+b89b5dd0fb8349a63c457e3f81baa306
+  flags5 :: System.Console.CmdArgs.GetOpt.ArgDescr CmdLineParser.Flag
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (System.Console.CmdArgs.GetOpt.NoArg
+                   @ CmdLineParser.Flag
+                   CmdLineParser.Help) -}
+b6772b49bc4fdbb4a8619d8687dfee41
+  flags6 :: [GHC.Types.Char]
+  {- HasNoCafRefs, Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ GHC.Types.Char
+                   CmdLineParser.flags7
+                   (GHC.Types.[] @ GHC.Types.Char)) -}
+d4f9eb3b02098409aab7eee529901252
+  flags7 :: GHC.Types.Char
+  {- HasNoCafRefs, Strictness: m, Unfolding: (GHC.Types.C# 'h'#) -}
+8b0b8e7a02b213997709789421080b0f
+  flags8 :: System.Console.CmdArgs.GetOpt.OptDescr CmdLineParser.Flag
+  {- Strictness: m,
+     Unfolding: (System.Console.CmdArgs.GetOpt.Option
+                   @ CmdLineParser.Flag
+                   CmdLineParser.flags11
+                   (GHC.Types.[] @ GHC.Base.String)
+                   CmdLineParser.flags10
+                   CmdLineParser.flags9) -}
+6a4f10a77f0bfe46e906019231d4b90f
+  flags9 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString#
+                   "Launches the interactive environment for dynamic checking"#) -}
+5f2119773086b41978f10d36e69fe4c1
+  parse ::
+    [GHC.Base.String]
+    -> GHC.Types.IO ([CmdLineParser.Flag], [CmdLineParser.File])
+  {- Arity: 2, Strictness: <S,U><S,U>,
+     Unfolding: InlineRule (0, True, True)
+                CmdLineParser.parse1
+                  `cast`
+                (<[GHC.Base.String]>_R
+                 ->_R Sym (GHC.Types.N:IO[0]
+                               <([CmdLineParser.Flag], [CmdLineParser.File])>_R)) -}
+00382df43df0f19fb621c5fa8bafd5a0
+  parse1 ::
+    [GHC.Base.String]
+    -> GHC.Prim.State# GHC.Prim.RealWorld
+    -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+          ([CmdLineParser.Flag], [CmdLineParser.File]) #)
+  {- Arity: 2, Strictness: <S,U><S,U>,
+     Unfolding: (\ (argv :: [GHC.Base.String])
+                   (eta :: GHC.Prim.State# GHC.Prim.RealWorld)[OneShot] ->
+                 case System.Console.CmdArgs.Explicit.Process.process
+                        @ ([CmdLineParser.Flag], [GHC.Base.String])
+                        CmdLineParser.parse7
+                        argv of wild {
+                   Data.Either.Left x
+                   -> case GHC.IO.Handle.Text.hPutStr2
+                             GHC.IO.Handle.FD.stderr
+                             (CmdLineParser.parse_go
+                                (GHC.Types.: @ GHC.Base.String x (GHC.Types.[] @ GHC.Base.String)))
+                             GHC.Types.True
+                             eta of ds1 { (#,#) ipv ipv1 ->
+                      System.Exit.exitWith1
+                        @ ([CmdLineParser.Flag], [CmdLineParser.File])
+                        CmdLineParser.parse5
+                        ipv }
+                   Data.Either.Right ds
+                   -> case ds of wild1 { (,) a1 b ->
+                      case GHC.List.elem
+                             @ CmdLineParser.Flag
+                             CmdLineParser.$fEqFlag
+                             CmdLineParser.Help
+                             a1 of wild2 {
+                        GHC.Types.False
+                        -> (# eta,
+                              (Data.OldList.nubBy
+                                 @ CmdLineParser.Flag
+                                 CmdLineParser.$fEqFlag_$c==
+                                 a1,
+                               case b of wild3 {
+                                 [] -> CmdLineParser.parse3 : ds1 ds2 -> wild3 }) #)
+                        GHC.Types.True
+                        -> case GHC.IO.Handle.Text.hPutStr2
+                                  GHC.IO.Handle.FD.stderr
+                                  CmdLineParser.parse2
+                                  GHC.Types.True
+                                  eta of ds1 { (#,#) ipv ipv1 ->
+                           System.Exit.exitSuccess1
+                             @ ([CmdLineParser.Flag], [CmdLineParser.File])
+                             ipv } } } }) -}
+641f42dd48393ce9842c5e7557bc2474
+  parse10 ::
+    ([System.Console.CmdArgs.Explicit.Type.Arg
+        ([CmdLineParser.Flag], [GHC.Base.String])],
+     GHC.Base.Maybe
+       (System.Console.CmdArgs.Explicit.Type.Arg
+          ([CmdLineParser.Flag], [GHC.Base.String])))
+  {- Unfolding: ((GHC.Types.[]
+                    @ (System.Console.CmdArgs.Explicit.Type.Arg
+                         ([CmdLineParser.Flag], [GHC.Base.String])),
+                  CmdLineParser.parse11)) -}
+69f8b925ff381c86d51cddd68b1c17d2
+  parse11 ::
+    GHC.Base.Maybe
+      (System.Console.CmdArgs.Explicit.Type.Arg
+         ([CmdLineParser.Flag], [GHC.Base.String]))
+  {- Unfolding: (GHC.Base.Just
+                   @ (System.Console.CmdArgs.Explicit.Type.Arg
+                        ([CmdLineParser.Flag], [GHC.Base.String]))
+                   (System.Console.CmdArgs.GetOpt.convert3 @ CmdLineParser.Flag)) -}
+c513def5112a4be0309c98cc05fc4947
+  parse12 :: [System.Console.CmdArgs.Explicit.Type.Name]
+  {- Unfolding: (GHC.Types.:
+                   @ System.Console.CmdArgs.Explicit.Type.Name
+                   System.Console.CmdArgs.GetOpt.convert7
+                   (GHC.Types.[] @ System.Console.CmdArgs.Explicit.Type.Name)) -}
+bb944d05f3dc4062bcbc915b9a29886c
+  parse2 :: GHC.Base.String
+  {- Unfolding: (System.Console.CmdArgs.GetOpt.usageInfo
+                   @ CmdLineParser.Flag
+                   CmdLineParser.parse_header
+                   CmdLineParser.flags) -}
+ee5e8baa5ea28c3e7749fd7b3d10dc8b
+  parse3 :: [[GHC.Types.Char]]
+  {- Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ [GHC.Types.Char]
+                   CmdLineParser.parse4
+                   (GHC.Types.[] @ [GHC.Types.Char])) -}
+c6c377f6aa9c5b9c2f1b35cb737bbb6f
+  parse4 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "-"#) -}
+1727d69863be59356b666f1ceda5d536
+  parse5 :: GHC.IO.Exception.ExitCode
+  {- HasNoCafRefs, Strictness: m2,
+     Unfolding: (GHC.IO.Exception.ExitFailure CmdLineParser.parse6) -}
+9e8568650e07b58158f7256587894a57
+  parse6 :: GHC.Types.Int
+  {- HasNoCafRefs, Unfolding: (GHC.Types.I# 1#) -}
+46f1b39e594db0a01aba6d4af89d9ce2
+  parse7 ::
+    System.Console.CmdArgs.Explicit.Type.Mode
+      ([CmdLineParser.Flag], [GHC.Base.String])
+  {- Unfolding: (System.Console.CmdArgs.Explicit.Type.Mode
+                   @ ([CmdLineParser.Flag], [GHC.Base.String])
+                   (System.Console.CmdArgs.Explicit.Type.$fMonoidGroup_$cmempty
+                      @ (System.Console.CmdArgs.Explicit.Type.Mode
+                           ([CmdLineParser.Flag], [GHC.Base.String])))
+                   CmdLineParser.parse12
+                   (System.Console.CmdArgs.GetOpt.convert6 @ CmdLineParser.Flag)
+                   (Data.Either.Right
+                      @ GHC.Base.String
+                      @ ([CmdLineParser.Flag], [GHC.Base.String]))
+                   (System.Console.CmdArgs.Explicit.Type.mode1
+                      @ ([CmdLineParser.Flag], [GHC.Base.String]))
+                   GHC.Types.True
+                   (GHC.Types.[] @ GHC.Types.Char)
+                   (GHC.Types.[] @ GHC.Base.String)
+                   CmdLineParser.parse10
+                   CmdLineParser.parse8) -}
+7fb1b233c3289f418aff2d9f675c49d2
+  parse8 ::
+    System.Console.CmdArgs.Explicit.Type.Group
+      (System.Console.CmdArgs.Explicit.Type.Flag
+         ([CmdLineParser.Flag], [GHC.Base.String]))
+  {- Unfolding: (System.Console.CmdArgs.Explicit.Type.Group
+                   @ (System.Console.CmdArgs.Explicit.Type.Flag
+                        ([CmdLineParser.Flag], [GHC.Base.String]))
+                   CmdLineParser.parse9
+                   (GHC.Types.[]
+                      @ (System.Console.CmdArgs.Explicit.Type.Flag
+                           ([CmdLineParser.Flag], [GHC.Base.String])))
+                   (GHC.Types.[]
+                      @ (System.Console.CmdArgs.Explicit.Type.Help,
+                         [System.Console.CmdArgs.Explicit.Type.Flag
+                            ([CmdLineParser.Flag], [GHC.Base.String])]))) -}
+2251960f2be99cc2e687d63533dbd431
+  parse9 ::
+    [System.Console.CmdArgs.Explicit.Type.Flag
+       ([CmdLineParser.Flag], [GHC.Base.String])]
+  {- Unfolding: (GHC.Base.map
+                   @ (System.Console.CmdArgs.GetOpt.OptDescr CmdLineParser.Flag)
+                   @ (System.Console.CmdArgs.Explicit.Type.Flag
+                        ([CmdLineParser.Flag], [GHC.Base.String]))
+                   (System.Console.CmdArgs.GetOpt.convert1 @ CmdLineParser.Flag)
+                   CmdLineParser.flags) -}
+5cb9d7880e01c5bf6283a350b9ba6f81
+  parse_go :: [[GHC.Types.Char]] -> [GHC.Types.Char]
+  {- Arity: 1, Strictness: <S,1*U> -}
+91c1030259fa507dcd3fdb604cf9264b
+  parse_header :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString#
+                   "Usage: gradSec [-srh] [file ...]"#) -}
+instance GHC.Enum.Bounded [CmdLineParser.Flag]
+  = CmdLineParser.$fBoundedFlag
+instance GHC.Enum.Enum [CmdLineParser.Flag]
+  = CmdLineParser.$fEnumFlag
+instance GHC.Classes.Eq [CmdLineParser.Flag]
+  = CmdLineParser.$fEqFlag
+instance GHC.Classes.Ord [CmdLineParser.Flag]
+  = CmdLineParser.$fOrdFlag
+instance GHC.Show.Show [CmdLineParser.Flag]
+  = CmdLineParser.$fShowFlag
+vectorised variables:
+vectorised tycons:
+vectorised reused tycons:
+parallel variables:
+parallel tycons:
+trusted: none
+require own pkg trusted: False
+

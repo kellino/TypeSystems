@@ -1,0 +1,41 @@
+name:                gradualSecurity
+version:             0.1.0.0
+-- synopsis:
+-- description:
+homepage:            https://github.com/githubuser/gradSec#readme
+license:             BSD3
+license-file:        LICENSE
+author:              David Kelly
+maintainer:          dkellino@gmail.com
+copyright:           2017 David Kelly
+category:            Type Theory
+build-type:          Simple
+cabal-version:       >=1.10
+extra-source-files:  README.md
+
+executable gradSec
+  hs-source-dirs:      src
+  main-is:             Main.hs
+  default-language:    Haskell2010
+  other-modules:       CmdLineParser,
+                       Gamma,
+                       Lattice,
+                       Parser,
+                       StaticCheck,
+                       PrettyPrint,
+                       Syntax,
+                       Processor,
+                       Repl,
+                       DynamicCheck
+  build-depends:       base >= 4.7 && < 5,
+                       unbound-generics,
+                       containers,
+                       megaparsec,
+                       text,
+                       mtl,
+                       repline,
+                       cmdargs,
+                       process,
+                       directory,
+                       exceptions,
+                       ansi-wl-pprint

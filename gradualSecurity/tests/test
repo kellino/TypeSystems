@@ -1,0 +1,4 @@
+let id {H} x = x
+let f {H} y {MB} = y /\ true
+let r a = f (id a)
+let g {MB} x {H} = x /\ true{L}

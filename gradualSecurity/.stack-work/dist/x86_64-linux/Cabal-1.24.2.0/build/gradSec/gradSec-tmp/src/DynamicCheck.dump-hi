@@ -1,0 +1,1110 @@
+
+==================== FINAL INTERFACE ====================
+2017-03-27 15:17:37.800360514 UTC
+
+interface main@main:DynamicCheck 8002
+  interface hash: 0d9e779160b29420207c1746d81e321d
+  ABI hash: 20f22ec8a4a1593814287e009fd74c08
+  export-list hash: 343394781e8f8309ce10009b1520acf4
+  orphan hash: afef1f1ba840f873c44b329f0b50a680
+  flag hash: 854d05af4f85b3731631d5c24577127e
+  sig of: Nothing
+  used TH splices: False
+  where
+exports:
+  DynamicCheck.bAnd
+  DynamicCheck.bImplies
+  DynamicCheck.bOr
+  DynamicCheck.check
+  DynamicCheck.dynamicJoin
+  DynamicCheck.eval
+  DynamicCheck.evalDef
+  DynamicCheck.runDynamic
+  DynamicCheck.Closure{DynamicCheck.Closure}
+  DynamicCheck.Eval
+module dependencies: Lattice Syntax
+package dependencies: StateVar-1.1.0.4@StateVar-1.1.0.4-5dJbnTVECtEAhfJXPZKdbO
+                      array-0.5.1.1@array-0.5.1.1 base-4.9.1.0
+                      base-orphans-0.5.4@base-orphans-0.5.4-ABoxiBf7nXc7Qqh66CgYc9
+                      bifunctors-5.4.1@bifunctors-5.4.1-G9sSLclb5k26O3Lio1becS
+                      comonad-5@comonad-5-3taBO7oiJOm7HwkDYjek6x
+                      containers-0.5.7.1@containers-0.5.7.1
+                      contravariant-1.4@contravariant-1.4-LOqCz9UiRqn89oyERzBA9D
+                      deepseq-1.4.2.0@deepseq-1.4.2.0
+                      distributive-0.5.2@distributive-0.5.2-DzhYIvhMV8O6K3jnVc2kgn
+                      ghc-prim-0.5.0.0 integer-gmp-1.0.0.1
+                      mtl-2.2.1@mtl-2.2.1-BLKBelFsPB3BoFeSWSOYj6
+                      profunctors-5.2@profunctors-5.2-LIxTI75q4uF48YzuBFpJUP
+                      stm-2.4.4.1@stm-2.4.4.1-JQn4hNPyYjP5m9AcbI88Ve
+                      tagged-0.8.5@tagged-0.8.5-DqTYAPqU3ao5zvndQftjsL
+                      transformers-0.5.2.0@transformers-0.5.2.0
+                      transformers-compat-0.5.1.4@transformers-compat-0.5.1.4-2tm9ddmq5Qk3kF2emBuYBK
+                      unbound-generics-0.3.1@unbound-generics-0.3.1-BnZfdHaJ5Vovbu7cNDG2E
+orphans: base-4.9.1.0:GHC.Base base-4.9.1.0:GHC.Float
+         main@main:Syntax
+         stm-2.4.4.1@stm-2.4.4.1-JQn4hNPyYjP5m9AcbI88Ve:Control.Monad.STM
+         transformers-0.5.2.0@transformers-0.5.2.0:Control.Monad.Trans.Error
+family instance modules: base-4.9.1.0:Control.Applicative
+                         base-4.9.1.0:Data.Complex base-4.9.1.0:Data.Either
+                         base-4.9.1.0:Data.Functor.Compose base-4.9.1.0:Data.Functor.Const
+                         base-4.9.1.0:Data.Functor.Identity
+                         base-4.9.1.0:Data.Functor.Product base-4.9.1.0:Data.Functor.Sum
+                         base-4.9.1.0:Data.List.NonEmpty base-4.9.1.0:Data.Monoid
+                         base-4.9.1.0:Data.Semigroup base-4.9.1.0:Data.Type.Equality
+                         base-4.9.1.0:Data.Version base-4.9.1.0:Data.Void
+                         base-4.9.1.0:GHC.Exts base-4.9.1.0:GHC.Generics
+                         base-4.9.1.0:GHC.IO.Exception base-4.9.1.0:GHC.TypeLits
+                         bifunctors-5.4.1@bifunctors-5.4.1-G9sSLclb5k26O3Lio1becS:Data.Bifunctor.Biff
+                         bifunctors-5.4.1@bifunctors-5.4.1-G9sSLclb5k26O3Lio1becS:Data.Bifunctor.Clown
+                         bifunctors-5.4.1@bifunctors-5.4.1-G9sSLclb5k26O3Lio1becS:Data.Bifunctor.Joker
+                         bifunctors-5.4.1@bifunctors-5.4.1-G9sSLclb5k26O3Lio1becS:Data.Bifunctor.Product
+                         bifunctors-5.4.1@bifunctors-5.4.1-G9sSLclb5k26O3Lio1becS:Data.Bifunctor.Sum
+                         bifunctors-5.4.1@bifunctors-5.4.1-G9sSLclb5k26O3Lio1becS:Data.Bifunctor.Tannen
+                         containers-0.5.7.1@containers-0.5.7.1:Data.Map.Base
+                         containers-0.5.7.1@containers-0.5.7.1:Data.Sequence
+                         containers-0.5.7.1@containers-0.5.7.1:Data.Set.Base
+                         main@main:Lattice main@main:Syntax
+                         tagged-0.8.5@tagged-0.8.5-DqTYAPqU3ao5zvndQftjsL:Data.Tagged
+                         unbound-generics-0.3.1@unbound-generics-0.3.1-BnZfdHaJ5Vovbu7cNDG2E:Unbound.Generics.LocallyNameless.Bind
+                         unbound-generics-0.3.1@unbound-generics-0.3.1-BnZfdHaJ5Vovbu7cNDG2E:Unbound.Generics.LocallyNameless.Embed
+                         unbound-generics-0.3.1@unbound-generics-0.3.1-BnZfdHaJ5Vovbu7cNDG2E:Unbound.Generics.LocallyNameless.Name
+                         unbound-generics-0.3.1@unbound-generics-0.3.1-BnZfdHaJ5Vovbu7cNDG2E:Unbound.Generics.LocallyNameless.Rebind
+                         unbound-generics-0.3.1@unbound-generics-0.3.1-BnZfdHaJ5Vovbu7cNDG2E:Unbound.Generics.LocallyNameless.Rec
+                         unbound-generics-0.3.1@unbound-generics-0.3.1-BnZfdHaJ5Vovbu7cNDG2E:Unbound.Generics.LocallyNameless.Shift
+import  -/  base-4.9.1.0:Data.Either 20b09ef8d0a5b74fdec011c40c1587f5
+import  -/  base-4.9.1.0:GHC.Base c4231c43c07e46080a26bf94094c7aa1
+import  -/  base-4.9.1.0:GHC.Err 3bba35a16538d33d424682ce66876cdd
+import  -/  base-4.9.1.0:GHC.Show a027f5ac24879eaba752f44aa90fe511
+import  -/  base-4.9.1.0:Prelude 22dd289b8469a8fa8dc81cab7b237771
+import  -/  containers-0.5.7.1@containers-0.5.7.1:Data.Map 20d4ffbee41965d03d6a989425473dc4
+import  -/  containers-0.5.7.1@containers-0.5.7.1:Data.Map.Base a29df8c78ba14cbcd4d90f97bd8d22e9
+import  -/  Lattice 88fcd7154be3313c1d1dd4a146e11a7c
+  exports: 495e954e0fa964baf836dbc63274531d
+  \/ 9b8f3f29635afe944e512ee9288b7366
+import  -/  Syntax 6c120300cbc8be0c354432ee47bcf2aa
+  exports: 095bc84ec11cd23a65bba080dc14ddf8
+  And e5f6522cae96e6be4474c7061ece58ad
+  App 5b715b32b70eb55e4256cd177256255d
+  Binding 1c00495f8b82fdc5f4b94a20ffa4f358
+  GType 9e345476bfbabb6a0c691ef7bb32faa9
+  IfThenElse e6feaeb57d26d6c6647f3942b1a7749c
+  Implies 0f19081bb497a6f9f9285957314df8d5
+  Lam 5b34c8f833ff2c9c793f866b9d302718
+  Op 01ccf73c5362f4208b5f138298f072ad
+  Or 5e33a6e9779b2498fa7998917ab70708
+  Term 6ebfa21d5709e4d46af7a40bb888ccd3
+  TermEnv ed806ad9075817d0269ef4937bfd54ab
+  TmFalse e2a44dd27f5d0f5c3a4b02fabb3ea18a
+  TmTrue 08e842176e4d2a311638c72667f7cf77
+  TypeError dc1095d87eb0bdc7005db148b0dbc7c9
+  Undefined 37d82c9b65d14f3c8a42d1e505fa7763
+  Val 4410c99ba37d58e1d0c9996a4dd07a70
+  Var 8e5fdac9870ed392f8c34cbea521782e
+import  -/  mtl-2.2.1@mtl-2.2.1-BLKBelFsPB3BoFeSWSOYj6:Control.Monad.Error.Class 635294424a2da8269902789f5c8bbe99
+import  -/  mtl-2.2.1@mtl-2.2.1-BLKBelFsPB3BoFeSWSOYj6:Control.Monad.Except 3bb0e2598193c1ba00c9723945e93004
+import  -/  transformers-0.5.2.0@transformers-0.5.2.0:Control.Monad.Trans.Except cf549ed58fbe6804d519833d92803f4c
+import  -/  unbound-generics-0.3.1@unbound-generics-0.3.1-BnZfdHaJ5Vovbu7cNDG2E:Unbound.Generics.LocallyNameless a8a69671ee3f84c700f8a6297dd8e653
+import  -/  unbound-generics-0.3.1@unbound-generics-0.3.1-BnZfdHaJ5Vovbu7cNDG2E:Unbound.Generics.LocallyNameless.Fresh 91f6fcaf3f01e0581cd98409127e3fe6
+import  -/  unbound-generics-0.3.1@unbound-generics-0.3.1-BnZfdHaJ5Vovbu7cNDG2E:Unbound.Generics.LocallyNameless.Name 1c2f72bd3f4b997ab8a55e423aaf2370
+import  -/  unbound-generics-0.3.1@unbound-generics-0.3.1-BnZfdHaJ5Vovbu7cNDG2E:Unbound.Generics.LocallyNameless.Operations 7bcf476ae4d7b1b04d0e51499f1ea789
+b2051b90de9deda823e38c5289cce2e0
+  $s$fApplicativeExceptT ::
+    GHC.Base.Applicative
+      (Control.Monad.Trans.Except.ExceptT
+         e
+         (Unbound.Generics.LocallyNameless.Fresh.FreshMT
+            Data.Functor.Identity.Identity))
+  {- Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun: @ e.
+                  @ (Control.Monad.Trans.Except.ExceptT
+                       e
+                       (Unbound.Generics.LocallyNameless.Fresh.FreshMT
+                          Data.Functor.Identity.Identity))
+                  (DynamicCheck.$s$fApplicativeExceptT_$s$fApplicativeExceptT_$cp1Applicative
+                     @ e)
+                  (DynamicCheck.$s$fApplicativeExceptT_$s$fApplicativeExceptT_$cpure
+                     @ e)
+                  (Control.Monad.Trans.Except.$fApplicativeExceptT_$c<*>
+                     @ (Unbound.Generics.LocallyNameless.Fresh.FreshMT
+                          Data.Functor.Identity.Identity)
+                     @ e
+                     DynamicCheck.$s$fApplicativeExceptT_$dFunctor
+                     DynamicCheck.$s$fApplicativeExceptT_$dMonad)
+                  (Control.Monad.Trans.Except.$fApplicativeExceptT_$c*>
+                     @ (Unbound.Generics.LocallyNameless.Fresh.FreshMT
+                          Data.Functor.Identity.Identity)
+                     @ e
+                     DynamicCheck.$s$fApplicativeExceptT_$dFunctor
+                     DynamicCheck.$s$fApplicativeExceptT_$dMonad)
+                  (Control.Monad.Trans.Except.$fApplicativeExceptT_$c<*
+                     @ (Unbound.Generics.LocallyNameless.Fresh.FreshMT
+                          Data.Functor.Identity.Identity)
+                     @ e
+                     DynamicCheck.$s$fApplicativeExceptT_$dFunctor
+                     DynamicCheck.$s$fApplicativeExceptT_$dMonad) -}
+91792a67de241a7f52abf51dacf46127
+  $s$fApplicativeExceptT_$dFunctor ::
+    GHC.Base.Functor
+      (Unbound.Generics.LocallyNameless.Fresh.FreshMT
+         Data.Functor.Identity.Identity)
+  {- Strictness: m,
+     Unfolding: InlineRule (0, True, True)
+                DynamicCheck.$s$fApplicativeExceptT_$s$fFunctorFreshMT -}
+50a92681e9be099e8d244ad025718bb9
+  $s$fApplicativeExceptT_$dFunctor1 ::
+    GHC.Base.Functor Data.Functor.Identity.Identity
+  {- Strictness: m,
+     Unfolding: InlineRule (0, True, True)
+                Data.Functor.Identity.$fFunctorIdentity -}
+4883c3dfe0aa4b09d80873e9a4324141
+  $s$fApplicativeExceptT_$dMonad ::
+    GHC.Base.Monad
+      (Unbound.Generics.LocallyNameless.Fresh.FreshMT
+         Data.Functor.Identity.Identity)
+  {- Strictness: m,
+     Unfolding: InlineRule (0, True, True)
+                DynamicCheck.$s$fApplicativeExceptT_$s$fMonadFreshMT -}
+945b6ae77f00d227d6f1b3ff3d25a8a8
+  $s$fApplicativeExceptT_$s$fApplicativeExceptT_$cp1Applicative ::
+    GHC.Base.Functor
+      (Control.Monad.Trans.Except.ExceptT
+         e
+         (Unbound.Generics.LocallyNameless.Fresh.FreshMT
+            Data.Functor.Identity.Identity))
+  {- Unfolding: InlineRule (0, True, False)
+                (\ @ e ->
+                 Control.Monad.Trans.Except.$fFunctorExceptT
+                   @ (Unbound.Generics.LocallyNameless.Fresh.FreshMT
+                        Data.Functor.Identity.Identity)
+                   @ e
+                   DynamicCheck.$s$fApplicativeExceptT_$dFunctor) -}
+b4ca36bef9af4875d33a67d793122c29
+  $s$fApplicativeExceptT_$s$fApplicativeExceptT_$cpure ::
+    a
+    -> Control.Monad.Trans.Except.ExceptT
+         e
+         (Unbound.Generics.LocallyNameless.Fresh.FreshMT
+            Data.Functor.Identity.Identity)
+         a
+  {- Arity: 2, HasNoCafRefs, Strictness: <L,U><L,U>m,
+     Inline: INLINE (sat-args=1),
+     Unfolding: InlineRule (1, False, False)
+                (\ @ e @ a (a1 :: a) ->
+                 GHC.Base.$
+                   @ 'GHC.Types.PtrRepLifted
+                   @ (Unbound.Generics.LocallyNameless.Fresh.FreshMT
+                        Data.Functor.Identity.Identity (Data.Either.Either e a))
+                   @ (Control.Monad.Trans.Except.ExceptT
+                        e
+                        (Unbound.Generics.LocallyNameless.Fresh.FreshMT
+                           Data.Functor.Identity.Identity)
+                        a)
+                   (\ (tpl :: Unbound.Generics.LocallyNameless.Fresh.FreshMT
+                                Data.Functor.Identity.Identity (Data.Either.Either e a)) ->
+                    tpl)
+                     `cast`
+                   (<Unbound.Generics.LocallyNameless.Fresh.FreshMT
+                       Data.Functor.Identity.Identity (Data.Either.Either e a)>_R
+                    ->_R Sym (Control.Monad.Trans.Except.N:ExceptT[0]
+                                  <e>_N
+                                  <Unbound.Generics.LocallyNameless.Fresh.FreshMT
+                                     Data.Functor.Identity.Identity>_R
+                                  <a>_N))
+                   (Unbound.Generics.LocallyNameless.Fresh.$fMonadFreshMT_$creturn
+                      @ Data.Functor.Identity.Identity
+                      Data.Functor.Identity.$fMonadIdentity
+                      @ (Data.Either.Either e a)
+                      (Data.Either.Right @ e @ a a1))) -}
+b8d79344ad9fbb3538273dd91eb9d2cb
+  $s$fApplicativeExceptT_$s$fApplicativeFreshMT ::
+    GHC.Base.Applicative
+      (Unbound.Generics.LocallyNameless.Fresh.FreshMT
+         Data.Functor.Identity.Identity)
+  {- Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ (Unbound.Generics.LocallyNameless.Fresh.FreshMT
+                       Data.Functor.Identity.Identity)
+                  DynamicCheck.$s$fApplicativeExceptT_$dFunctor
+                  (Unbound.Generics.LocallyNameless.Fresh.$fApplicativeFreshMT_$cpure
+                     @ Data.Functor.Identity.Identity
+                     Data.Functor.Identity.$fMonadIdentity)
+                  (Unbound.Generics.LocallyNameless.Fresh.$fApplicativeFreshMT_$c<*>
+                     @ Data.Functor.Identity.Identity
+                     Data.Functor.Identity.$fMonadIdentity)
+                  (Unbound.Generics.LocallyNameless.Fresh.$fApplicativeFreshMT_$c*>
+                     @ Data.Functor.Identity.Identity
+                     Data.Functor.Identity.$fMonadIdentity)
+                  (Unbound.Generics.LocallyNameless.Fresh.$fApplicativeFreshMT_$c<*
+                     @ Data.Functor.Identity.Identity
+                     Data.Functor.Identity.$fMonadIdentity) -}
+b8cfc70e43d5c2df4de0d70f11cb624f
+  $s$fApplicativeExceptT_$s$fFunctorFreshMT ::
+    GHC.Base.Functor
+      (Unbound.Generics.LocallyNameless.Fresh.FreshMT
+         Data.Functor.Identity.Identity)
+  {- HasNoCafRefs, Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ (Unbound.Generics.LocallyNameless.Fresh.FreshMT
+                       Data.Functor.Identity.Identity)
+                  (Unbound.Generics.LocallyNameless.Fresh.$fFunctorFreshMT_$cfmap
+                     @ Data.Functor.Identity.Identity
+                     DynamicCheck.$s$fApplicativeExceptT_$dFunctor1)
+                  (Unbound.Generics.LocallyNameless.Fresh.$fFunctorFreshMT_$c<$
+                     @ Data.Functor.Identity.Identity
+                     DynamicCheck.$s$fApplicativeExceptT_$dFunctor1) -}
+7c23f4741e5448b85c71bb0e5edecdac
+  $s$fApplicativeExceptT_$s$fMonadFreshMT ::
+    GHC.Base.Monad
+      (Unbound.Generics.LocallyNameless.Fresh.FreshMT
+         Data.Functor.Identity.Identity)
+  {- Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ (Unbound.Generics.LocallyNameless.Fresh.FreshMT
+                       Data.Functor.Identity.Identity)
+                  DynamicCheck.$s$fApplicativeExceptT_$s$fApplicativeFreshMT
+                  (Unbound.Generics.LocallyNameless.Fresh.$fMonadFreshMT_$c>>=
+                     @ Data.Functor.Identity.Identity
+                     Data.Functor.Identity.$fMonadIdentity)
+                  (Unbound.Generics.LocallyNameless.Fresh.$fMonadFreshMT_$c>>
+                     @ Data.Functor.Identity.Identity
+                     Data.Functor.Identity.$fMonadIdentity)
+                  (Unbound.Generics.LocallyNameless.Fresh.$fMonadFreshMT_$creturn
+                     @ Data.Functor.Identity.Identity
+                     Data.Functor.Identity.$fMonadIdentity)
+                  (Unbound.Generics.LocallyNameless.Fresh.$fMonadFreshMT_$cfail
+                     @ Data.Functor.Identity.Identity
+                     Data.Functor.Identity.$fMonadIdentity) -}
+b81fee77fca14a1728cfc6dd0db1e7bc
+  $s$fFreshExceptT ::
+    Unbound.Generics.LocallyNameless.Fresh.Fresh
+      (Control.Monad.Trans.Except.ExceptT
+         e
+         (Unbound.Generics.LocallyNameless.Fresh.FreshMT
+            Data.Functor.Identity.Identity))
+  {- Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun: @ e.
+                  @ (Control.Monad.Trans.Except.ExceptT
+                       e
+                       (Unbound.Generics.LocallyNameless.Fresh.FreshMT
+                          Data.Functor.Identity.Identity))
+                  (DynamicCheck.$s$fFreshExceptT_$s$fFreshExceptT_$cp1Fresh @ e)
+                  (Unbound.Generics.LocallyNameless.Fresh.$fFreshExceptT_$cfresh
+                     @ (Unbound.Generics.LocallyNameless.Fresh.FreshMT
+                          Data.Functor.Identity.Identity)
+                     @ e
+                     DynamicCheck.$s$fFreshExceptT1) -}
+cceb0feb4346107931816b54d1ced271
+  $s$fFreshExceptT1 ::
+    Unbound.Generics.LocallyNameless.Fresh.Fresh
+      (Unbound.Generics.LocallyNameless.Fresh.FreshMT
+         Data.Functor.Identity.Identity)
+  {- Strictness: m,
+     Unfolding: InlineRule (0, True, True)
+                DynamicCheck.$s$fFreshExceptT_$s$fFreshFreshMT -}
+e77e6c0f6c84b1876ec2526b7a519272
+  $s$fFreshExceptT_$s$fFreshExceptT_$cp1Fresh ::
+    GHC.Base.Monad
+      (Control.Monad.Trans.Except.ExceptT
+         e
+         (Unbound.Generics.LocallyNameless.Fresh.FreshMT
+            Data.Functor.Identity.Identity))
+  {- Strictness: m,
+     Unfolding: InlineRule (0, True, True)
+                DynamicCheck.$s$fFreshExceptT_$s$fMonadExceptT -}
+fee66fd3e01b407565f442d7caea0109
+  $s$fFreshExceptT_$s$fFreshFreshMT ::
+    Unbound.Generics.LocallyNameless.Fresh.Fresh
+      (Unbound.Generics.LocallyNameless.Fresh.FreshMT
+         Data.Functor.Identity.Identity)
+  {- Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ (Unbound.Generics.LocallyNameless.Fresh.FreshMT
+                       Data.Functor.Identity.Identity)
+                  DynamicCheck.$s$fApplicativeExceptT_$s$fMonadFreshMT
+                  (Unbound.Generics.LocallyNameless.Fresh.$fFreshFreshMT_$cfresh
+                     @ Data.Functor.Identity.Identity
+                     Data.Functor.Identity.$fMonadIdentity) -}
+2b03cd5eafe58478d1925b962a7e9c9a
+  $s$fFreshExceptT_$s$fMonadExceptT ::
+    GHC.Base.Monad
+      (Control.Monad.Trans.Except.ExceptT
+         e
+         (Unbound.Generics.LocallyNameless.Fresh.FreshMT
+            Data.Functor.Identity.Identity))
+  {- Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun: @ e.
+                  @ (Control.Monad.Trans.Except.ExceptT
+                       e
+                       (Unbound.Generics.LocallyNameless.Fresh.FreshMT
+                          Data.Functor.Identity.Identity))
+                  (DynamicCheck.$s$fFreshExceptT_$s$fMonadExceptT_$cp1Monad @ e)
+                  (DynamicCheck.$s$fFreshExceptT_$s$fMonadExceptT_$c>>= @ e)
+                  (DynamicCheck.$s$fFreshExceptT_$s$fMonadExceptT_$c>> @ e)
+                  (Control.Monad.Trans.Except.$fMonadExceptT_$creturn
+                     @ (Unbound.Generics.LocallyNameless.Fresh.FreshMT
+                          Data.Functor.Identity.Identity)
+                     @ e
+                     DynamicCheck.$s$fApplicativeExceptT_$dMonad)
+                  (\ @ a (eta :: GHC.Base.String) ->
+                   Unbound.Generics.LocallyNameless.Fresh.$fMonadFreshMT_$cfail
+                     @ Data.Functor.Identity.Identity
+                     Data.Functor.Identity.$fMonadIdentity
+                     @ (Data.Either.Either e a)
+                     eta)
+                    `cast`
+                  (forall (a :: <*>_N).
+                   <GHC.Base.String>_R
+                   ->_R Sym (Control.Monad.Trans.Except.N:ExceptT[0]
+                                 <e>_N
+                                 <Unbound.Generics.LocallyNameless.Fresh.FreshMT
+                                    Data.Functor.Identity.Identity>_R
+                                 <a>_N)) -}
+558e1ddeedafc08d5781bf250954177e
+  $s$fFreshExceptT_$s$fMonadExceptT_$c>> ::
+    Control.Monad.Trans.Except.ExceptT
+      e
+      (Unbound.Generics.LocallyNameless.Fresh.FreshMT
+         Data.Functor.Identity.Identity)
+      a
+    -> Control.Monad.Trans.Except.ExceptT
+         e
+         (Unbound.Generics.LocallyNameless.Fresh.FreshMT
+            Data.Functor.Identity.Identity)
+         b
+    -> Control.Monad.Trans.Except.ExceptT
+         e
+         (Unbound.Generics.LocallyNameless.Fresh.FreshMT
+            Data.Functor.Identity.Identity)
+         b
+  {- Arity: 3, HasNoCafRefs,
+     Strictness: <C(S(SL)),1*C1(U(1*U,U))><L,1*C1(U(U,U))><L,U>,
+     Inline: INLINE (sat-args=2),
+     Unfolding: InlineRule (2, False, False)
+                (\ @ e
+                   @ a
+                   @ b
+                   (m1 :: Control.Monad.Trans.Except.ExceptT
+                            e
+                            (Unbound.Generics.LocallyNameless.Fresh.FreshMT
+                               Data.Functor.Identity.Identity)
+                            a)
+                   (k :: Control.Monad.Trans.Except.ExceptT
+                           e
+                           (Unbound.Generics.LocallyNameless.Fresh.FreshMT
+                              Data.Functor.Identity.Identity)
+                           b) ->
+                 GHC.Base.$
+                   @ 'GHC.Types.PtrRepLifted
+                   @ (Unbound.Generics.LocallyNameless.Fresh.FreshMT
+                        Data.Functor.Identity.Identity (Data.Either.Either e b))
+                   @ (Control.Monad.Trans.Except.ExceptT
+                        e
+                        (Unbound.Generics.LocallyNameless.Fresh.FreshMT
+                           Data.Functor.Identity.Identity)
+                        b)
+                   (\ (tpl :: Unbound.Generics.LocallyNameless.Fresh.FreshMT
+                                Data.Functor.Identity.Identity (Data.Either.Either e b)) ->
+                    tpl)
+                     `cast`
+                   (<Unbound.Generics.LocallyNameless.Fresh.FreshMT
+                       Data.Functor.Identity.Identity (Data.Either.Either e b)>_R
+                    ->_R Sym (Control.Monad.Trans.Except.N:ExceptT[0]
+                                  <e>_N
+                                  <Unbound.Generics.LocallyNameless.Fresh.FreshMT
+                                     Data.Functor.Identity.Identity>_R
+                                  <b>_N))
+                   (Unbound.Generics.LocallyNameless.Fresh.$fMonadFreshMT_$c>>=
+                      @ Data.Functor.Identity.Identity
+                      Data.Functor.Identity.$fMonadIdentity
+                      @ (Data.Either.Either e a)
+                      @ (Data.Either.Either e b)
+                      m1
+                        `cast`
+                      (Control.Monad.Trans.Except.N:ExceptT[0]
+                           <e>_N
+                           <Unbound.Generics.LocallyNameless.Fresh.FreshMT
+                              Data.Functor.Identity.Identity>_R
+                           <a>_N)
+                      (\ (a1 :: Data.Either.Either e a) ->
+                       case a1 of wild {
+                         Data.Either.Left e1
+                         -> Unbound.Generics.LocallyNameless.Fresh.$fMonadFreshMT_$creturn
+                              @ Data.Functor.Identity.Identity
+                              Data.Functor.Identity.$fMonadIdentity
+                              @ (Data.Either.Either e b)
+                              (Data.Either.Left @ e @ b e1)
+                         Data.Either.Right x
+                         -> k `cast`
+                            (Control.Monad.Trans.Except.N:ExceptT[0]
+                                 <e>_N
+                                 <Unbound.Generics.LocallyNameless.Fresh.FreshMT
+                                    Data.Functor.Identity.Identity>_R
+                                 <b>_N) }))) -}
+6d307cd88a559812ca94ebcaae4ddde5
+  $s$fFreshExceptT_$s$fMonadExceptT_$c>>= ::
+    Control.Monad.Trans.Except.ExceptT
+      e
+      (Unbound.Generics.LocallyNameless.Fresh.FreshMT
+         Data.Functor.Identity.Identity)
+      a
+    -> (a
+        -> Control.Monad.Trans.Except.ExceptT
+             e
+             (Unbound.Generics.LocallyNameless.Fresh.FreshMT
+                Data.Functor.Identity.Identity)
+             b)
+    -> Control.Monad.Trans.Except.ExceptT
+         e
+         (Unbound.Generics.LocallyNameless.Fresh.FreshMT
+            Data.Functor.Identity.Identity)
+         b
+  {- Arity: 3, HasNoCafRefs,
+     Strictness: <C(S(SL)),1*C1(U(1*U,U))><L,1*C1(C1(U(U,U)))><L,U>,
+     Inline: INLINE (sat-args=2),
+     Unfolding: InlineRule (2, False, False)
+                (\ @ e
+                   @ a
+                   @ b
+                   (m1 :: Control.Monad.Trans.Except.ExceptT
+                            e
+                            (Unbound.Generics.LocallyNameless.Fresh.FreshMT
+                               Data.Functor.Identity.Identity)
+                            a)
+                   (k :: a
+                         -> Control.Monad.Trans.Except.ExceptT
+                              e
+                              (Unbound.Generics.LocallyNameless.Fresh.FreshMT
+                                 Data.Functor.Identity.Identity)
+                              b) ->
+                 GHC.Base.$
+                   @ 'GHC.Types.PtrRepLifted
+                   @ (Unbound.Generics.LocallyNameless.Fresh.FreshMT
+                        Data.Functor.Identity.Identity (Data.Either.Either e b))
+                   @ (Control.Monad.Trans.Except.ExceptT
+                        e
+                        (Unbound.Generics.LocallyNameless.Fresh.FreshMT
+                           Data.Functor.Identity.Identity)
+                        b)
+                   (\ (tpl :: Unbound.Generics.LocallyNameless.Fresh.FreshMT
+                                Data.Functor.Identity.Identity (Data.Either.Either e b)) ->
+                    tpl)
+                     `cast`
+                   (<Unbound.Generics.LocallyNameless.Fresh.FreshMT
+                       Data.Functor.Identity.Identity (Data.Either.Either e b)>_R
+                    ->_R Sym (Control.Monad.Trans.Except.N:ExceptT[0]
+                                  <e>_N
+                                  <Unbound.Generics.LocallyNameless.Fresh.FreshMT
+                                     Data.Functor.Identity.Identity>_R
+                                  <b>_N))
+                   (Unbound.Generics.LocallyNameless.Fresh.$fMonadFreshMT_$c>>=
+                      @ Data.Functor.Identity.Identity
+                      Data.Functor.Identity.$fMonadIdentity
+                      @ (Data.Either.Either e a)
+                      @ (Data.Either.Either e b)
+                      m1
+                        `cast`
+                      (Control.Monad.Trans.Except.N:ExceptT[0]
+                           <e>_N
+                           <Unbound.Generics.LocallyNameless.Fresh.FreshMT
+                              Data.Functor.Identity.Identity>_R
+                           <a>_N)
+                      (\ (a1 :: Data.Either.Either e a) ->
+                       case a1 of wild {
+                         Data.Either.Left e1
+                         -> Unbound.Generics.LocallyNameless.Fresh.$fMonadFreshMT_$creturn
+                              @ Data.Functor.Identity.Identity
+                              Data.Functor.Identity.$fMonadIdentity
+                              @ (Data.Either.Either e b)
+                              (Data.Either.Left @ e @ b e1)
+                         Data.Either.Right x
+                         -> (k x)
+                              `cast`
+                            (Control.Monad.Trans.Except.N:ExceptT[0]
+                                 <e>_N
+                                 <Unbound.Generics.LocallyNameless.Fresh.FreshMT
+                                    Data.Functor.Identity.Identity>_R
+                                 <b>_N) }))) -}
+5aca8ccb09a51cda0c296231391ee245
+  $s$fFreshExceptT_$s$fMonadExceptT_$cp1Monad ::
+    GHC.Base.Applicative
+      (Control.Monad.Trans.Except.ExceptT
+         e
+         (Unbound.Generics.LocallyNameless.Fresh.FreshMT
+            Data.Functor.Identity.Identity))
+  {- Strictness: m,
+     Unfolding: InlineRule (0, True, True)
+                DynamicCheck.$s$fApplicativeExceptT -}
+79b8f3be1c7da57a1a6bf166b164e58e
+  $sinsert_$sgo10 ::
+    GHC.Base.String
+    -> a1
+    -> Data.Map.Base.Map GHC.Base.String a1
+    -> Data.Map.Base.Map GHC.Base.String a1
+  {- Arity: 3, Strictness: <S,1*U><L,U><S,1*U> -}
+eced0edeb6d24ce0e25386d1afc4b41c
+  $slookup1 ::
+    GHC.Base.String
+    -> Data.Map.Base.Map GHC.Base.String a -> GHC.Base.Maybe a
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U> -}
+bce73a992881d9a813fb838bfbd0c725
+  $tc'Closure :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   14674294063827231034##
+                   9597254669926359868##
+                   DynamicCheck.$trModule
+                   DynamicCheck.$tc'Closure1) -}
+4861ebd24d4e8b7c3eea909e4946e217
+  $tc'Closure1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "'Closure"#) -}
+1238c685282b61c36061b8ae4291551d
+  $tcClosure :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   12182465313948710049##
+                   846488069667913070##
+                   DynamicCheck.$trModule
+                   DynamicCheck.$tcClosure1) -}
+b5a3bd6c8dcee48daa4d3aa3079d92f4
+  $tcClosure1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "Closure"#) -}
+b9f714aaa389cb2ad6dd1a4c955c4d45
+  $trModule :: GHC.Types.Module
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.Module
+                   DynamicCheck.$trModule2
+                   DynamicCheck.$trModule1) -}
+afbf27eca3c01ef561b13b99a625cc73
+  $trModule1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "DynamicCheck"#) -}
+37b68e66c9b2d96baec9917c53708fcd
+  $trModule2 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "main"#) -}
+057f04069f40f7c24b52658a549ccb35
+  $wevalDef ::
+    Syntax.TermEnv -> GHC.Base.String -> Syntax.Term -> Syntax.TermEnv
+  {- Arity: 3, Strictness: <S,U><L,1*U><S,1*U>, Inline: [0],
+     Unfolding: (\ (w :: Syntax.TermEnv)
+                   (ww :: GHC.Base.String)
+                   (ww1 :: Syntax.Term) ->
+                 case ((DynamicCheck.eval w ww1)
+                         `cast`
+                       (Trans
+                            (Control.Monad.Trans.Except.N:ExceptT[0]
+                                 <Syntax.TypeError>_N
+                                 (Unbound.Generics.LocallyNameless.Fresh.N:FreshMT[0] <Data.Functor.Identity.Identity>_N)
+                                 <Syntax.Term>_N)
+                            (Control.Monad.Trans.State.Lazy.N:StateT[0]
+                                 <GHC.Integer.Type.Integer>_N
+                                 <Data.Functor.Identity.Identity>_R
+                                 <Data.Either.Either Syntax.TypeError Syntax.Term>_N))
+                         Unbound.Generics.LocallyNameless.Fresh.runFreshM1)
+                        `cast`
+                      (Data.Functor.Identity.N:Identity[0]
+                           <(Data.Either.Either Syntax.TypeError Syntax.Term,
+                             GHC.Integer.Type.Integer)>_R) of wild { (,) a1 ds1 ->
+                 case a1 of wild1 {
+                   Data.Either.Left err -> w
+                   Data.Either.Right ev
+                   -> DynamicCheck.$sinsert_$sgo10 @ Syntax.Term ww ev w } }) -}
+901d8f9115bb8241ba60a2159780c39e
+  data Closure = Closure GHC.Base.String Syntax.Term Syntax.TermEnv
+df3ac72778377684e1e6a845dd4ad535
+  type Eval a =
+    Control.Monad.Trans.Except.ExceptT
+      Syntax.TypeError Unbound.Generics.LocallyNameless.Fresh.FreshM a
+2bfcea64edd55ae5895f7ed8a6840fef
+  bAnd :: Syntax.Term -> Syntax.Term -> DynamicCheck.Eval Syntax.Term
+  {- Arity: 2, Strictness: <S,1*U><L,U>,
+     Unfolding: (\ (ds :: Syntax.Term) (ds1 :: Syntax.Term) ->
+                 case ds of wild {
+                   DEFAULT
+                   -> DynamicCheck.bAnd1
+                        `cast`
+                      (Trans
+                           (<GHC.Integer.Type.Integer>_R
+                            ->_R Sym (Data.Functor.Identity.N:Identity[0]
+                                          <(Data.Either.Either Syntax.TypeError Syntax.Term,
+                                            GHC.Integer.Type.Integer)>_R))
+                           (Trans
+                                (Sym (Control.Monad.Trans.State.Lazy.N:StateT[0]
+                                          <GHC.Integer.Type.Integer>_N
+                                          <Data.Functor.Identity.Identity>_R
+                                          <Data.Either.Either Syntax.TypeError Syntax.Term>_N))
+                                (Sym (Control.Monad.Trans.Except.N:ExceptT[0]
+                                          <Syntax.TypeError>_N
+                                          (Unbound.Generics.LocallyNameless.Fresh.N:FreshMT[0] <Data.Functor.Identity.Identity>_N)
+                                          <Syntax.Term>_N))))
+                   Syntax.Val ds2 l
+                   -> let {
+                        fail :: GHC.Prim.Void# -> DynamicCheck.Eval Syntax.Term
+                          {- Arity: 1, Strictness: <L,A> -}
+                        = \ (ds3 :: GHC.Prim.Void#)[OneShot] ->
+                          case ds1 of wild1 {
+                            DEFAULT
+                            -> DynamicCheck.bAnd1
+                                 `cast`
+                               (Trans
+                                    (<GHC.Integer.Type.Integer>_R
+                                     ->_R Sym (Data.Functor.Identity.N:Identity[0]
+                                                   <(Data.Either.Either
+                                                       Syntax.TypeError Syntax.Term,
+                                                     GHC.Integer.Type.Integer)>_R))
+                                    (Trans
+                                         (Sym (Control.Monad.Trans.State.Lazy.N:StateT[0]
+                                                   <GHC.Integer.Type.Integer>_N
+                                                   <Data.Functor.Identity.Identity>_R
+                                                   <Data.Either.Either
+                                                      Syntax.TypeError Syntax.Term>_N))
+                                         (Sym (Control.Monad.Trans.Except.N:ExceptT[0]
+                                                   <Syntax.TypeError>_N
+                                                   (Unbound.Generics.LocallyNameless.Fresh.N:FreshMT[0] <Data.Functor.Identity.Identity>_N)
+                                                   <Syntax.Term>_N))))
+                            Syntax.Val ds4 l'
+                            -> let {
+                                 eta :: Lattice.GLabel = Lattice.$fLatticeGLabel_$c\/ l l'
+                               } in
+                               let {
+                                 eta1 :: Syntax.Term = Syntax.Val Syntax.TmFalse eta
+                               } in
+                               let {
+                                 eta2 :: Data.Either.Either Syntax.TypeError Syntax.Term
+                                 = Data.Either.Right @ Syntax.TypeError @ Syntax.Term eta1
+                               } in
+                               (\ (eta3 :: GHC.Integer.Type.Integer) -> (eta2, eta3))
+                                 `cast`
+                               (Trans
+                                    (<GHC.Integer.Type.Integer>_R
+                                     ->_R Sym (Data.Functor.Identity.N:Identity[0]
+                                                   <(Data.Either.Either
+                                                       Syntax.TypeError Syntax.Term,
+                                                     GHC.Integer.Type.Integer)>_R))
+                                    (Trans
+                                         (Sym (Control.Monad.Trans.State.Lazy.N:StateT[0]
+                                                   <GHC.Integer.Type.Integer>_N
+                                                   <Data.Functor.Identity.Identity>_R
+                                                   <Data.Either.Either
+                                                      Syntax.TypeError Syntax.Term>_N))
+                                         (Sym (Control.Monad.Trans.Except.N:ExceptT[0]
+                                                   <Syntax.TypeError>_N
+                                                   (Unbound.Generics.LocallyNameless.Fresh.N:FreshMT[0] <Data.Functor.Identity.Identity>_N)
+                                                   <Syntax.Term>_N)))) }
+                      } in
+                      case ds2 of wild1 {
+                        Syntax.TmTrue
+                        -> case ds1 of wild2 {
+                             DEFAULT -> fail GHC.Prim.void#
+                             Syntax.Val ds3 l'
+                             -> case ds3 of wild3 {
+                                  Syntax.TmTrue
+                                  -> let {
+                                       eta :: Lattice.GLabel = Lattice.$fLatticeGLabel_$c\/ l l'
+                                     } in
+                                     let {
+                                       eta1 :: Syntax.Term = Syntax.Val Syntax.TmTrue eta
+                                     } in
+                                     let {
+                                       eta2 :: Data.Either.Either Syntax.TypeError Syntax.Term
+                                       = Data.Either.Right @ Syntax.TypeError @ Syntax.Term eta1
+                                     } in
+                                     (\ (eta3 :: GHC.Integer.Type.Integer) -> (eta2, eta3))
+                                       `cast`
+                                     (Trans
+                                          (<GHC.Integer.Type.Integer>_R
+                                           ->_R Sym (Data.Functor.Identity.N:Identity[0]
+                                                         <(Data.Either.Either
+                                                             Syntax.TypeError Syntax.Term,
+                                                           GHC.Integer.Type.Integer)>_R))
+                                          (Trans
+                                               (Sym (Control.Monad.Trans.State.Lazy.N:StateT[0]
+                                                         <GHC.Integer.Type.Integer>_N
+                                                         <Data.Functor.Identity.Identity>_R
+                                                         <Data.Either.Either
+                                                            Syntax.TypeError Syntax.Term>_N))
+                                               (Sym (Control.Monad.Trans.Except.N:ExceptT[0]
+                                                         <Syntax.TypeError>_N
+                                                         (Unbound.Generics.LocallyNameless.Fresh.N:FreshMT[0] <Data.Functor.Identity.Identity>_N)
+                                                         <Syntax.Term>_N))))
+                                  Syntax.TmFalse -> fail GHC.Prim.void# } }
+                        Syntax.TmFalse -> fail GHC.Prim.void# } }) -}
+7bf0beebcf67aab7fc5075dc8e499cd6
+  bAnd1 ::
+    GHC.Integer.Type.Integer
+    -> (Data.Either.Either Syntax.TypeError Syntax.Term,
+        GHC.Integer.Type.Integer)
+  {- Arity: 1, Strictness: <L,U>m,
+     Unfolding: InlineRule (1, True, False)
+                (\ (eta1 :: GHC.Integer.Type.Integer) ->
+                 (DynamicCheck.bAnd_eta, eta1)) -}
+b34bfd97ea339d79a44a83a52325f266
+  bAnd2 :: Syntax.TypeError
+  {- Strictness: m5,
+     Unfolding: (Syntax.Undefined DynamicCheck.bAnd3) -}
+6803b3b0cbe117227be6d6b64395a6a2
+  bAnd3 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "undefined"#) -}
+a219141e09c3073288c9290b2c902974
+  bAnd_eta :: Data.Either.Either Syntax.TypeError Syntax.Term
+  {- Strictness: m1,
+     Unfolding: (Data.Either.Left
+                   @ Syntax.TypeError
+                   @ Syntax.Term
+                   DynamicCheck.bAnd2) -}
+cac43fd303b18c262eade411d387fe60
+  bImplies ::
+    Syntax.Term -> Syntax.Term -> DynamicCheck.Eval Syntax.Term
+  {- Arity: 2, Strictness: <S,1*U><L,U>,
+     Unfolding: (DynamicCheck.bAnd) -}
+e2e17c04b512bc19e524233d9c9326ee
+  bOr :: Syntax.Term -> Syntax.Term -> DynamicCheck.Eval Syntax.Term
+  {- Arity: 2, Strictness: <S,1*U><L,U>,
+     Unfolding: (DynamicCheck.bAnd) -}
+6a8d245bf7fe83cf961bc2e7d63adae9
+  check ::
+    Syntax.TermEnv -> Syntax.Term -> DynamicCheck.Eval Syntax.Term
+  {- Arity: 2, Strictness: <L,U><S,1*U>,
+     Unfolding: (\ (env :: Syntax.TermEnv) (tm :: Syntax.Term) ->
+                 case tm of wild {
+                   DEFAULT
+                   -> let {
+                        eta :: GHC.Base.String
+                        = Syntax.$w$cshowsPrec3 0# wild (GHC.Types.[] @ GHC.Types.Char)
+                      } in
+                      let {
+                        eta1 :: Syntax.TypeError = Syntax.Undefined eta
+                      } in
+                      let {
+                        lvl26 :: Data.Either.Either Syntax.TypeError Syntax.Term
+                        = Data.Either.Left @ Syntax.TypeError @ Syntax.Term eta1
+                      } in
+                      (\ (eta2 :: GHC.Integer.Type.Integer) -> (lvl26, eta2))
+                        `cast`
+                      (Trans
+                           (<GHC.Integer.Type.Integer>_R
+                            ->_R Sym (Data.Functor.Identity.N:Identity[0]
+                                          <(Data.Either.Either Syntax.TypeError Syntax.Term,
+                                            GHC.Integer.Type.Integer)>_R))
+                           (Trans
+                                (Sym (Control.Monad.Trans.State.Lazy.N:StateT[0]
+                                          <GHC.Integer.Type.Integer>_N
+                                          <Data.Functor.Identity.Identity>_R
+                                          <Data.Either.Either Syntax.TypeError Syntax.Term>_N))
+                                (Sym (Control.Monad.Trans.Except.N:ExceptT[0]
+                                          <Syntax.TypeError>_N
+                                          (Unbound.Generics.LocallyNameless.Fresh.N:FreshMT[0] <Data.Functor.Identity.Identity>_N)
+                                          <Syntax.Term>_N))))
+                   Syntax.App t1 ds
+                   -> case ds of wild1 { DEFAULT ->
+                      let {
+                        eta :: Data.Either.Either Syntax.TypeError Syntax.Term
+                        = Data.Either.Right @ Syntax.TypeError @ Syntax.Term wild
+                      } in
+                      (\ (eta1 :: GHC.Integer.Type.Integer) -> (eta, eta1))
+                        `cast`
+                      (Trans
+                           (<GHC.Integer.Type.Integer>_R
+                            ->_R Sym (Data.Functor.Identity.N:Identity[0]
+                                          <(Data.Either.Either Syntax.TypeError Syntax.Term,
+                                            GHC.Integer.Type.Integer)>_R))
+                           (Trans
+                                (Sym (Control.Monad.Trans.State.Lazy.N:StateT[0]
+                                          <GHC.Integer.Type.Integer>_N
+                                          <Data.Functor.Identity.Identity>_R
+                                          <Data.Either.Either Syntax.TypeError Syntax.Term>_N))
+                                (Sym (Control.Monad.Trans.Except.N:ExceptT[0]
+                                          <Syntax.TypeError>_N
+                                          (Unbound.Generics.LocallyNameless.Fresh.N:FreshMT[0] <Data.Functor.Identity.Identity>_N)
+                                          <Syntax.Term>_N)))) }
+                   Syntax.IfThenElse b a1 a2
+                   -> let {
+                        eta :: DynamicCheck.Eval Syntax.Term = DynamicCheck.eval env a2
+                      } in
+                      let {
+                        eta1 :: DynamicCheck.Eval Syntax.Term = DynamicCheck.eval env a1
+                      } in
+                      let {
+                        eta2 :: DynamicCheck.Eval Syntax.Term = DynamicCheck.eval env b
+                      } in
+                      (\ (eta3 :: GHC.Integer.Type.Integer) ->
+                       case (eta2
+                               `cast`
+                             (Trans
+                                  (Control.Monad.Trans.Except.N:ExceptT[0]
+                                       <Syntax.TypeError>_N
+                                       (Unbound.Generics.LocallyNameless.Fresh.N:FreshMT[0] <Data.Functor.Identity.Identity>_N)
+                                       <Syntax.Term>_N)
+                                  (Control.Monad.Trans.State.Lazy.N:StateT[0]
+                                       <GHC.Integer.Type.Integer>_N
+                                       <Data.Functor.Identity.Identity>_R
+                                       <Data.Either.Either Syntax.TypeError Syntax.Term>_N))
+                               eta3)
+                              `cast`
+                            (Data.Functor.Identity.N:Identity[0]
+                                 <(Data.Either.Either Syntax.TypeError Syntax.Term,
+                                   GHC.Integer.Type.Integer)>_R) of wild1 { (,) a4 s' ->
+                       case a4 of wild2 {
+                         Data.Either.Left e1
+                         -> (wild2, s')
+                              `cast`
+                            (Sym (Data.Functor.Identity.N:Identity[0]
+                                      <(Data.Either.Either Syntax.TypeError Syntax.Term,
+                                        GHC.Integer.Type.Integer)>_R))
+                         Data.Either.Right x
+                         -> case (eta1
+                                    `cast`
+                                  (Trans
+                                       (Control.Monad.Trans.Except.N:ExceptT[0]
+                                            <Syntax.TypeError>_N
+                                            (Unbound.Generics.LocallyNameless.Fresh.N:FreshMT[0] <Data.Functor.Identity.Identity>_N)
+                                            <Syntax.Term>_N)
+                                       (Control.Monad.Trans.State.Lazy.N:StateT[0]
+                                            <GHC.Integer.Type.Integer>_N
+                                            <Data.Functor.Identity.Identity>_R
+                                            <Data.Either.Either Syntax.TypeError Syntax.Term>_N))
+                                    s')
+                                   `cast`
+                                 (Data.Functor.Identity.N:Identity[0]
+                                      <(Data.Either.Either Syntax.TypeError Syntax.Term,
+                                        GHC.Integer.Type.Integer)>_R) of wild3 { (,) a5 s'1 ->
+                            case a5 of wild4 {
+                              Data.Either.Left e1
+                              -> (wild4, s'1)
+                                   `cast`
+                                 (Sym (Data.Functor.Identity.N:Identity[0]
+                                           <(Data.Either.Either Syntax.TypeError Syntax.Term,
+                                             GHC.Integer.Type.Integer)>_R))
+                              Data.Either.Right x1
+                              -> case (eta
+                                         `cast`
+                                       (Trans
+                                            (Control.Monad.Trans.Except.N:ExceptT[0]
+                                                 <Syntax.TypeError>_N
+                                                 (Unbound.Generics.LocallyNameless.Fresh.N:FreshMT[0] <Data.Functor.Identity.Identity>_N)
+                                                 <Syntax.Term>_N)
+                                            (Control.Monad.Trans.State.Lazy.N:StateT[0]
+                                                 <GHC.Integer.Type.Integer>_N
+                                                 <Data.Functor.Identity.Identity>_R
+                                                 <Data.Either.Either
+                                                    Syntax.TypeError Syntax.Term>_N))
+                                         s'1)
+                                        `cast`
+                                      (Data.Functor.Identity.N:Identity[0]
+                                           <(Data.Either.Either Syntax.TypeError Syntax.Term,
+                                             GHC.Integer.Type.Integer)>_R) of wild5 { (,) a6 s'2 ->
+                                 case a6 of wild6 {
+                                   Data.Either.Left e1
+                                   -> (wild6, s'2)
+                                        `cast`
+                                      (Sym (Data.Functor.Identity.N:Identity[0]
+                                                <(Data.Either.Either Syntax.TypeError Syntax.Term,
+                                                  GHC.Integer.Type.Integer)>_R))
+                                   Data.Either.Right x2
+                                   -> (DynamicCheck.check_eta, s'2)
+                                        `cast`
+                                      (Sym (Data.Functor.Identity.N:Identity[0]
+                                                <(Data.Either.Either Syntax.TypeError Syntax.Term,
+                                                  GHC.Integer.Type.Integer)>_R)) } } } } } })
+                        `cast`
+                      (Trans
+                           (Sym (Control.Monad.Trans.State.Lazy.N:StateT[0]
+                                     <GHC.Integer.Type.Integer>_N
+                                     <Data.Functor.Identity.Identity>_R
+                                     <Data.Either.Either Syntax.TypeError Syntax.Term>_N))
+                           (Sym (Control.Monad.Trans.Except.N:ExceptT[0]
+                                     <Syntax.TypeError>_N
+                                     (Unbound.Generics.LocallyNameless.Fresh.N:FreshMT[0] <Data.Functor.Identity.Identity>_N)
+                                     <Syntax.Term>_N))) }) -}
+5651e7a543e7dcdc82cfc3ccc1d6a623
+  check1 :: Syntax.TypeError
+  {- HasNoCafRefs, Strictness: m5,
+     Unfolding: (Syntax.Undefined (GHC.Types.[] @ GHC.Types.Char)) -}
+e4fe2b66d923b0318f0e836742522f81
+  check_eta :: Data.Either.Either Syntax.TypeError Syntax.Term
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (Data.Either.Left
+                   @ Syntax.TypeError
+                   @ Syntax.Term
+                   DynamicCheck.check1) -}
+f78d35ec0b1991bc01b0e45dcce8332a
+  dynamicJoin ::
+    Syntax.GType -> Syntax.GType -> DynamicCheck.Eval Syntax.GType
+  {- Strictness: x -}
+23950305290fac8d81ab982661db397d
+  eval ::
+    Syntax.TermEnv -> Syntax.Term -> DynamicCheck.Eval Syntax.Term
+  {- Arity: 2, Strictness: <L,U><S,1*U> -}
+51655b2a9b164701ef778c4f66fe2078
+  evalDef :: Syntax.TermEnv -> Syntax.Binding -> Syntax.TermEnv
+  {- Arity: 2, Strictness: <S,U><S(LS),1*U(1*U,1*U)>,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (2, True, False)
+                (\ (w :: Syntax.TermEnv) (w1 :: Syntax.Binding) ->
+                 case w1 of ww { (,) ww1 ww2 ->
+                 DynamicCheck.$wevalDef w ww1 ww2 }) -}
+9ff4138e5a81e44d6b3c1356e2e7f839
+  runDynamic ::
+    Syntax.TermEnv
+    -> GHC.Base.String
+    -> Syntax.Term
+    -> Data.Either.Either
+         Syntax.TypeError (Syntax.Term, Syntax.TermEnv)
+  {- Arity: 3, Strictness: <L,U><L,1*U><S,1*U>,
+     Unfolding: (\ (env :: Syntax.TermEnv)
+                   (nm :: GHC.Base.String)
+                   (tm :: Syntax.Term) ->
+                 case ((DynamicCheck.eval env tm)
+                         `cast`
+                       (Trans
+                            (Control.Monad.Trans.Except.N:ExceptT[0]
+                                 <Syntax.TypeError>_N
+                                 (Unbound.Generics.LocallyNameless.Fresh.N:FreshMT[0] <Data.Functor.Identity.Identity>_N)
+                                 <Syntax.Term>_N)
+                            (Control.Monad.Trans.State.Lazy.N:StateT[0]
+                                 <GHC.Integer.Type.Integer>_N
+                                 <Data.Functor.Identity.Identity>_R
+                                 <Data.Either.Either Syntax.TypeError Syntax.Term>_N))
+                         Unbound.Generics.LocallyNameless.Fresh.runFreshM1)
+                        `cast`
+                      (Data.Functor.Identity.N:Identity[0]
+                           <(Data.Either.Either Syntax.TypeError Syntax.Term,
+                             GHC.Integer.Type.Integer)>_R) of wild { (,) a1 ds1 ->
+                 case a1 of wild1 {
+                   Data.Either.Left err
+                   -> Data.Either.Left
+                        @ Syntax.TypeError
+                        @ (Syntax.Term, Syntax.TermEnv)
+                        err
+                   Data.Either.Right ev
+                   -> Data.Either.Right
+                        @ Syntax.TypeError
+                        @ (Syntax.Term, Data.Map.Base.Map GHC.Base.String Syntax.Term)
+                        (ev, DynamicCheck.$sinsert_$sgo10 @ Syntax.Term nm ev env) } }) -}
+"SPEC/DynamicCheck $fApplicativeExceptT @ (FreshMT Identity) _" [ALWAYS] forall @ e
+                                                                                ($dMonad :: GHC.Base.Monad
+                                                                                              (Unbound.Generics.LocallyNameless.Fresh.FreshMT
+                                                                                                 Data.Functor.Identity.Identity))
+                                                                                ($dFunctor :: GHC.Base.Functor
+                                                                                                (Unbound.Generics.LocallyNameless.Fresh.FreshMT
+                                                                                                   Data.Functor.Identity.Identity))
+  Control.Monad.Trans.Except.$fApplicativeExceptT @ (Unbound.Generics.LocallyNameless.Fresh.FreshMT
+                                                       Data.Functor.Identity.Identity)
+                                                  @ e
+                                                  $dFunctor
+                                                  $dMonad
+  = DynamicCheck.$s$fApplicativeExceptT @ e
+"SPEC/DynamicCheck $fApplicativeExceptT_$cp1Applicative @ (FreshMT
+                                                            Identity) _" [ALWAYS] forall @ e
+                                                                                                                                                            ($dMonad :: GHC.Base.Monad
+                                                                                                                                                                          (Unbound.Generics.LocallyNameless.Fresh.FreshMT
+                                                                                                                                                                             Data.Functor.Identity.Identity))
+                                                                                                                                                            ($dFunctor :: GHC.Base.Functor
+                                                                                                                                                                            (Unbound.Generics.LocallyNameless.Fresh.FreshMT
+                                                                                                                                                                               Data.Functor.Identity.Identity))
+  Control.Monad.Trans.Except.$fApplicativeExceptT_$cp1Applicative @ (Unbound.Generics.LocallyNameless.Fresh.FreshMT
+                                                                       Data.Functor.Identity.Identity)
+                                                                  @ e
+                                                                  $dFunctor
+                                                                  $dMonad
+  = DynamicCheck.$s$fApplicativeExceptT_$s$fApplicativeExceptT_$cp1Applicative
+      @ e
+"SPEC/DynamicCheck $fApplicativeExceptT_$cpure @ (FreshMT
+                                                   Identity) _" [ALWAYS] forall @ e
+                                                                                                                                          ($dMonad :: GHC.Base.Monad
+                                                                                                                                                        (Unbound.Generics.LocallyNameless.Fresh.FreshMT
+                                                                                                                                                           Data.Functor.Identity.Identity))
+                                                                                                                                          ($dFunctor :: GHC.Base.Functor
+                                                                                                                                                          (Unbound.Generics.LocallyNameless.Fresh.FreshMT
+                                                                                                                                                             Data.Functor.Identity.Identity))
+  Control.Monad.Trans.Except.$fApplicativeExceptT_$cpure @ (Unbound.Generics.LocallyNameless.Fresh.FreshMT
+                                                              Data.Functor.Identity.Identity)
+                                                         @ e
+                                                         $dFunctor
+                                                         $dMonad
+  = DynamicCheck.$s$fApplicativeExceptT_$s$fApplicativeExceptT_$cpure
+      @ e
+"SPEC/DynamicCheck $fApplicativeFreshMT @ Identity" [ALWAYS] forall ($dMonad :: GHC.Base.Monad
+                                                                                  Data.Functor.Identity.Identity)
+  Unbound.Generics.LocallyNameless.Fresh.$fApplicativeFreshMT @ Data.Functor.Identity.Identity
+                                                              $dMonad
+  = DynamicCheck.$s$fApplicativeExceptT_$s$fApplicativeFreshMT
+"SPEC/DynamicCheck $fFreshExceptT @ (FreshMT Identity) _" [ALWAYS] forall @ e
+                                                                          ($dFresh :: Unbound.Generics.LocallyNameless.Fresh.Fresh
+                                                                                        (Unbound.Generics.LocallyNameless.Fresh.FreshMT
+                                                                                           Data.Functor.Identity.Identity))
+  Unbound.Generics.LocallyNameless.Fresh.$fFreshExceptT @ (Unbound.Generics.LocallyNameless.Fresh.FreshMT
+                                                             Data.Functor.Identity.Identity)
+                                                        @ e
+                                                        $dFresh
+  = DynamicCheck.$s$fFreshExceptT @ e
+"SPEC/DynamicCheck $fFreshExceptT_$cp1Fresh @ (FreshMT Identity) _" [ALWAYS] forall @ e
+                                                                                    ($dFresh :: Unbound.Generics.LocallyNameless.Fresh.Fresh
+                                                                                                  (Unbound.Generics.LocallyNameless.Fresh.FreshMT
+                                                                                                     Data.Functor.Identity.Identity))
+  Unbound.Generics.LocallyNameless.Fresh.$fFreshExceptT_$cp1Fresh @ (Unbound.Generics.LocallyNameless.Fresh.FreshMT
+                                                                       Data.Functor.Identity.Identity)
+                                                                  @ e
+                                                                  $dFresh
+  = DynamicCheck.$s$fFreshExceptT_$s$fFreshExceptT_$cp1Fresh @ e
+"SPEC/DynamicCheck $fFreshFreshMT @ Identity" [ALWAYS] forall ($dMonad :: GHC.Base.Monad
+                                                                            Data.Functor.Identity.Identity)
+  Unbound.Generics.LocallyNameless.Fresh.$fFreshFreshMT @ Data.Functor.Identity.Identity
+                                                        $dMonad
+  = DynamicCheck.$s$fFreshExceptT_$s$fFreshFreshMT
+"SPEC/DynamicCheck $fFunctorFreshMT @ Identity" [ALWAYS] forall ($dFunctor :: GHC.Base.Functor
+                                                                                Data.Functor.Identity.Identity)
+  Unbound.Generics.LocallyNameless.Fresh.$fFunctorFreshMT @ Data.Functor.Identity.Identity
+                                                          $dFunctor
+  = DynamicCheck.$s$fApplicativeExceptT_$s$fFunctorFreshMT
+"SPEC/DynamicCheck $fMonadExceptT @ (FreshMT Identity) _" [ALWAYS] forall @ e
+                                                                          ($dMonad :: GHC.Base.Monad
+                                                                                        (Unbound.Generics.LocallyNameless.Fresh.FreshMT
+                                                                                           Data.Functor.Identity.Identity))
+  Control.Monad.Trans.Except.$fMonadExceptT @ (Unbound.Generics.LocallyNameless.Fresh.FreshMT
+                                                 Data.Functor.Identity.Identity)
+                                            @ e
+                                            $dMonad
+  = DynamicCheck.$s$fFreshExceptT_$s$fMonadExceptT @ e
+"SPEC/DynamicCheck $fMonadExceptT_$c>> @ (FreshMT Identity) _" [ALWAYS] forall @ e
+                                                                               ($dMonad :: GHC.Base.Monad
+                                                                                             (Unbound.Generics.LocallyNameless.Fresh.FreshMT
+                                                                                                Data.Functor.Identity.Identity))
+  Control.Monad.Trans.Except.$fMonadExceptT_$c>> @ (Unbound.Generics.LocallyNameless.Fresh.FreshMT
+                                                      Data.Functor.Identity.Identity)
+                                                 @ e
+                                                 $dMonad
+  = DynamicCheck.$s$fFreshExceptT_$s$fMonadExceptT_$c>> @ e
+"SPEC/DynamicCheck $fMonadExceptT_$c>>= @ (FreshMT Identity) _" [ALWAYS] forall @ e
+                                                                                ($dMonad :: GHC.Base.Monad
+                                                                                              (Unbound.Generics.LocallyNameless.Fresh.FreshMT
+                                                                                                 Data.Functor.Identity.Identity))
+  Control.Monad.Trans.Except.$fMonadExceptT_$c>>= @ (Unbound.Generics.LocallyNameless.Fresh.FreshMT
+                                                       Data.Functor.Identity.Identity)
+                                                  @ e
+                                                  $dMonad
+  = DynamicCheck.$s$fFreshExceptT_$s$fMonadExceptT_$c>>= @ e
+"SPEC/DynamicCheck $fMonadExceptT_$cp1Monad @ (FreshMT Identity) _" [ALWAYS] forall @ e
+                                                                                    ($dMonad :: GHC.Base.Monad
+                                                                                                  (Unbound.Generics.LocallyNameless.Fresh.FreshMT
+                                                                                                     Data.Functor.Identity.Identity))
+  Control.Monad.Trans.Except.$fMonadExceptT_$cp1Monad @ (Unbound.Generics.LocallyNameless.Fresh.FreshMT
+                                                           Data.Functor.Identity.Identity)
+                                                      @ e
+                                                      $dMonad
+  = DynamicCheck.$s$fFreshExceptT_$s$fMonadExceptT_$cp1Monad @ e
+"SPEC/DynamicCheck $fMonadFreshMT @ Identity" [ALWAYS] forall ($dMonad :: GHC.Base.Monad
+                                                                            Data.Functor.Identity.Identity)
+  Unbound.Generics.LocallyNameless.Fresh.$fMonadFreshMT @ Data.Functor.Identity.Identity
+                                                        $dMonad
+  = DynamicCheck.$s$fApplicativeExceptT_$s$fMonadFreshMT
+vectorised variables:
+vectorised tycons:
+vectorised reused tycons:
+parallel variables:
+parallel tycons:
+trusted: none
+require own pkg trusted: False
+

@@ -1,0 +1,681 @@
+
+==================== FINAL INTERFACE ====================
+2017-03-27 15:15:54.056873103 UTC
+
+interface main@main:PrettyPrint 8002
+  interface hash: a3b48bb62d4fee21aa7a728c8aa0a917
+  ABI hash: 0d75d825d79f099e47368c96de95ffb9
+  export-list hash: ccf1c4736ffb4ad151039754c544a614
+  orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
+  flag hash: 6e8141b28f49dde427b27cf3f0fbcf53
+  sig of: Nothing
+  used TH splices: False
+  where
+exports:
+  PrettyPrint.ppstatic
+  PrettyPrint.Display{PrettyPrint.display}
+module dependencies: Lattice Syntax
+package dependencies: QuickCheck-2.9.2@QuickCheck-2.9.2-Jyj4gc4JxkEIgGFLAsGhs9
+                      StateVar-1.1.0.4@StateVar-1.1.0.4-5dJbnTVECtEAhfJXPZKdbO
+                      ansi-terminal-0.6.2.3@ansi-terminal-0.6.2.3-18Iua6Y0oQZ5teqNh3j59Q
+                      ansi-wl-pprint-0.6.7.3@ansi-wl-pprint-0.6.7.3-Gr2V5sUh0vxILqRALkIOq0
+                      array-0.5.1.1@array-0.5.1.1 base-4.9.1.0
+                      base-orphans-0.5.4@base-orphans-0.5.4-ABoxiBf7nXc7Qqh66CgYc9
+                      bifunctors-5.4.1@bifunctors-5.4.1-G9sSLclb5k26O3Lio1becS
+                      binary-0.8.3.0@binary-0.8.3.0
+                      bytestring-0.10.8.1@bytestring-0.10.8.1
+                      comonad-5@comonad-5-3taBO7oiJOm7HwkDYjek6x
+                      containers-0.5.7.1@containers-0.5.7.1
+                      contravariant-1.4@contravariant-1.4-LOqCz9UiRqn89oyERzBA9D
+                      deepseq-1.4.2.0@deepseq-1.4.2.0
+                      distributive-0.5.2@distributive-0.5.2-DzhYIvhMV8O6K3jnVc2kgn
+                      exceptions-0.8.3@exceptions-0.8.3-Ggtjm8GpjAqJV0BBy1Ma2L
+                      ghc-boot-th-8.0.2@ghc-boot-th-8.0.2 ghc-prim-0.5.0.0
+                      integer-gmp-1.0.0.1
+                      megaparsec-5.2.0@megaparsec-5.2.0-5nYAxih7wLDlUbYD61o5M
+                      mtl-2.2.1@mtl-2.2.1-BLKBelFsPB3BoFeSWSOYj6
+                      pretty-1.1.3.3@pretty-1.1.3.3
+                      primitive-0.6.1.0@primitive-0.6.1.0-6AbSTw9JXz141LE5p6LGH
+                      profunctors-5.2@profunctors-5.2-LIxTI75q4uF48YzuBFpJUP
+                      random-1.1@random-1.1-9tceXaeYIMZ4JrKq20Egog
+                      stm-2.4.4.1@stm-2.4.4.1-JQn4hNPyYjP5m9AcbI88Ve
+                      tagged-0.8.5@tagged-0.8.5-DqTYAPqU3ao5zvndQftjsL
+                      template-haskell-2.11.1.0
+                      text-1.2.2.1@text-1.2.2.1-FeA6fTH3E2n883cNXIS2Li
+                      tf-random-0.5@tf-random-0.5-BGjMgO8m67W8CHiEl15kZ7
+                      time-1.6.0.1@time-1.6.0.1 transformers-0.5.2.0@transformers-0.5.2.0
+                      transformers-compat-0.5.1.4@transformers-compat-0.5.1.4-2tm9ddmq5Qk3kF2emBuYBK
+                      unbound-generics-0.3.1@unbound-generics-0.3.1-BnZfdHaJ5Vovbu7cNDG2E
+orphans: base-4.9.1.0:GHC.Base base-4.9.1.0:GHC.Float
+         binary-0.8.3.0@binary-0.8.3.0:Data.Binary.Generic
+         bytestring-0.10.8.1@bytestring-0.10.8.1:Data.ByteString.Builder
+         main@main:Syntax
+         stm-2.4.4.1@stm-2.4.4.1-JQn4hNPyYjP5m9AcbI88Ve:Control.Monad.STM
+         text-1.2.2.1@text-1.2.2.1-FeA6fTH3E2n883cNXIS2Li:Data.Text
+         text-1.2.2.1@text-1.2.2.1-FeA6fTH3E2n883cNXIS2Li:Data.Text.Lazy
+         text-1.2.2.1@text-1.2.2.1-FeA6fTH3E2n883cNXIS2Li:Data.Text.Show
+         time-1.6.0.1@time-1.6.0.1:Data.Time.Calendar.Gregorian
+         time-1.6.0.1@time-1.6.0.1:Data.Time.Format.Parse
+         time-1.6.0.1@time-1.6.0.1:Data.Time.LocalTime.LocalTime
+         transformers-0.5.2.0@transformers-0.5.2.0:Control.Monad.Trans.Error
+family instance modules: base-4.9.1.0:Control.Applicative
+                         base-4.9.1.0:Data.Complex base-4.9.1.0:Data.Either
+                         base-4.9.1.0:Data.Functor.Compose base-4.9.1.0:Data.Functor.Const
+                         base-4.9.1.0:Data.Functor.Identity
+                         base-4.9.1.0:Data.Functor.Product base-4.9.1.0:Data.Functor.Sum
+                         base-4.9.1.0:Data.List.NonEmpty base-4.9.1.0:Data.Monoid
+                         base-4.9.1.0:Data.Semigroup base-4.9.1.0:Data.Type.Equality
+                         base-4.9.1.0:Data.Version base-4.9.1.0:Data.Void
+                         base-4.9.1.0:GHC.Exts base-4.9.1.0:GHC.Generics
+                         base-4.9.1.0:GHC.IO.Exception base-4.9.1.0:GHC.TypeLits
+                         bifunctors-5.4.1@bifunctors-5.4.1-G9sSLclb5k26O3Lio1becS:Data.Bifunctor.Biff
+                         bifunctors-5.4.1@bifunctors-5.4.1-G9sSLclb5k26O3Lio1becS:Data.Bifunctor.Clown
+                         bifunctors-5.4.1@bifunctors-5.4.1-G9sSLclb5k26O3Lio1becS:Data.Bifunctor.Joker
+                         bifunctors-5.4.1@bifunctors-5.4.1-G9sSLclb5k26O3Lio1becS:Data.Bifunctor.Product
+                         bifunctors-5.4.1@bifunctors-5.4.1-G9sSLclb5k26O3Lio1becS:Data.Bifunctor.Sum
+                         bifunctors-5.4.1@bifunctors-5.4.1-G9sSLclb5k26O3Lio1becS:Data.Bifunctor.Tannen
+                         containers-0.5.7.1@containers-0.5.7.1:Data.IntMap.Base
+                         containers-0.5.7.1@containers-0.5.7.1:Data.IntSet.Base
+                         containers-0.5.7.1@containers-0.5.7.1:Data.Map.Base
+                         containers-0.5.7.1@containers-0.5.7.1:Data.Sequence
+                         containers-0.5.7.1@containers-0.5.7.1:Data.Set.Base
+                         ghc-boot-th-8.0.2@ghc-boot-th-8.0.2:GHC.LanguageExtensions.Type
+                         main@main:Lattice main@main:Syntax
+                         megaparsec-5.2.0@megaparsec-5.2.0-5nYAxih7wLDlUbYD61o5M:Text.Megaparsec.Error
+                         megaparsec-5.2.0@megaparsec-5.2.0-5nYAxih7wLDlUbYD61o5M:Text.Megaparsec.Pos
+                         megaparsec-5.2.0@megaparsec-5.2.0-5nYAxih7wLDlUbYD61o5M:Text.Megaparsec.Prim
+                         pretty-1.1.3.3@pretty-1.1.3.3:Text.PrettyPrint.Annotated.HughesPJ
+                         pretty-1.1.3.3@pretty-1.1.3.3:Text.PrettyPrint.HughesPJ
+                         primitive-0.6.1.0@primitive-0.6.1.0-6AbSTw9JXz141LE5p6LGH:Control.Monad.Primitive
+                         tagged-0.8.5@tagged-0.8.5-DqTYAPqU3ao5zvndQftjsL:Data.Tagged
+                         template-haskell-2.11.1.0:Language.Haskell.TH.Syntax
+                         text-1.2.2.1@text-1.2.2.1-FeA6fTH3E2n883cNXIS2Li:Data.Text
+                         text-1.2.2.1@text-1.2.2.1-FeA6fTH3E2n883cNXIS2Li:Data.Text.Lazy
+                         unbound-generics-0.3.1@unbound-generics-0.3.1-BnZfdHaJ5Vovbu7cNDG2E:Unbound.Generics.LocallyNameless.Bind
+                         unbound-generics-0.3.1@unbound-generics-0.3.1-BnZfdHaJ5Vovbu7cNDG2E:Unbound.Generics.LocallyNameless.Embed
+                         unbound-generics-0.3.1@unbound-generics-0.3.1-BnZfdHaJ5Vovbu7cNDG2E:Unbound.Generics.LocallyNameless.Name
+                         unbound-generics-0.3.1@unbound-generics-0.3.1-BnZfdHaJ5Vovbu7cNDG2E:Unbound.Generics.LocallyNameless.Rebind
+                         unbound-generics-0.3.1@unbound-generics-0.3.1-BnZfdHaJ5Vovbu7cNDG2E:Unbound.Generics.LocallyNameless.Rec
+                         unbound-generics-0.3.1@unbound-generics-0.3.1-BnZfdHaJ5Vovbu7cNDG2E:Unbound.Generics.LocallyNameless.Shift
+import  -/  ansi-wl-pprint-0.6.7.3@ansi-wl-pprint-0.6.7.3-Gr2V5sUh0vxILqRALkIOq0:Text.PrettyPrint.ANSI.Leijen 0b0029118a73d460584eaa06296bf541
+import  -/  base-4.9.1.0:GHC.Base c4231c43c07e46080a26bf94094c7aa1
+import  -/  base-4.9.1.0:GHC.Show a027f5ac24879eaba752f44aa90fe511
+import  -/  base-4.9.1.0:Prelude 22dd289b8469a8fa8dc81cab7b237771
+import  -/  Lattice 88fcd7154be3313c1d1dd4a146e11a7c
+  exports: 495e954e0fa964baf836dbc63274531d
+  Any d31dbfda7503d4f86f2969082d8ec7b3
+  GLabel 9052b3c150b0d7c7ae0110d0be5cae63
+  H 822756534dc3319e98c65d435a5e29d3
+  L b53301c5975f0e93d41e38eaa92047ee
+  MA 4c0d307943c517ef92e883ff9555c8cd
+  MB 967c85c47cc50598ef02ec1d256abe76
+import  -/  Syntax 6c120300cbc8be0c354432ee47bcf2aa
+  exports: 095bc84ec11cd23a65bba080dc14ddf8
+  GType 9e345476bfbabb6a0c691ef7bb32faa9
+  ImplicitFlow 3871535f9a122afa88e42dad12eb7df4
+  Term 6ebfa21d5709e4d46af7a40bb888ccd3
+  TmFalse e2a44dd27f5d0f5c3a4b02fabb3ea18a
+  TmTrue 08e842176e4d2a311638c72667f7cf77
+  TransitiveMismatch 5ab0607d6b989d4b2494eeb9f1d8ea30
+  TyArr f95d38d00330e797c76cd27e4cdb6a9f
+  TyBool 8b0de33e7c2d539007e38a69af0404f1
+  TypeError dc1095d87eb0bdc7005db148b0dbc7c9
+  Undefined 37d82c9b65d14f3c8a42d1e505fa7763
+  Val 4410c99ba37d58e1d0c9996a4dd07a70
+import  -/  megaparsec-5.2.0@megaparsec-5.2.0-5nYAxih7wLDlUbYD61o5M:Text.Megaparsec 1053b5dc9a1df02ab5401c82fa6ecdf1
+import  -/  megaparsec-5.2.0@megaparsec-5.2.0-5nYAxih7wLDlUbYD61o5M:Text.Megaparsec.Error ed2dbf9b05677a19dc51443aa856169a
+import  -/  text-1.2.2.1@text-1.2.2.1-FeA6fTH3E2n883cNXIS2Li:Data.Text 9ee336888c840d0d73391a6640977abb
+b362d6901e5605e86fec3220c0df047c
+  $fDisplayGLabel :: PrettyPrint.Display Lattice.GLabel
+  DFunId
+  {- Arity: 1, Strictness: <S,1*U>m14, Inline: INLINE (sat-args=0),
+     Unfolding: InlineRule (0, False, True)
+                PrettyPrint.$fDisplayGLabel_$cdisplay
+                  `cast`
+                (Sym (PrettyPrint.N:Display[0] <Lattice.GLabel>_N)) -}
+dc575148f703297d6d1e1cdaaca5368e
+  $fDisplayGLabel1 :: Text.PrettyPrint.ANSI.Leijen.Doc
+  {- Strictness: m14,
+     Unfolding: (Text.PrettyPrint.ANSI.Leijen.Intensify
+                   System.Console.ANSI.Common.BoldIntensity
+                   PrettyPrint.$fDisplayGLabel2) -}
+6123b124d14274b3300712d31dea4a43
+  $fDisplayGLabel10 :: Text.PrettyPrint.ANSI.Leijen.Doc
+  {- Strictness: m14,
+     Unfolding: (Text.PrettyPrint.ANSI.Leijen.Intensify
+                   System.Console.ANSI.Common.BoldIntensity
+                   PrettyPrint.$fDisplayGLabel11) -}
+ba5748ae7329a4315972fb99746a0a35
+  $fDisplayGLabel11 :: Text.PrettyPrint.ANSI.Leijen.Doc
+  {- Strictness: m13,
+     Unfolding: (Text.PrettyPrint.ANSI.Leijen.Color
+                   System.Console.ANSI.Common.Foreground
+                   System.Console.ANSI.Common.Vivid
+                   System.Console.ANSI.Common.Red
+                   PrettyPrint.$fDisplayGLabel12) -}
+45b33213caba33b8214835d8c27cc424
+  $fDisplayGLabel12 :: Text.PrettyPrint.ANSI.Leijen.Doc
+  {- Unfolding: (case GHC.List.$wlenAcc
+                        @ GHC.Types.Char
+                        PrettyPrint.$fDisplayGLabel_wild3
+                        0# of ww2 { DEFAULT ->
+                 Text.PrettyPrint.ANSI.Leijen.Text
+                   ww2
+                   PrettyPrint.$fDisplayGLabel_wild3 }) -}
+0eb56447c86b4f93d318e5ae8efffa49
+  $fDisplayGLabel13 :: Text.PrettyPrint.ANSI.Leijen.Doc
+  {- Strictness: m14,
+     Unfolding: (Text.PrettyPrint.ANSI.Leijen.Intensify
+                   System.Console.ANSI.Common.BoldIntensity
+                   PrettyPrint.$fDisplayGLabel14) -}
+e2763df8223ad2a5862422a6d41dc589
+  $fDisplayGLabel14 :: Text.PrettyPrint.ANSI.Leijen.Doc
+  {- Strictness: m13,
+     Unfolding: (Text.PrettyPrint.ANSI.Leijen.Color
+                   System.Console.ANSI.Common.Foreground
+                   System.Console.ANSI.Common.Vivid
+                   System.Console.ANSI.Common.Red
+                   PrettyPrint.$fDisplayGLabel15) -}
+3edf56f09b917e78a9fb0d2773a2205c
+  $fDisplayGLabel15 :: Text.PrettyPrint.ANSI.Leijen.Doc
+  {- Unfolding: (case GHC.List.$wlenAcc
+                        @ GHC.Types.Char
+                        PrettyPrint.$fDisplayGLabel_wild4
+                        0# of ww2 { DEFAULT ->
+                 Text.PrettyPrint.ANSI.Leijen.Text
+                   ww2
+                   PrettyPrint.$fDisplayGLabel_wild4 }) -}
+67bf63b6b67b4ee0812a1a86ef375dfb
+  $fDisplayGLabel2 :: Text.PrettyPrint.ANSI.Leijen.Doc
+  {- Strictness: m13,
+     Unfolding: (Text.PrettyPrint.ANSI.Leijen.Color
+                   System.Console.ANSI.Common.Foreground
+                   System.Console.ANSI.Common.Vivid
+                   System.Console.ANSI.Common.Red
+                   PrettyPrint.$fDisplayGLabel3) -}
+4a5c032c4ca3de30a641b23184cb39ca
+  $fDisplayGLabel3 :: Text.PrettyPrint.ANSI.Leijen.Doc
+  {- Unfolding: (case GHC.List.$wlenAcc
+                        @ GHC.Types.Char
+                        PrettyPrint.$fDisplayGLabel_wild
+                        0# of ww2 { DEFAULT ->
+                 Text.PrettyPrint.ANSI.Leijen.Text
+                   ww2
+                   PrettyPrint.$fDisplayGLabel_wild }) -}
+c57edcceac292e84f698af5ce89d94b6
+  $fDisplayGLabel4 :: Text.PrettyPrint.ANSI.Leijen.Doc
+  {- Strictness: m14,
+     Unfolding: (Text.PrettyPrint.ANSI.Leijen.Intensify
+                   System.Console.ANSI.Common.BoldIntensity
+                   PrettyPrint.$fDisplayGLabel5) -}
+abe5eca0408fd227431ab8ed043e1699
+  $fDisplayGLabel5 :: Text.PrettyPrint.ANSI.Leijen.Doc
+  {- Strictness: m13,
+     Unfolding: (Text.PrettyPrint.ANSI.Leijen.Color
+                   System.Console.ANSI.Common.Foreground
+                   System.Console.ANSI.Common.Vivid
+                   System.Console.ANSI.Common.Red
+                   PrettyPrint.$fDisplayGLabel6) -}
+bd117480890653e31c9b1726db62fbf0
+  $fDisplayGLabel6 :: Text.PrettyPrint.ANSI.Leijen.Doc
+  {- Unfolding: (case GHC.List.$wlenAcc
+                        @ GHC.Types.Char
+                        PrettyPrint.$fDisplayGLabel_wild1
+                        0# of ww2 { DEFAULT ->
+                 Text.PrettyPrint.ANSI.Leijen.Text
+                   ww2
+                   PrettyPrint.$fDisplayGLabel_wild1 }) -}
+24dfe6c1c04cbaf53a15770ffa564c7b
+  $fDisplayGLabel7 :: Text.PrettyPrint.ANSI.Leijen.Doc
+  {- Strictness: m14,
+     Unfolding: (Text.PrettyPrint.ANSI.Leijen.Intensify
+                   System.Console.ANSI.Common.BoldIntensity
+                   PrettyPrint.$fDisplayGLabel8) -}
+69b78f621c909c950b77a02d44d6cf27
+  $fDisplayGLabel8 :: Text.PrettyPrint.ANSI.Leijen.Doc
+  {- Strictness: m13,
+     Unfolding: (Text.PrettyPrint.ANSI.Leijen.Color
+                   System.Console.ANSI.Common.Foreground
+                   System.Console.ANSI.Common.Vivid
+                   System.Console.ANSI.Common.Red
+                   PrettyPrint.$fDisplayGLabel9) -}
+b534c0dcf2de7fdb3ae20bea8964ab69
+  $fDisplayGLabel9 :: Text.PrettyPrint.ANSI.Leijen.Doc
+  {- Unfolding: (case GHC.List.$wlenAcc
+                        @ GHC.Types.Char
+                        PrettyPrint.$fDisplayGLabel_wild2
+                        0# of ww2 { DEFAULT ->
+                 Text.PrettyPrint.ANSI.Leijen.Text
+                   ww2
+                   PrettyPrint.$fDisplayGLabel_wild2 }) -}
+4a8bba9731da939e917da7fb050f280d
+  $fDisplayGLabel_$cdisplay ::
+    Lattice.GLabel -> Text.PrettyPrint.ANSI.Leijen.Doc
+  {- Arity: 1, Strictness: <S,1*U>m14,
+     Unfolding: InlineRule (1, True, False)
+                (\ (ds :: Lattice.GLabel) ->
+                 case ds of wild3 {
+                   Lattice.L -> PrettyPrint.$fDisplayGLabel13
+                   Lattice.MA -> PrettyPrint.$fDisplayGLabel10
+                   Lattice.MB -> PrettyPrint.$fDisplayGLabel7
+                   Lattice.H -> PrettyPrint.$fDisplayGLabel4
+                   Lattice.Any -> PrettyPrint.$fDisplayGLabel1 }) -}
+2bd68c4255628d4a3622b4ca23fbd635
+  $fDisplayGLabel_ipv :: GHC.Types.Char
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.C# '\8902'#) -}
+4147ed32ab4aaf5b4331f4c73223e7d7
+  $fDisplayGLabel_ipv1 :: GHC.Types.Char
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.C# '\8341'#) -}
+61885a3d915951b651d805f3505f81fe
+  $fDisplayGLabel_ipv2 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCStringUtf8#
+                   "\\225\\181\\166"#) -}
+470714efecef1ff98aa860855c1cbc14
+  $fDisplayGLabel_ipv3 :: GHC.Types.Char
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.C# '\8344'#) -}
+af8f1f8fac82309821178241bf458c4b
+  $fDisplayGLabel_ipv4 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCStringUtf8#
+                   "\\226\\130\\144"#) -}
+9c837c8d251561bb1ccc8f8545b4ca03
+  $fDisplayGLabel_ipv5 :: GHC.Types.Char
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.C# '\8343'#) -}
+d984ca66250229e0d08bc2c5544f4792
+  $fDisplayGLabel_wild :: [GHC.Types.Char]
+  {- HasNoCafRefs, Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ GHC.Types.Char
+                   PrettyPrint.$fDisplayGLabel_ipv
+                   (GHC.Types.[] @ GHC.Types.Char)) -}
+287435b18c53b3fa4b26b6adfb471640
+  $fDisplayGLabel_wild1 :: [GHC.Types.Char]
+  {- HasNoCafRefs, Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ GHC.Types.Char
+                   PrettyPrint.$fDisplayGLabel_ipv1
+                   (GHC.Types.[] @ GHC.Types.Char)) -}
+eb92d03c0786d638a8f27d7d5c551bec
+  $fDisplayGLabel_wild2 :: [GHC.Types.Char]
+  {- Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ GHC.Types.Char
+                   PrettyPrint.$fDisplayGLabel_ipv3
+                   PrettyPrint.$fDisplayGLabel_ipv2) -}
+ff9953b3b11214e57814855cb9e96d23
+  $fDisplayGLabel_wild3 :: [GHC.Types.Char]
+  {- Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ GHC.Types.Char
+                   PrettyPrint.$fDisplayGLabel_ipv3
+                   PrettyPrint.$fDisplayGLabel_ipv4) -}
+f29e92f5bf306522464f3bcdb8c1de00
+  $fDisplayGLabel_wild4 :: [GHC.Types.Char]
+  {- HasNoCafRefs, Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ GHC.Types.Char
+                   PrettyPrint.$fDisplayGLabel_ipv5
+                   (GHC.Types.[] @ GHC.Types.Char)) -}
+b362d6901e5605e86fec3220c0df047c
+  $fDisplayGType :: PrettyPrint.Display Syntax.GType
+  DFunId
+  {- Arity: 1, Strictness: <S,1*U>m7, Inline: INLINE (sat-args=0),
+     Unfolding: InlineRule (0, False, True)
+                PrettyPrint.$fDisplayGType_$cdisplay
+                  `cast`
+                (Sym (PrettyPrint.N:Display[0] <Syntax.GType>_N)) -}
+833c064dfb9338f4c3087ff5d72926f3
+  $fDisplayGType_$cdisplay ::
+    Syntax.GType -> Text.PrettyPrint.ANSI.Leijen.Doc
+  {- Arity: 1, Strictness: <S,1*U>m7, Inline: INLINE[0],
+     Unfolding: InlineRule (1, True, False)
+                (\ (w :: Syntax.GType) ->
+                 case PrettyPrint.$w$cdisplay w of ww { (#,#) ww1 ww2 ->
+                 Text.PrettyPrint.ANSI.Leijen.Cat ww1 ww2 }) -}
+b362d6901e5605e86fec3220c0df047c
+  $fDisplayParseError ::
+    PrettyPrint.Display
+      (Text.Megaparsec.Error.ParseError
+         GHC.Types.Char Text.Megaparsec.Error.Dec)
+  DFunId
+  {- Arity: 1, Strictness: <L,U>, Inline: INLINE (sat-args=0),
+     Unfolding: InlineRule (0, False, True)
+                PrettyPrint.$fDisplayParseError_$cdisplay
+                  `cast`
+                (Sym (PrettyPrint.N:Display[0]
+                          <Text.Megaparsec.Error.ParseError
+                             GHC.Types.Char Text.Megaparsec.Error.Dec>_N)) -}
+0685d6cb282d94eac615bb70ab0637d5
+  $fDisplayParseError1 ::
+    Text.Megaparsec.Error.ParseError
+      GHC.Types.Char Text.Megaparsec.Error.Dec
+    -> Text.PrettyPrint.ANSI.Leijen.Doc
+  {- Arity: 1, Strictness: <L,U>,
+     Unfolding: (\ (x :: Text.Megaparsec.Error.ParseError
+                           GHC.Types.Char Text.Megaparsec.Error.Dec) ->
+                 case PrettyPrint.$fDisplayParseError2
+                        GHC.Show.shows22
+                        x
+                        (GHC.Types.[] @ GHC.Types.Char) of wild3 {
+                   [] -> Text.PrettyPrint.ANSI.Leijen.Empty
+                   : ipv3 ipv4
+                   -> case GHC.List.$wlenAcc
+                             @ GHC.Types.Char
+                             wild3
+                             0# of ww2 { DEFAULT ->
+                      Text.PrettyPrint.ANSI.Leijen.Text ww2 wild3 } }) -}
+a93a3dac558f1beb8c35c6f3528a7b27
+  $fDisplayParseError2 ::
+    GHC.Types.Int
+    -> Text.Megaparsec.Error.ParseError
+         GHC.Types.Char Text.Megaparsec.Error.Dec
+    -> GHC.Show.ShowS
+  {- Unfolding: (Text.Megaparsec.Error.$fShowParseError_$cshowsPrec
+                   @ GHC.Types.Char
+                   @ Text.Megaparsec.Error.Dec
+                   Text.Megaparsec.Error.$fShowDec
+                   GHC.Show.$fShowChar) -}
+c731529d75c3a9530cc40fa940f76e09
+  $fDisplayParseError_$cdisplay ::
+    Text.Megaparsec.Error.ParseError
+      GHC.Types.Char Text.Megaparsec.Error.Dec
+    -> Text.PrettyPrint.ANSI.Leijen.Doc
+  {- Arity: 1, Strictness: <L,U>,
+     Unfolding: InlineRule (0, True, True)
+                PrettyPrint.$fDisplayParseError1 -}
+b362d6901e5605e86fec3220c0df047c
+  $fDisplayTerm :: PrettyPrint.Display Syntax.Term
+  DFunId
+  {- Arity: 1, Strictness: <S,1*U>, Inline: INLINE (sat-args=0),
+     Unfolding: InlineRule (0, False, True)
+                PrettyPrint.$fDisplayTerm_$cdisplay
+                  `cast`
+                (Sym (PrettyPrint.N:Display[0] <Syntax.Term>_N)) -}
+61b7a40f3392514f13bca2cf15bf1dba
+  $fDisplayTerm1 :: Text.PrettyPrint.ANSI.Leijen.Doc
+  {- Unfolding: (case GHC.List.$wlenAcc
+                        @ GHC.Types.Char
+                        PrettyPrint.$fDisplayTerm_wild
+                        0# of ww2 { DEFAULT ->
+                 Text.PrettyPrint.ANSI.Leijen.Text
+                   ww2
+                   PrettyPrint.$fDisplayTerm_wild }) -}
+a127c6e6cdafad255614c84dc1a3f363
+  $fDisplayTerm2 :: Text.PrettyPrint.ANSI.Leijen.Doc
+  {- Unfolding: (case GHC.List.$wlenAcc
+                        @ GHC.Types.Char
+                        PrettyPrint.$fDisplayTerm_wild1
+                        0# of ww2 { DEFAULT ->
+                 Text.PrettyPrint.ANSI.Leijen.Text
+                   ww2
+                   PrettyPrint.$fDisplayTerm_wild1 }) -}
+b4c44f92b1de9cc50b903fc4c44fb5d9
+  $fDisplayTerm_$cdisplay ::
+    Syntax.Term -> Text.PrettyPrint.ANSI.Leijen.Doc
+  {- Arity: 1, Strictness: <S,1*U>,
+     Unfolding: (\ (ds :: Syntax.Term) ->
+                 case ds of wild3 {
+                   DEFAULT
+                   -> case Syntax.$w$cshowsPrec3
+                             0#
+                             wild3
+                             (GHC.Types.[] @ GHC.Types.Char) of wild4 {
+                        [] -> Text.PrettyPrint.ANSI.Leijen.Empty
+                        : ipv3 ipv4
+                        -> case GHC.List.$wlenAcc
+                                  @ GHC.Types.Char
+                                  wild4
+                                  0# of ww2 { DEFAULT ->
+                           Text.PrettyPrint.ANSI.Leijen.Text ww2 wild4 } }
+                   Syntax.Val ds1 l
+                   -> case ds1 of wild4 {
+                        Syntax.TmTrue
+                        -> Text.PrettyPrint.ANSI.Leijen.Cat
+                             PrettyPrint.$fDisplayTerm2
+                             (PrettyPrint.$fDisplayGLabel_$cdisplay l)
+                        Syntax.TmFalse
+                        -> Text.PrettyPrint.ANSI.Leijen.Cat
+                             PrettyPrint.$fDisplayTerm1
+                             (PrettyPrint.$fDisplayGLabel_$cdisplay l) } }) -}
+057b7b48f26a77d2f973e54cbdff7b45
+  $fDisplayTerm_ipv :: GHC.Types.Char
+  {- HasNoCafRefs, Strictness: m, Unfolding: (GHC.Types.C# 'F'#) -}
+32eaa28157c56cdca5f66f12cc14561c
+  $fDisplayTerm_ipv1 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "alse"#) -}
+27eff9ec7fd727272664468760aad6e2
+  $fDisplayTerm_ipv2 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "rue"#) -}
+4fc4c84f6916db6914bcd2927841483f
+  $fDisplayTerm_ipv3 :: GHC.Types.Char
+  {- HasNoCafRefs, Strictness: m, Unfolding: (GHC.Types.C# 'T'#) -}
+ca376a5f58ed7a8ec9d35de3d1342b7a
+  $fDisplayTerm_wild :: [GHC.Types.Char]
+  {- Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ GHC.Types.Char
+                   PrettyPrint.$fDisplayTerm_ipv
+                   PrettyPrint.$fDisplayTerm_ipv1) -}
+96f2cdc34d04ce0f8a2885f17755784c
+  $fDisplayTerm_wild1 :: [GHC.Types.Char]
+  {- Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ GHC.Types.Char
+                   PrettyPrint.$fDisplayTerm_ipv3
+                   PrettyPrint.$fDisplayTerm_ipv2) -}
+b362d6901e5605e86fec3220c0df047c
+  $fDisplayTypeError :: PrettyPrint.Display Syntax.TypeError
+  DFunId
+  {- Arity: 1, Strictness: <S,1*U>, Inline: INLINE (sat-args=0),
+     Unfolding: InlineRule (0, False, True)
+                PrettyPrint.$fDisplayTypeError_$cdisplay
+                  `cast`
+                (Sym (PrettyPrint.N:Display[0] <Syntax.TypeError>_N)) -}
+cca30b5783bf786034d61dd1f5936954
+  $fDisplayTypeError1 :: Text.PrettyPrint.ANSI.Leijen.Doc
+  {- Unfolding: (case GHC.List.$wlenAcc
+                        @ GHC.Types.Char
+                        PrettyPrint.$fDisplayTypeError_wild
+                        0# of ww2 { DEFAULT ->
+                 Text.PrettyPrint.ANSI.Leijen.Text
+                   ww2
+                   PrettyPrint.$fDisplayTypeError_wild }) -}
+05487ca14a6ed2ff3afa949a3135301d
+  $fDisplayTypeError2 :: Text.PrettyPrint.ANSI.Leijen.Doc
+  {- Unfolding: (case GHC.List.$wlenAcc
+                        @ GHC.Types.Char
+                        PrettyPrint.$fDisplayTypeError_wild1
+                        0# of ww2 { DEFAULT ->
+                 Text.PrettyPrint.ANSI.Leijen.Text
+                   ww2
+                   PrettyPrint.$fDisplayTypeError_wild1 }) -}
+c2909b5677c4e7f8161edd520e86cab1
+  $fDisplayTypeError3 :: Text.PrettyPrint.ANSI.Leijen.Doc
+  {- Unfolding: (case GHC.List.$wlenAcc
+                        @ GHC.Types.Char
+                        PrettyPrint.$fDisplayTypeError_wild2
+                        0# of ww2 { DEFAULT ->
+                 Text.PrettyPrint.ANSI.Leijen.Text
+                   ww2
+                   PrettyPrint.$fDisplayTypeError_wild2 }) -}
+5d07ddc172a6c8458f345decbbb69598
+  $fDisplayTypeError_$cdisplay ::
+    Syntax.TypeError -> Text.PrettyPrint.ANSI.Leijen.Doc
+  {- Arity: 1, Strictness: <S,1*U>,
+     Unfolding: (\ (ds :: Syntax.TypeError) ->
+                 case ds of wild3 {
+                   DEFAULT
+                   -> case Syntax.$fExceptionTypeError_$cshow wild3 of wild4 {
+                        [] -> Text.PrettyPrint.ANSI.Leijen.Empty
+                        : ipv3 ipv4
+                        -> case GHC.List.$wlenAcc
+                                  @ GHC.Types.Char
+                                  wild4
+                                  0# of ww2 { DEFAULT ->
+                           Text.PrettyPrint.ANSI.Leijen.Text ww2 wild4 } }
+                   Syntax.ImplicitFlow g1 g2
+                   -> Text.PrettyPrint.ANSI.Leijen.Cat
+                        PrettyPrint.$fDisplayTypeError3
+                        (Text.PrettyPrint.ANSI.Leijen.Cat
+                           (PrettyPrint.$fDisplayGType_$cdisplay g1)
+                           (Text.PrettyPrint.ANSI.Leijen.Cat
+                              PrettyPrint.$fDisplayTypeError2
+                              (Text.PrettyPrint.ANSI.Leijen.Cat
+                                 (PrettyPrint.$fDisplayGType_$cdisplay g2)
+                                 Text.PrettyPrint.ANSI.Leijen.Line)))
+                   Syntax.TransitiveMismatch g1 g2 g3
+                   -> Text.PrettyPrint.ANSI.Leijen.Cat
+                        PrettyPrint.$fDisplayTypeError1
+                        (Text.PrettyPrint.ANSI.Leijen.Cat
+                           (PrettyPrint.$fDisplayGType_$cdisplay g1)
+                           (Text.PrettyPrint.ANSI.Leijen.Cat
+                              (PrettyPrint.$fDisplayGType_$cdisplay g2)
+                              (Text.PrettyPrint.ANSI.Leijen.Cat
+                                 PrettyPrint.$fDisplayTypeError2
+                                 (Text.PrettyPrint.ANSI.Leijen.Cat
+                                    (PrettyPrint.$fDisplayGType_$cdisplay g3)
+                                    Text.PrettyPrint.ANSI.Leijen.Line))))
+                   Syntax.Undefined s -> Text.PrettyPrint.ANSI.Leijen.text s }) -}
+a0295d40bc5f7f5bb0cecef0b1524985
+  $fDisplayTypeError_ipv :: GHC.Types.Char
+  {- HasNoCafRefs, Strictness: m, Unfolding: (GHC.Types.C# 'D'#) -}
+5062ab34e07b700dfd5b0d6f58be99ea
+  $fDisplayTypeError_ipv1 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString#
+                   "ynamic security error between "#) -}
+3302d28a582d174043f5d15fe67ac0c9
+  $fDisplayTypeError_ipv2 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "and "#) -}
+6ae2a2dcfc033d3fe5f830ace30b69ec
+  $fDisplayTypeError_ipv3 :: GHC.Types.Char
+  {- HasNoCafRefs, Strictness: m, Unfolding: (GHC.Types.C# ' '#) -}
+7a9d9d0386746cf9c1ad4f2fe7fad3e9
+  $fDisplayTypeError_ipv4 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString#
+                   "mplicit flow found between "#) -}
+609c18dd722da9795a67ffeb4b030cf0
+  $fDisplayTypeError_ipv5 :: GHC.Types.Char
+  {- HasNoCafRefs, Strictness: m, Unfolding: (GHC.Types.C# 'I'#) -}
+d04396c945499f084b3afca7b3d16af4
+  $fDisplayTypeError_wild :: [GHC.Types.Char]
+  {- Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ GHC.Types.Char
+                   PrettyPrint.$fDisplayTypeError_ipv
+                   PrettyPrint.$fDisplayTypeError_ipv1) -}
+0dd57086b4a04a0d9c81054691aec2da
+  $fDisplayTypeError_wild1 :: [GHC.Types.Char]
+  {- Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ GHC.Types.Char
+                   PrettyPrint.$fDisplayTypeError_ipv3
+                   PrettyPrint.$fDisplayTypeError_ipv2) -}
+f3c1354284cf7e6b86d500400a0e31d2
+  $fDisplayTypeError_wild2 :: [GHC.Types.Char]
+  {- Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ GHC.Types.Char
+                   PrettyPrint.$fDisplayTypeError_ipv5
+                   PrettyPrint.$fDisplayTypeError_ipv4) -}
+7c66c15e1e2ec988ad0a7ceed69adcf1
+  $tc'C:Display :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   5037431313760932806##
+                   4695020061831569669##
+                   PrettyPrint.$trModule
+                   PrettyPrint.$tc'C:Display1) -}
+3618bd02f15c9bf5c2e44b6c9259b084
+  $tc'C:Display1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "'C:Display"#) -}
+6baa183f9849d30621046e87065c7141
+  $tcDisplay :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   11920204680909545578##
+                   647070876837770075##
+                   PrettyPrint.$trModule
+                   PrettyPrint.$tcDisplay1) -}
+d6a4b8e17dfb3d11858f1fa2c1f3b13e
+  $tcDisplay1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "Display"#) -}
+450c08b50375b4641a82cfb89b476707
+  $trModule :: GHC.Types.Module
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.Module
+                   PrettyPrint.$trModule2
+                   PrettyPrint.$trModule1) -}
+50a0176614d1198b7ffb5dac8255e2ec
+  $trModule1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "PrettyPrint"#) -}
+6d1706c40cad317afea7d6edea41c7dd
+  $trModule2 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "main"#) -}
+87356c915b3425a2103e1a762115d577
+  $w$cdisplay ::
+    Syntax.GType
+    -> (# Text.PrettyPrint.ANSI.Leijen.Doc,
+          Text.PrettyPrint.ANSI.Leijen.Doc #)
+  {- Arity: 1, Strictness: <S,1*U>, Inline: [0] -}
+b362d6901e5605e86fec3220c0df047c
+  class Display d where
+    display :: d -> Text.PrettyPrint.ANSI.Leijen.Doc
+    {-# MINIMAL display #-}
+b645d0e6dabcd06acc94d644ed09af57
+  ppstatic ::
+    (GHC.Base.String, Syntax.GType) -> Text.PrettyPrint.ANSI.Leijen.Doc
+  {- Arity: 1, Strictness: <S,1*U(1*U,1*U)>m7,
+     Unfolding: InlineRule (1, True, False)
+                (\ (ds :: (GHC.Base.String, Syntax.GType)) ->
+                 case ds of wild3 { (,) nm ty ->
+                 Text.PrettyPrint.ANSI.Leijen.Cat
+                   (Text.PrettyPrint.ANSI.Leijen.text nm)
+                   (Text.PrettyPrint.ANSI.Leijen.Cat
+                      PrettyPrint.ppstatic1
+                      (Text.PrettyPrint.ANSI.Leijen.Cat
+                         (PrettyPrint.$fDisplayGType_$cdisplay ty)
+                         Text.PrettyPrint.ANSI.Leijen.Line)) }) -}
+b4694e2cc187bc1cc8fa4f2ece2c53bf
+  ppstatic1 :: Text.PrettyPrint.ANSI.Leijen.Doc
+  {- Unfolding: (case GHC.List.$wlenAcc
+                        @ GHC.Types.Char
+                        PrettyPrint.ppstatic_wild
+                        0# of ww2 { DEFAULT ->
+                 Text.PrettyPrint.ANSI.Leijen.Text
+                   ww2
+                   PrettyPrint.ppstatic_wild }) -}
+19af6549b5c79b5c80fa7427c9c08699
+  ppstatic_ipv1 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# ": "#) -}
+ca705b38166d97d2ec1dd711490f0120
+  ppstatic_wild :: [GHC.Types.Char]
+  {- Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ GHC.Types.Char
+                   PrettyPrint.$fDisplayTypeError_ipv3
+                   PrettyPrint.ppstatic_ipv1) -}
+instance PrettyPrint.Display [Lattice.GLabel]
+  = PrettyPrint.$fDisplayGLabel
+instance PrettyPrint.Display [Syntax.GType]
+  = PrettyPrint.$fDisplayGType
+instance PrettyPrint.Display [Text.Megaparsec.Error.ParseError]
+  = PrettyPrint.$fDisplayParseError
+instance PrettyPrint.Display [Syntax.Term]
+  = PrettyPrint.$fDisplayTerm
+instance PrettyPrint.Display [Syntax.TypeError]
+  = PrettyPrint.$fDisplayTypeError
+vectorised variables:
+vectorised tycons:
+vectorised reused tycons:
+parallel variables:
+parallel tycons:
+trusted: none
+require own pkg trusted: False
+

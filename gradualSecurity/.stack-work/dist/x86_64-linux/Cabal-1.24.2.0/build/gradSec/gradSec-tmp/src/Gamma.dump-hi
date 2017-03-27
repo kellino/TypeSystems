@@ -1,0 +1,150 @@
+
+==================== FINAL INTERFACE ====================
+2017-03-27 12:48:41.778322046 UTC
+
+interface main@main:Gamma 8002
+  interface hash: a51c9daea765ba9ddd7827dbc1f24da4
+  ABI hash: 4aeb18cf8fa74d68a048d0751b385c8b
+  export-list hash: 3977cd7b93c438541904e8bef23fa46c
+  orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
+  flag hash: 854d05af4f85b3731631d5c24577127e
+  sig of: Nothing
+  used TH splices: False
+  where
+exports:
+  Gamma.extendGamma
+  Gamma.initCtx
+  Gamma.remove
+module dependencies: Lattice Syntax
+package dependencies: StateVar-1.1.0.4@StateVar-1.1.0.4-5dJbnTVECtEAhfJXPZKdbO
+                      array-0.5.1.1@array-0.5.1.1 base-4.9.1.0
+                      base-orphans-0.5.4@base-orphans-0.5.4-ABoxiBf7nXc7Qqh66CgYc9
+                      bifunctors-5.4.1@bifunctors-5.4.1-G9sSLclb5k26O3Lio1becS
+                      comonad-5@comonad-5-3taBO7oiJOm7HwkDYjek6x
+                      containers-0.5.7.1@containers-0.5.7.1
+                      contravariant-1.4@contravariant-1.4-LOqCz9UiRqn89oyERzBA9D
+                      deepseq-1.4.2.0@deepseq-1.4.2.0
+                      distributive-0.5.2@distributive-0.5.2-DzhYIvhMV8O6K3jnVc2kgn
+                      ghc-prim-0.5.0.0 integer-gmp-1.0.0.1
+                      mtl-2.2.1@mtl-2.2.1-BLKBelFsPB3BoFeSWSOYj6
+                      profunctors-5.2@profunctors-5.2-LIxTI75q4uF48YzuBFpJUP
+                      stm-2.4.4.1@stm-2.4.4.1-JQn4hNPyYjP5m9AcbI88Ve
+                      tagged-0.8.5@tagged-0.8.5-DqTYAPqU3ao5zvndQftjsL
+                      transformers-0.5.2.0@transformers-0.5.2.0
+                      transformers-compat-0.5.1.4@transformers-compat-0.5.1.4-2tm9ddmq5Qk3kF2emBuYBK
+                      unbound-generics-0.3.1@unbound-generics-0.3.1-BnZfdHaJ5Vovbu7cNDG2E
+orphans: base-4.9.1.0:GHC.Base base-4.9.1.0:GHC.Float
+         main@main:Syntax
+         stm-2.4.4.1@stm-2.4.4.1-JQn4hNPyYjP5m9AcbI88Ve:Control.Monad.STM
+         transformers-0.5.2.0@transformers-0.5.2.0:Control.Monad.Trans.Error
+family instance modules: base-4.9.1.0:Control.Applicative
+                         base-4.9.1.0:Data.Complex base-4.9.1.0:Data.Either
+                         base-4.9.1.0:Data.Functor.Compose base-4.9.1.0:Data.Functor.Const
+                         base-4.9.1.0:Data.Functor.Identity
+                         base-4.9.1.0:Data.Functor.Product base-4.9.1.0:Data.Functor.Sum
+                         base-4.9.1.0:Data.List.NonEmpty base-4.9.1.0:Data.Monoid
+                         base-4.9.1.0:Data.Semigroup base-4.9.1.0:Data.Type.Equality
+                         base-4.9.1.0:Data.Version base-4.9.1.0:Data.Void
+                         base-4.9.1.0:GHC.Exts base-4.9.1.0:GHC.Generics
+                         base-4.9.1.0:GHC.IO.Exception base-4.9.1.0:GHC.TypeLits
+                         bifunctors-5.4.1@bifunctors-5.4.1-G9sSLclb5k26O3Lio1becS:Data.Bifunctor.Biff
+                         bifunctors-5.4.1@bifunctors-5.4.1-G9sSLclb5k26O3Lio1becS:Data.Bifunctor.Clown
+                         bifunctors-5.4.1@bifunctors-5.4.1-G9sSLclb5k26O3Lio1becS:Data.Bifunctor.Joker
+                         bifunctors-5.4.1@bifunctors-5.4.1-G9sSLclb5k26O3Lio1becS:Data.Bifunctor.Product
+                         bifunctors-5.4.1@bifunctors-5.4.1-G9sSLclb5k26O3Lio1becS:Data.Bifunctor.Sum
+                         bifunctors-5.4.1@bifunctors-5.4.1-G9sSLclb5k26O3Lio1becS:Data.Bifunctor.Tannen
+                         containers-0.5.7.1@containers-0.5.7.1:Data.Map.Base
+                         containers-0.5.7.1@containers-0.5.7.1:Data.Sequence
+                         containers-0.5.7.1@containers-0.5.7.1:Data.Set.Base
+                         main@main:Lattice main@main:Syntax
+                         tagged-0.8.5@tagged-0.8.5-DqTYAPqU3ao5zvndQftjsL:Data.Tagged
+                         unbound-generics-0.3.1@unbound-generics-0.3.1-BnZfdHaJ5Vovbu7cNDG2E:Unbound.Generics.LocallyNameless.Bind
+                         unbound-generics-0.3.1@unbound-generics-0.3.1-BnZfdHaJ5Vovbu7cNDG2E:Unbound.Generics.LocallyNameless.Embed
+                         unbound-generics-0.3.1@unbound-generics-0.3.1-BnZfdHaJ5Vovbu7cNDG2E:Unbound.Generics.LocallyNameless.Name
+                         unbound-generics-0.3.1@unbound-generics-0.3.1-BnZfdHaJ5Vovbu7cNDG2E:Unbound.Generics.LocallyNameless.Rebind
+                         unbound-generics-0.3.1@unbound-generics-0.3.1-BnZfdHaJ5Vovbu7cNDG2E:Unbound.Generics.LocallyNameless.Rec
+                         unbound-generics-0.3.1@unbound-generics-0.3.1-BnZfdHaJ5Vovbu7cNDG2E:Unbound.Generics.LocallyNameless.Shift
+import  -/  base-4.9.1.0:GHC.Base c4231c43c07e46080a26bf94094c7aa1
+import  -/  base-4.9.1.0:Prelude 22dd289b8469a8fa8dc81cab7b237771
+import  -/  containers-0.5.7.1@containers-0.5.7.1:Data.Map 20d4ffbee41965d03d6a989425473dc4
+import  -/  containers-0.5.7.1@containers-0.5.7.1:Data.Map.Base a29df8c78ba14cbcd4d90f97bd8d22e9
+import  -/  Syntax 6c120300cbc8be0c354432ee47bcf2aa
+  exports: 095bc84ec11cd23a65bba080dc14ddf8
+  Ctx cc93690bc27785c68e11a27b62368b8d
+  Ctx 043451a54ebe0fa8e1aabda3008751fa
+  GType 9e345476bfbabb6a0c691ef7bb32faa9
+  Gamma b049cc93227a1c99c7e5e3557f91a45a
+  gamma 8ae791ea92a1337073c6a69aa8e4787c
+  termenv dad23e518f6f0409de68c7062ae43470
+ee044848d7f0de9e55a6cdf4ead9f10c
+  $sdelete_$sgo10 ::
+    GHC.Base.String
+    -> Data.Map.Base.Map GHC.Base.String a1
+    -> Data.Map.Base.Map GHC.Base.String a1
+  {- Arity: 2, Strictness: <S,1*U><S,1*U> -}
+7642ab63a0d7fe0fd6af12b817a9e307
+  $sinsert_$sgo10 ::
+    GHC.Base.String
+    -> a1
+    -> Data.Map.Base.Map GHC.Base.String a1
+    -> Data.Map.Base.Map GHC.Base.String a1
+  {- Arity: 3, Strictness: <S,1*U><L,U><S,1*U> -}
+79d0de63d4dfc7fc410b5fe100da9ca9
+  $trModule :: GHC.Types.Module
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.Module Gamma.$trModule2 Gamma.$trModule1) -}
+55de43acf394edf68ac0c9e0c4e98b40
+  $trModule1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "Gamma"#) -}
+b763192b94ff760c95cce59d54cb8a36
+  $trModule2 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "main"#) -}
+d58a18f0fcb0db40a4ae72cd12f0c643
+  extendGamma ::
+    Syntax.Ctx -> (GHC.Base.String, Syntax.GType) -> Syntax.Ctx
+  {- Arity: 2, Strictness: <S,1*U(U,1*U)><S,1*U(1*U,U)>m,
+     Unfolding: InlineRule (2, True, False)
+                (\ (ctx :: Syntax.Ctx) (ds :: (GHC.Base.String, Syntax.GType)) ->
+                 case ds of wild { (,) nm gt ->
+                 case ctx of wild1 { Syntax.Ctx ds1 ds2 ->
+                 Syntax.Ctx
+                   ds1
+                   (Gamma.$sinsert_$sgo10
+                      @ Syntax.GType
+                      nm
+                      gt
+                      ds2 `cast` (Syntax.N:Gamma[0]))
+                     `cast`
+                   (Sym (Syntax.N:Gamma[0])) } }) -}
+4c642af37da6f3b4fa70a1ebcd3ec56c
+  initCtx :: Syntax.Ctx
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (Syntax.Ctx
+                   (Data.Map.Base.Tip @ GHC.Base.String @ Syntax.Term)
+                   (Data.Map.Base.Tip @ GHC.Base.String @ Syntax.GType)
+                     `cast`
+                   (Sym (Syntax.N:Gamma[0]))) -}
+014d2df0184c4e2db638513180e8348d
+  remove :: Syntax.Ctx -> GHC.Base.String -> Syntax.Ctx
+  {- Arity: 2, Strictness: <S,1*U(U,1*U)><L,1*U>m,
+     Unfolding: InlineRule (2, True, False)
+                (\ (ctx :: Syntax.Ctx) (nm :: GHC.Base.String) ->
+                 case ctx of wild { Syntax.Ctx ds ds1 ->
+                 Syntax.Ctx
+                   ds
+                   (Gamma.$sdelete_$sgo10
+                      @ Syntax.GType
+                      nm
+                      ds1 `cast` (Syntax.N:Gamma[0]))
+                     `cast`
+                   (Sym (Syntax.N:Gamma[0])) }) -}
+vectorised variables:
+vectorised tycons:
+vectorised reused tycons:
+parallel variables:
+parallel tycons:
+trusted: none
+require own pkg trusted: False
+

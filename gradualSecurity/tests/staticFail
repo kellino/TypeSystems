@@ -1,0 +1,3 @@
+let f {L} x {L} = x {L}
+let g {L} x = x
+f false{H}

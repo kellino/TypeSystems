@@ -1,0 +1,4 @@
+:quit 
+:browse 
+let f{H} x = if x then true{L} else false{L}
+let f{H} x {H} = if x then true{L} else false{L}
