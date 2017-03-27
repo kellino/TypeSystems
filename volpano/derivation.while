@@ -1,0 +1,6 @@
+1
+true
+skip
+if (zₘ ≤ vₘ) then (xₕ := zₘ) else (yₕ := wₗ)
+if (zₕ ≤ vₕ) then (pₘ := 1) else (pₘ := 0)
+xₗ := 1 + true # normal type error

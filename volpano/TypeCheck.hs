@@ -30,12 +30,9 @@ typeof (Op op n1 n2) = do
         (Sub, TyNum, TyNum) -> return TyNum
         (Sub, _, _) -> throwError $ "cannot sub " ++ show n1 ++ " and " ++ show n2
         (Equal, _, _) -> return TyBool
-<<<<<<< HEAD
+        LessThanEq{} -> return TyBool
+        (Op f x) -> throwError $ "Untypeable: " ++ show op ++ " " ++ show f ++ " " ++ show x
         (_, _, _) -> throwError "Untypeable"
-=======
-        (LessThanEq, _, _) -> return TyBool
-        (op, f, x) -> throwError $ "Untypeable: " ++ show op ++ " " ++ show f ++ " " ++ show x
->>>>>>> derivation
 typeof (Seq e1 e2) = do
     _ <- typeof e1 -- check and then throw away
     typeof e2
