@@ -1,3 +1,6 @@
 tags
 *.hi
 *.o
+dist/
+.history
+.stack-work/
