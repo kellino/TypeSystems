@@ -6,3 +6,5 @@ again in 5 years time to see it finished.
 
 I've experimented with various libraries and approaches here, so please do not look at this as the best (or even a good)
 way of implementing any of these type systems: the code style is **not** consistent! 
+
+This is also used as a storage place for various bits of Agda related to type theory.
