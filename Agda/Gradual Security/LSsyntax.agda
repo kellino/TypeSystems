@@ -15,6 +15,8 @@ data GType : Set where
     _⇒_  : GType → Label → GType → GType
     err  : GType
 
+infixr 4 _∙_
+infixl 6 _∨_ _∧_
 data Term : Set where
     var           : ℕ → Term
     litBool       : Bool → Label → Term
@@ -33,16 +35,19 @@ getLabel (bool ℓ) = ℓ
 getLabel ((g ⇒ ℓ) g₁) = ℓ
 getLabel err = ✭ -- lazy propagation
 
+-- gradual join
 _~⋎~_ : (ℓ₁ ℓ₂ : Label) → Label
-⊤ ~⋎~ ✭ = ⊤
-✭ ~⋎~ ⊤ = ⊤
-ℓ₁ ~⋎~ ✭ = ℓ₁
-✭ ~⋎~ ℓ₂ = ℓ₂
 ⊤ ~⋎~ ⊤ = ⊤
 ⊤ ~⋎~ ⊥ = ⊤
+⊤ ~⋎~ ✭ = ⊤
 ⊥ ~⋎~ ⊤ = ⊤
 ⊥ ~⋎~ ⊥ = ⊥
+⊥ ~⋎~ ✭ = ✭
+✭ ~⋎~ ⊤ = ⊤
+✭ ~⋎~ ⊥ = ✭
+✭ ~⋎~ ✭ = ✭
 
+-- gradual meet
 _~⋏~_ : ∀ (ℓ₁ ℓ₂ : Label) → Label
 ⊥ ~⋏~ ✭ = ⊥
 ✭ ~⋏~ ⊥ = ⊥
@@ -67,34 +72,39 @@ data _≤_ : Label → Label → Set where
     ⊥≤⊤ : ⊥ ≤ ⊤
     ⊤≤⊤ : ⊤ ≤ ⊤
     ⊥≤⊥ : ⊥ ≤ ⊥
-    ℓ≤✭ : ∀ ℓ → ℓ ≤ ✭
+    ℓ≤✭ : ∀ {ℓ} → ℓ ≤ ✭
+    ✭≤ℓ : ∀ {ℓ} → ✭ ≤ ℓ
+
 
 _≤?_ : (ℓ₁ ℓ₂ : Label) → Dec (ℓ₁ ≤ ℓ₂) 
 ⊤ ≤? ⊤ = yes ⊤≤⊤
 ⊤ ≤? ⊥ = no (λ ())
-⊤ ≤? ✭ = yes (ℓ≤✭ ⊤)
+⊤ ≤? ✭ = yes (ℓ≤✭)
 ⊥ ≤? ⊤ = yes ⊥≤⊤
 ⊥ ≤? ⊥ = yes ⊥≤⊥
-⊥ ≤? ✭ = yes (ℓ≤✭ ⊥)
-✭ ≤? ⊤ = no (λ ())
-✭ ≤? ⊥ = no (λ ())
-✭ ≤? ✭ = yes (ℓ≤✭ ✭)
+⊥ ≤? ✭ = yes (ℓ≤✭)
+✭ ≤? ⊤ = yes (✭≤ℓ)
+✭ ≤? ⊥ = yes (✭≤ℓ)
+✭ ≤? ✭ = yes (ℓ≤✭)
 
 data _≾_ : GType → GType → Set where
     yes : (t₁ t₂ : GType) → t₁ ≾ t₂
     no  : (t₁ t₂ : GType) → t₁ ≾ t₂
 
 _≾?_ : (t₁ t₂ : GType) → t₁ ≾ t₂
-bool x ≾? bool x₁ with (x ≤? x₁)
-bool x ≾? bool x₁ | yes p = yes (bool x) (bool x₁)
-bool x ≾? bool x₁ | no ¬p = no (bool x) (bool x₁)
-bool x ≾? t₂ = no (bool x) t₂
-(t₁ ⇒ x) t₂ ≾? (t₃ ⇒ x₁) t₄ with (x ≤? x₁)
-(t₁ ⇒ x) t₂ ≾? (t₃ ⇒ x₁) t₄ | yes p with t₃ ≾? t₁ | t₂ ≾? t₄
-(t₁ ⇒ x) t₂ ≾? (t₃ ⇒ x₁) t₄ | yes p | (yes .t₃ .t₁) | (yes .t₂ .t₄) = yes ((t₁ ⇒ x) t₂) ((t₃ ⇒ x₁) t₄)
-(t₁ ⇒ x) t₂ ≾? (t₃ ⇒ x₁) t₄ | yes p | (yes .t₃ .t₁) | (no .t₂ .t₄) = no ((t₁ ⇒ x) t₂) ((t₃ ⇒ x₁) t₄)
-(t₁ ⇒ x) t₂ ≾? (t₃ ⇒ x₁) t₄ | yes p | (no .t₃ .t₁) | (yes .t₂ .t₄) = no ((t₁ ⇒ x) t₂) ((t₃ ⇒ x₁) t₄)
-(t₁ ⇒ x) t₂ ≾? (t₃ ⇒ x₁) t₄ | yes p | (no .t₃ .t₁) | (no .t₂ .t₄) = no ((t₁ ⇒ x) t₂) ((t₃ ⇒ x₁) t₄)
-(t₁ ⇒ x) t₂ ≾? (t₃ ⇒ x₁) t₄ | no ¬p = no ((t₁ ⇒ x) t₂) ((t₃ ⇒ x₁) t₄)
-(t₁ ⇒ x) t₂ ≾? t₃ = no ((t₁ ⇒ x) t₂) t₃
+bool ℓ ≾? bool ℓ₁ with ℓ ≤? ℓ₁ 
+...      | yes p = yes (bool ℓ) (bool ℓ₁)
+...      | no ¬p = no (bool ℓ) (bool ℓ₁)
+(t₁ ⇒ ℓ) t₂ ≾? (t₃ ⇒ ℓ₁) t₄ with t₃ ≾? t₁ | t₂ ≾? t₄ | ℓ ≤? ℓ₁
+(t₁ ⇒ ℓ) t₂ ≾? (t₃ ⇒ ℓ₁) t₄ | yes .t₃ .t₁ | (yes .t₂ .t₄) | (yes p) = yes ((t₁ ⇒ ℓ) t₂) ((t₃ ⇒ ℓ₁) t₄)
+
+(t₁ ⇒ ℓ) t₂ ≾? (t₃ ⇒ ℓ₁) t₄ | yes .t₃ .t₁ | (yes .t₂ .t₄) | (no ¬p) = no ((t₁ ⇒ ℓ) t₂) ((t₃ ⇒ ℓ₁) t₄)
+(t₁ ⇒ ℓ) t₂ ≾? (t₃ ⇒ ℓ₁) t₄ | yes .t₃ .t₁ | (no .t₂ .t₄) | (yes p) = no ((t₁ ⇒ ℓ) t₂) ((t₃ ⇒ ℓ₁) t₄)
+(t₁ ⇒ ℓ) t₂ ≾? (t₃ ⇒ ℓ₁) t₄ | yes .t₃ .t₁ | (no .t₂ .t₄) | (no ¬p) = no ((t₁ ⇒ ℓ) t₂) ((t₃ ⇒ ℓ₁) t₄)
+(t₁ ⇒ ℓ) t₂ ≾? (t₃ ⇒ ℓ₁) t₄ | no .t₃ .t₁ | (yes .t₂ .t₄) | (yes p) = no ((t₁ ⇒ ℓ) t₂) ((t₃ ⇒ ℓ₁) t₄)
+(t₁ ⇒ ℓ) t₂ ≾? (t₃ ⇒ ℓ₁) t₄ | no .t₃ .t₁ | (yes .t₂ .t₄) | (no ¬p) = no ((t₁ ⇒ ℓ) t₂) ((t₃ ⇒ ℓ₁) t₄)
+(t₁ ⇒ ℓ) t₂ ≾? (t₃ ⇒ ℓ₁) t₄ | no .t₃ .t₁ | (no .t₂ .t₄) | (yes p) = no ((t₁ ⇒ ℓ) t₂) ((t₃ ⇒ ℓ₁) t₄)
+(t₁ ⇒ ℓ) t₂ ≾? (t₃ ⇒ ℓ₁) t₄ | no .t₃ .t₁ | (no .t₂ .t₄) | (no ¬p) = no ((t₁ ⇒ ℓ) t₂) ((t₃ ⇒ ℓ₁) t₄)
+
+-- everything else is no
 t₁ ≾? t₂ = no t₁ t₂

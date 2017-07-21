@@ -15,7 +15,7 @@ data STyped {n} (Γ : Ctx n) : GType → Set where
     _S∧_ : ∀ {t₁ t₂} → STyped Γ t₁ → STyped Γ t₂ → STyped Γ (bool (getLabel t₁ ~⋎~ getLabel t₂))
     _S∨_ : ∀ {t₁ t₂} → STyped Γ t₁ → STyped Γ t₂ → STyped Γ (bool (getLabel t₁ ~⋎~ getLabel t₂))
     Sif  : ∀ {t t₁ t₂} → STyped Γ t → STyped Γ t₁ → STyped Γ t₂ → STyped Γ (bool (getLabel (t₁ :∨: t₂) ~⋎~ getLabel t))
-    S∙   : ∀ {t₁ ℓ t₂ t₃} → STyped Γ ((t₁ ⇒ ℓ) t₂) → STyped Γ t₃ → t₃ ≾ t₁ → STyped Γ (bool ((getLabel t₃) ~⋎~ ℓ))
+    S∙   : ∀ {t₁ ℓ t₂ t₃} → STyped Γ ((t₁ ⇒ ℓ) t₂) → STyped Γ t₃ → t₃ ≾ t₁ → STyped Γ (bool ((getLabel t₂) ~⋎~ ℓ))
     Sλ   : ∀ t₁ {t₂} ℓ → STyped (t₁ ∷ Γ) t₂ → STyped Γ ((t₁ ⇒ ℓ) t₂)
 
 erase : ∀ {n} {Γ : Ctx n} {t} → STyped Γ t → Term
@@ -65,11 +65,12 @@ staticCheck Γ (.(erase t) ∨ t₁) | yes τ t | no = no
 staticCheck Γ (t₁ ∨ .(erase t)) | no | yes τ t = no
 staticCheck Γ (t ∨ t₁) | no | no = no
 
-staticCheck Γ (t ∙ t₁) with staticCheck Γ t | staticCheck Γ t₁
-staticCheck Γ (.(erase t₁) ∙ .(erase t)) | yes ((τ₁ ⇒ x) τ₂) t₁ | (yes τ t) with τ ≾? τ₁
-staticCheck Γ (.(erase t₁) ∙ .(erase t)) | yes ((τ₁ ⇒ x) τ₂) t₁ | (yes τ t) | (yes .τ .τ₁) = yes (bool (getLabel τ ~⋎~ x)) (S∙ t₁ t (yes τ τ₁))
-staticCheck Γ (.(erase t₁) ∙ .(erase t)) | yes ((τ₁ ⇒ x) τ₂) t₁ | (yes τ t) | (no .τ .τ₁) = no
-staticCheck Γ (.(erase t₁) ∙ .(erase t)) | yes _ t₁ | (yes τ t) = no
+staticCheck Γ (t ∙ t₁) with staticCheck Γ t | staticCheck Γ t₁ 
+staticCheck Γ (.(erase t) ∙ .(erase t₁)) | yes ((τ ⇒ ℓ) τ₂) t | (yes τ₁ t₁) with τ₁ ≾? τ
+staticCheck Γ (.(erase t) ∙ .(erase t₁)) | yes ((τ ⇒ ℓ) τ₂) t | (yes τ₁ t₁) | (yes .τ₁ .τ) = yes (bool (getLabel τ₂ ~⋎~ ℓ)) (S∙ t t₁ (yes τ₁ τ))
+staticCheck Γ (.(erase t) ∙ .(erase t₁)) | yes ((τ ⇒ ℓ) τ₂) t | (yes τ₁ t₁) | (no .τ₁ .τ) = no
+staticCheck Γ (.(erase t) ∙ .(erase t₁)) | yes err t | (yes τ₁ t₁) = no
+staticCheck Γ (.(erase t) ∙ .(erase t₁)) | yes (bool x) t | (yes τ₁ t₁) = no
 staticCheck Γ (.(erase t) ∙ t₁) | yes τ t | no = no
 staticCheck Γ (t₁ ∙ .(erase t)) | no | yes τ t = no
 staticCheck Γ (t ∙ t₁) | no | no = no
@@ -83,3 +84,22 @@ staticCheck Γ (if .(erase t) then t₁ else t₂)                   | yes τ t 
 staticCheck Γ (if b then t₁ else t₂)                            | no = no
 
 staticCheck Γ error = no
+
+-- examples from Section 3.5
+
+-- Type : yes ((bool ⊥ ⇒ ⊥) (bool ⊥)) (Sλ (bool ⊥) ⊥ (Sx zero refl S∧ Sx zero refl))
+f : Term
+f = lam (bool ⊥) (var 0 ∨ var 0) ⊥
+
+-- Type : yes ((bool ✭ ⇒ ⊥) (bool ✭)) (Sλ (bool ✭) ⊥ (Sx zero refl S∨ Sx zero refl))
+g : Term
+g = lam (bool ✭) (var 0 ∧ var 0) ⊥
+
+-- Type : yes (bool ⊤) (Sb false ⊤)
+v : Term
+v = litBool false ⊤
+
+test₁ : staticCheck [] (f ∙ v) ≡ no
+test₁ = refl
+
+
