@@ -77,16 +77,18 @@ I≼ ℓ₁ ℓ₂ = ℓ₁ , ℓ₂
 
 Δ< : ∀ (triple : GType × GType × GType) → (GType × GType)
 Δ< (bool ℓ₁ , bool ℓ₂ , bool ℓ₃) = 
-    let new = Δ≼ (ℓ₁ , ℓ₂ , ℓ₃)
-    in bool (proj₁ new) , bool (proj₂ new)
-Δ< (t₁ , (t₂ ⇒ x) t₃ , t₄) = {!   !}
+    let new = Δ≼ (ℓ₁ , ℓ₂ , ℓ₃) in 
+    bool (proj₁ new) , bool (proj₂ new)
+Δ< ((t₁ ⇒ ℓ₁) t′₁ , (t₂ ⇒ ℓ₂) t′₂ , (t₃ ⇒ ℓ₃) t′₃) = 
+    let new = Δ≼ (ℓ₁ , ℓ₂ , ℓ₃) in
+    ((t₁ ⇒ (proj₁ new)) t′₁) , ((t₃ ⇒ (proj₂ new)) t′₃)
 Δ< (_ , _ , _) = err , err
 
 interior : ∀ (t : GType) → (GType × GType)
 interior (bool ℓ) =  (bool ℓ) , (bool ℓ)
 interior ((t ⇒ ℓ) t₁) =
     let (ℓ₁ , ℓ₂) = I≼ (getLabel t) ℓ in
-    {!   !} , {!   !}
+    ((setLabel t ℓ₁) ⇒ ℓ₂) t₁ , ((setLabel t ℓ₁) ⇒ ℓ₂) t₁
 interior err = err , err
 
 _∘<_ : ∀ (t₁ t₂ : (GType × GType)) → (GType × GType)
@@ -121,8 +123,14 @@ dynamicCheck Γ (.(erase t) ∨ .(erase t₁)) | yes τ t | (yes τ₁ t₁) | (
 dynamicCheck Γ (t ∨ t₁) | _ | _ = no
 
 -- application
+-- this needs to be doublechecked!
 dynamicCheck Γ (t ∙ t₁) with dynamicCheck Γ t | dynamicCheck Γ t₁ 
-dynamicCheck Γ (.(erase t) ∙ .(erase t₁)) | yes ((τ ⇒ ℓ₁) τ₁) t | (yes (bool ℓ₂) t₁) = {!   !}
+dynamicCheck Γ (.(erase t) ∙ .(erase t₁)) | yes ((τ ⇒ ℓ₁) τ₁) t | yes τ₂ t₁ with (interior ((τ ⇒ ℓ₁) τ₁)) ∘< (interior τ₂) 
+dynamicCheck Γ (.(erase t) ∙ .(erase t₁)) | yes ((τ ⇒ ℓ₁) τ₁) t | (yes τ₂ t₁) | (bool x , bool x₁) = yes (bool (getLabel τ₁ ~⋎~ ℓ₁)) (S∙ t t₁ (yes τ₂ τ))
+dynamicCheck Γ (.(erase t) ∙ .(erase t₁)) | yes ((τ ⇒ ℓ₁) τ₁) t | (yes τ₂ t₁) | (bool x , (proj₄ ⇒ x₁) proj₅) = no
+dynamicCheck Γ (.(erase t) ∙ .(erase t₁)) | yes ((τ ⇒ ℓ₁) τ₁) t | (yes τ₂ t₁) | ((proj₃ ⇒ x) proj₄ , bool x₁) = no
+dynamicCheck Γ (.(erase t) ∙ .(erase t₁)) | yes ((τ ⇒ ℓ₁) τ₁) t | (yes τ₂ t₁) | ((proj₃ ⇒ x) proj₄ , (proj₅ ⇒ x₁) proj₆) = no
+dynamicCheck Γ (.(erase t) ∙ .(erase t₁)) | yes ((τ ⇒ ℓ₁) τ₁) t | (yes τ₂ t₁) | (_ , _) = no
 dynamicCheck Γ (.(erase t) ∙ .(erase t₁)) | yes _ t | (yes _ t₁) = no
 dynamicCheck Γ (.(erase t) ∙ t₁) | yes τ t | no = no
 dynamicCheck Γ (t₁ ∙ .(erase t)) | no | yes τ t = no
