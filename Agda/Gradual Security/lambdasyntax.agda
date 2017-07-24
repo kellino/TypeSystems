@@ -1,4 +1,4 @@
-module LSsyntax where
+module lambdasyntax where
 
 open import Data.Nat using (ℕ)
 open import Data.Bool using (Bool; true; false)
