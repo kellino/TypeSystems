@@ -35,6 +35,11 @@ getLabel (bool ℓ) = ℓ
 getLabel ((g ⇒ ℓ) g₁) = ℓ
 getLabel err = ✭ -- lazy propagation
 
+setLabel : GType → Label → GType
+setLabel (bool _) ℓ = bool ℓ
+setLabel ((t ⇒ x) t₁) ℓ = (t ⇒ ℓ) t₁
+setLabel err _ = err
+
 -- gradual join
 _~⋎~_ : (ℓ₁ ℓ₂ : Label) → Label
 ⊤ ~⋎~ ⊤ = ⊤
@@ -74,7 +79,6 @@ data _≤_ : Label → Label → Set where
     ⊥≤⊥ : ⊥ ≤ ⊥
     ℓ≤✭ : ∀ {ℓ} → ℓ ≤ ✭
     ✭≤ℓ : ∀ {ℓ} → ✭ ≤ ℓ
-
 
 _≤?_ : (ℓ₁ ℓ₂ : Label) → Dec (ℓ₁ ≤ ℓ₂) 
 ⊤ ≤? ⊤ = yes ⊤≤⊤
